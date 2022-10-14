@@ -1,9 +1,30 @@
 package model;
 
-public class Admin extends Compte {
+import javax.persistence.Entity;
 
-	public Admin(String password, String login, Integer id, String nom, String prenom) {
-		super(password, login, id, nom, prenom);
+
+@Entity
+public class Admin extends Compte{
+	
+	
+	public Admin() {
+	
+	
 	}
+
+
+	public Admin(String password, String login, String nom, String prenom) {
+		super(password, login, nom, prenom);
+	}
+
+
+	@Override
+	public String toString() {
+		return "Admin [id=" + id + ", password=" + password + ", login=" + login + ", nom=" + nom + ", prenom=" + prenom
+				+ ", adresse=" + adresse + "]";
+	}
+	
+	
+	
 
 }

@@ -1,20 +1,44 @@
 package model;
 
+import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+import javax.persistence.Table;
 
+@Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Loueur','Client')")
+@Table(name="compte")
 public abstract class Compte {
 	
-	protected String password;
-	protected String login;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+	@Column(length = 100,nullable = false)
+	protected String password;
+	@Column(length = 35,nullable = false,unique=true)
+	protected String login;
+	@Column(length = 35,nullable = false)
 	protected String nom;
+	@Column(length = 35,nullable = false)
 	protected String prenom;
+	@Column(length = 35,nullable = false)
 	protected Adresse adresse;
 	
-	public Compte(String password, String login, Integer id, String nom, String prenom) {
+	public Compte() {
+	}
+	
+	
+	
+	public Compte(String password, String login, String nom, String prenom) {
 		super();
 		this.password = password;
 		this.login = login;
-		this.id = id;
 		this.nom = nom;
 		this.prenom = prenom;
 	}
