@@ -12,6 +12,10 @@ public class Annonce {
 	@JoinColumn(name="modele")
 	private Modele modele;
 	
+	@OneToOne
+	@JoinColumn(name="loueur")
+	private Loueur loueur;
+	
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "ENUM('vide','quart','moitie','trois-quart','rempli')")
 	private Plein plein;
