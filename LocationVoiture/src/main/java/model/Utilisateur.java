@@ -1,9 +1,23 @@
 package model;
 
+import javax.persistence.Entity;
+
+@Entity
 public abstract class Utilisateur extends Compte {
 
-	public Utilisateur(String password, String login, Integer id, String nom, String prenom) {
-		super(password, login, id, nom, prenom);
+	
+	public Utilisateur ()
+	{
+	}
+	
+	public Utilisateur(String password, String login, String nom, String prenom) {
+		super(password, login, nom, prenom);
+	}
+
+	@Override
+	public String toString() {
+		return "Utilisateur [id=" + id + ", password=" + password + ", login=" + login + ", nom=" + nom + ", prenom="
+				+ prenom + ", adresse=" + adresse + "]";
 	}
 
 }
