@@ -1,6 +1,6 @@
 package model;
 
-public class Voiture {
+public class Annonce {
 	private Integer id;
 	private String nom;
 	private Categorie categorie;
@@ -11,7 +11,7 @@ public class Voiture {
 	private Etat etat;
 	private Boolean disponible;
 	
-	public Voiture(Integer id, String nom, Categorie categorie, int annee, Plein plein, int kilometrage, String agence,
+	public Annonce(Integer id, String nom, Categorie categorie, int annee, Plein plein, int kilometrage, String agence,
 			Etat etat, Boolean disponible) {
 		super();
 		this.id = id;

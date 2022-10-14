@@ -2,21 +2,21 @@ package model;
 
 public class Loueur extends Utilisateur {
 
-private Voiture voiture;
+private Annonce voiture;
 
 
-public Loueur(String password, String login, Integer id, String nom, String prenom, Voiture voiture) {
+public Loueur(String password, String login, Integer id, String nom, String prenom, Annonce voiture) {
 		super(password, login, id, nom, prenom);
 		this.voiture = voiture; 
 	}
 
 
-public Voiture getVoiture() {
+public Annonce getVoiture() {
 	return voiture;
 }
 
 
-public void setVoiture(Voiture voiture) {
+public void setVoiture(Annonce voiture) {
 	this.voiture = voiture;
 }
 
