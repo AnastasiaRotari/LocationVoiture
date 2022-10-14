@@ -27,8 +27,8 @@ public  class Client extends Utilisateur {
 	}
 
 
-	public Client(String password, String login, Integer id, String nom, String prenom, int age, int anneePermis, boolean assurance, int accident,Location location) {
-		super(password, login, id, nom, prenom);
+	public Client(String password, String login, String nom, String prenom, int age, int anneePermis, boolean assurance, int accident,Location location) {
+		super(password, login, nom, prenom);
 		this.age = age;
 		this.anneePermis = anneePermis;
 		this.assurance = assurance;

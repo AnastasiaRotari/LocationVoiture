@@ -18,8 +18,8 @@ public Loueur() {
 }
 
 
-public Loueur(String password, String login, Integer id, String nom, String prenom, Annonce voiture) {
-		super(password, login, id, nom, prenom);
+public Loueur(String password, String login, String nom, String prenom, Annonce voiture) {
+		super(password, login, nom, prenom);
 		this.voiture = voiture; 
 	}
 
