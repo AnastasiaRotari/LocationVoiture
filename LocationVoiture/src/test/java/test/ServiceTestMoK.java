@@ -11,9 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
-import ajc.sopra.eshop.config.JpaConfig;
-import ajc.sopra.eshop.model.Produit;
-import ajc.sopra.eshop.service.ProduitService;
+import config.JpaConfig;
+import service.LocationService;
+import service.ModeleService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { JpaConfig.class })
@@ -22,13 +22,16 @@ import ajc.sopra.eshop.service.ProduitService;
 class ServiceTestMoK {
 
 	@Autowired
-	CompteService produitSrv;
+	ModeleService modeleSrv;
+	
+	@Autowired
+	LocationService locationSrv;
 
 	@Test
 	void InjectionProduitServicetest() {
-		assertNotNull(produitSrv);
+		assertNotNull(modeleSrv);
 	}
-	
+	/*
 	@Test
 	@Commit
 	@Disabled
@@ -43,6 +46,6 @@ class ServiceTestMoK {
 		produit = produitSrv.create(produit);
 		assertNotNull(produit.getId());
 		assertNotNull(produitSrv.findById(produit.getId()));
-	}
+	}*/
 
 }

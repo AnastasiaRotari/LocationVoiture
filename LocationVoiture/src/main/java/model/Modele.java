@@ -23,13 +23,13 @@ public class Modele {
 	private Categorie categorie;
 	
 	@Column(name="annee",nullable = false, length = 4)
-	private int annee;
+	private String annee;
 	
 	public Modele() {
 	}
 	
 	
-	public Modele(String nom, Categorie categorie, int annee) {
+	public Modele(String nom, Categorie categorie, String annee) {
 		this.nom = nom;
 		this.categorie = categorie;
 		this.annee = annee;
@@ -55,10 +55,10 @@ public class Modele {
 	public void setCategorie(Categorie categorie) {
 		this.categorie = categorie;
 	}
-	public int getAnnee() {
+	public String getAnnee() {
 		return annee;
 	}
-	public void setAnnee(int annee) {
+	public void setAnnee(String annee) {
 		this.annee = annee;
 	}
 	
