@@ -2,8 +2,8 @@ package repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ajc.sopra.eshop.model.Achat;
+import model.Admin;
 
-public interface AdminRepository extends JpaRepository<Achat, Integer>{
+public interface AdminRepository extends JpaRepository<Admin, Integer>{
 
 }

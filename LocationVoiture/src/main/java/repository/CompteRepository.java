@@ -2,8 +2,8 @@ package repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ajc.sopra.eshop.model.Fournisseur;
+import model.Compte;
 
-public interface CompteRepository extends JpaRepository<Fournisseur, Integer>{
+public interface CompteRepository extends JpaRepository<Compte, Integer>{
 
 }

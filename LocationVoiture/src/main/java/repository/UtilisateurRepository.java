@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import ajc.sopra.eshop.model.Produit;
+import model.Utilisateur;
 
-public interface UtilisateurRepository extends JpaRepository<Produit, Integer> {
-	List<Produit> findByLibelleContaining(String libelle);
+public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
+	//List<Produit> findByLibelleContaining(String libelle);
 }

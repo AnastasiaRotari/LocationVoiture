@@ -5,62 +5,63 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.eshop.exception.IdException;
-import ajc.sopra.eshop.exception.ProduitException;
-import ajc.sopra.eshop.model.Produit;
-import ajc.sopra.eshop.repository.ProduitRepository;
+import exception.CompteException;
+import exception.IdException;
+import model.Compte;
+import repository.CompteRepository;
 
 @Service
 public class CompteService {
 
 	@Autowired
-	private UtilisateurRepository produitRepo;
+	private CompteRepository compteRepo;
 
-	public List<Produit> findAll() {
-		return produitRepo.findAll();
+	public List<Compte> findAll() {
+		return compteRepo.findAll();
 	}
 
-	public Produit findById(Integer id) {
-//		return produitRepo.findById(id).orElseThrow(()->{
-//			throw new IdException();
-//		});
-		return produitRepo.findById(id).orElseThrow(IdException::new);
+	public Compte findById(Integer id) {
+		return compteRepo.findById(id).orElseThrow(IdException::new);
 	}
 
-	public List<Produit> findByLibelle(String libelle) {
-		return produitRepo.findByLibelleContaining(libelle);
-	}
 
-	public Produit create(Produit produit) {
-		if (produit.getId() != null) {
+	public Compte create(Compte compte) {
+		if (compte.getId() != null) {
 			throw new CompteException("produit deja dans la base");
 		}
-		return save(produit);
+		return save(compte);
 
 	}
 
-	public Produit update(Produit produit) {
-		if (produit.getId() == null || !produitRepo.existsById(produit.getId())) {
+	public Compte update(Compte compte) {
+		if (compte.getId() == null || !compteRepo.existsById(compte.getId())) {
 			throw new IdException();
 		}
-		return save(produit);
+		return save(compte);
 	}
 
-	private Produit save(Produit produit) {
-		if (produit.getLibelle() == null || produit.getLibelle().isBlank() || produit.getLibelle().length() > 30) {
-			throw new CompteException("probleme libelle");
+	private Compte save(Compte compte) {
+		if (compte.getLogin() == null || compte.getLogin().isBlank() || compte.getLogin().length() > 35) {
+			throw new CompteException("probleme login");
 		}
-		if (produit.getPrix() <= 0) {
-			throw new CompteException("probleme prix");
+		if (compte.getPassword() == null || compte.getPassword().isBlank() || compte.getPassword().length() > 35) {
+			throw new CompteException("probleme password");
 		}
-		return produitRepo.save(produit);
+		if (compte.getNom() == null || compte.getNom().isBlank() || compte.getNom().length() > 35) {
+			throw new CompteException("probleme nom");
+		}
+		if (compte.getPrenom() == null || compte.getPrenom().isBlank() || compte.getPrenom().length() > 35) {
+			throw new CompteException("probleme prenom");
+		}
+		
+		return compteRepo.save(compte);
 	}
 
-	public void delete(Produit produit) {
-		produitRepo.delete(produit);
+	public void delete(Compte produit) {
+		compteRepo.delete(produit);
 	}
 
 	public void deleteId(Integer id) {
-		produitRepo.deleteById(id);
+		compteRepo.deleteById(id);
 	}
 }
