@@ -1,9 +1,23 @@
 package repository;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.query.Param;
 
-import ajc.sopra.eshop.model.Client;
+import model.Annonce;
+import model.Loueur;
 
-public interface LoueurRepository extends JpaRepository<Client, Integer>{
+
+public interface LoueurRepository extends JpaRepository<Loueur, Integer>{
+	
+	
+	List<Loueur> findByAnnonceContaining(Annonce annonce);
+
+	
+	//@Query("select c from Client c left join fetch c.visites where p.id=:id")
+	
+	Optional<Loueur> findByIdFetchVisites(@Param("id") Integer id);
 
 }

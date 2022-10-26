@@ -1,9 +1,26 @@
 package repository;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+import java.util.Optional;
 
-import ajc.sopra.eshop.model.Client;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import model.Client;
+
 
 public interface ClientRepository extends JpaRepository<Client, Integer>{
+	
+	
+	List<Client> findByAgeContaining(int age);
+	List<Client> findByAnneePermisContaining(int AnneePermis);
+	List<Client> findByAccidentContaining(int accident);
+	List<Client> findByAssuranceContaining(boolean Assurance);
+	
+	//@Query("select c from Client c left join fetch c.visites where p.id=:id")
+	
+	Optional<Client> findByIdFetchVisites(@Param("id") Integer id);
+
 
 }
