@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import exception.CompteException;
 import exception.IdException;
 import model.Admin;
+import model.Adresse;
 import model.Compte;
 import repository.AdminRepository;
 import repository.CompteRepository;
@@ -25,7 +26,24 @@ public class AdminService {
 	public Admin findById(Integer id) {
 		return adminRepo.findById(id).orElseThrow(IdException::new);
 	}
-
+	
+	
+	public Admin findByLogin(String login) {
+		return adminRepo.findByLoginContaining(login);
+	}
+	
+	public List<Admin> findByNom(String nom) {
+		return adminRepo.findByNomContaining(nom);
+	}
+	
+	public List<Admin> findByPrenom(String prenom) {
+		return adminRepo.findByPrenomContaining(prenom);
+	}
+	
+	public List<Admin> findByAdresse(Adresse adresse) {
+		return adminRepo.findByAdresseContaining(adresse);
+	}
+	
 
 	public Admin create(Admin admin) {
 		if (admin.getId() != null) {

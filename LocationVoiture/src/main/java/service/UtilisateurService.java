@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import exception.CompteException;
 import exception.IdException;
+import model.Adresse;
+import model.Compte;
 import model.Utilisateur;
 import repository.UtilisateurRepository;
 
@@ -24,6 +26,23 @@ public class UtilisateurService {
 		return utilisateurRepo.findById(id).orElseThrow(IdException::new);
 	}
 
+	
+	public Utilisateur findByLogin(String login) {
+		return utilisateurRepo.findByLoginContaining(login);
+	}
+	
+	public List<Utilisateur> findByNom(String nom) {
+		return utilisateurRepo.findByNomContaining(nom);
+	}
+	
+	public List<Utilisateur> findByPrenom(String prenom) {
+		return utilisateurRepo.findByPrenomContaining(prenom);
+	}
+	
+	public List<Utilisateur> findByAdresse(Adresse adresse) {
+		return utilisateurRepo.findByAdresseContaining(adresse);
+	}
+	
 
 	public Utilisateur create(Utilisateur utilisateur) {
 		if (utilisateur.getId() != null) {

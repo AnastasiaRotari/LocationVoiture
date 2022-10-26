@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import exception.CompteException;
 import exception.IdException;
+import model.Adresse;
 import model.Compte;
 import repository.CompteRepository;
 
@@ -24,6 +25,21 @@ public class CompteService {
 		return compteRepo.findById(id).orElseThrow(IdException::new);
 	}
 
+	public Compte findByLogin(String login) {
+		return compteRepo.findByLoginContaining(login);
+	}
+	
+	public List<Compte> findByNom(String nom) {
+		return compteRepo.findByNomContaining(nom);
+	}
+	
+	public List<Compte> findByPrenom(String prenom) {
+		return compteRepo.findByPrenomContaining(prenom);
+	}
+	
+	public List<Compte> findByAdresse(Adresse adresse) {
+		return compteRepo.findByAdresseContaining(adresse);
+	}
 
 	public Compte create(Compte compte) {
 		if (compte.getId() != null) {
