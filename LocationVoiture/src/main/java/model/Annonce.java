@@ -17,6 +17,9 @@ public class Annonce {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JoinColumn(name="libelle")
+	private String libelle;
+	
 	@OneToOne
 	@JoinColumn(name="modele")
 	private Modele modele;
@@ -42,19 +45,28 @@ public class Annonce {
 	
 	private Boolean disponible;
 	
-	public Annonce(Modele modele, Plein plein, int kilometrage, String agence,
+	public Annonce(String libelle, Modele modele, Plein plein, int kilometrage, String agence,
 			Etat etat, Boolean disponible) {
 		super();
+		this.libelle = libelle;
 		this.plein = plein;
 		this.kilometrage = kilometrage;
 		this.agence = agence;
 		this.etat = etat;
 		this.disponible = disponible;
 	}
-
+	
 	public Annonce() {
 	}
 
+	public String getLibelle() {
+		return libelle;
+	}
+
+	public void setLibelle(String libelle) {
+		this.libelle = libelle;
+	}
+		
 	public Modele getModele() {
 		return modele;
 	}
