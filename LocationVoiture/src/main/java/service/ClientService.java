@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import exception.IdException;
 import exception.ClientException;
+import exception.CompteException;
 import model.Client;
 import repository.ClientRepository;
 
@@ -60,15 +61,19 @@ public class ClientService {
 		return save(client);
 	}
 
-	/*private Client save(Client client) {
-		if (client.getLibelle() == null || client.getLibelle().isBlank() || client.getLibelle().length() > 30) {
-			throw new CompteException("probleme libelle");
+	private Client save(Client client) {
+		if (client.getAge() <=0) {
+			throw new CompteException("probleme age");
 		}
-		if (produit.getPrix() <= 0) {
-			throw new CompteException("probleme prix");
+		if (client.getAnneePermis() <=0) {
+			throw new CompteException("probleme Annee de permis");
 		}
+		if (client.getAccident() <=0) {
+			throw new CompteException("probleme Accident");
+		}
+		
 		return clientrepo.save(client);
-	}*/
+	}
 
 	public void delete(Client client) {
 		clientrepo.delete(client);

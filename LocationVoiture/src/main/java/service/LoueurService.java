@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import exception.CompteException;
 import exception.IdException;
 import exception.LoueurException;
 import model.Annonce;
@@ -47,16 +48,11 @@ public class LoueurService {
 		return save(loueur);
 	}
 
-	/*private Loueur save(Loueur loueur) {
-		if (produit.getLibelle() == null || produit.getLibelle().isBlank() || produit.getLibelle().length() > 30) {
-			throw new CompteException("probleme libelle");
-		}
-		if (produit.getPrix() <= 0) {
-			throw new CompteException("probleme prix");
-		}
-		return produitRepo.save(produit);
+	private Loueur save(Loueur loueur) {
+		
+		return loueurRepo.save(loueur);
 	}
-*/
+
 	public void delete(Loueur loueur) {
 		loueurRepo.delete(loueur);
 	}
