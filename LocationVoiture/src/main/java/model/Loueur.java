@@ -11,26 +11,26 @@ import javax.persistence.OneToOne;
 public class Loueur extends Utilisateur {
 
 @OneToOne	
-private Annonce voiture;
+private Annonce annonce;
 
 
 public Loueur() {	
 }
 
 
-public Loueur(String password, String login, String nom, String prenom, Annonce voiture) {
+public Loueur(String password, String login, String nom, String prenom, Annonce annonce) {
 		super(password, login, nom, prenom);
-		this.voiture = voiture; 
+		this.annonce = annonce; 
 	}
 
 
-public Annonce getVoiture() {
-	return voiture;
+public Annonce getAnnonce() {
+	return annonce;
 }
 
 
-public void setVoiture(Annonce voiture) {
-	this.voiture = voiture;
+public void setVoiture(Annonce annonce) {
+	this.annonce = annonce;
 }
 
 }
