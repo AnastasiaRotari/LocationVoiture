@@ -5,62 +5,87 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.eshop.exception.IdException;
-import ajc.sopra.eshop.exception.ProduitException;
-import ajc.sopra.eshop.model.Produit;
-import ajc.sopra.eshop.repository.ProduitRepository;
+import exception.AnnonceException;
+import exception.IdException;
+import model.Annonce;
+import model.Loueur;
+import repository.AnnonceRepository;
 
 @Service
 public class AnnonceService {
 
 	@Autowired
-	private UtilisateurRepository produitRepo;
+	private AnnonceRepository annonceRepo;
 
-	public List<Produit> findAll() {
-		return produitRepo.findAll();
+	public List<Annonce> findAll() {
+		return annonceRepo.findAll();
 	}
 
-	public Produit findById(Integer id) {
-//		return produitRepo.findById(id).orElseThrow(()->{
-//			throw new IdException();
-//		});
-		return produitRepo.findById(id).orElseThrow(IdException::new);
+	public Annonce findById(Integer id) {
+		return annonceRepo.findById(id).orElseThrow(IdException::new);
 	}
 
-	public List<Produit> findByLibelle(String libelle) {
-		return produitRepo.findByLibelleContaining(libelle);
+	public List<Annonce> findByLibelle(String libelle) {
+		return annonceRepo.findByLibelleContaining(libelle);
 	}
+	
+	public List<Annonce> findByLoueur(Loueur loueur) {
+		return annonceRepo.findByLoueurContaining(loueur);
+	}
+	
+	public List<Annonce> findByAgence(String agence) {
+		return annonceRepo.findByAgenceContaining(agence);
+	}
+	
 
-	public Produit create(Produit produit) {
-		if (produit.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+	public Annonce create(Annonce annonce) {
+		if (annonce.getId() != null) {
+			throw new AnnonceException("annonce deja dans la base");
 		}
-		return save(produit);
+		return save(annonce);
 
 	}
 
-	public Produit update(Produit produit) {
-		if (produit.getId() == null || !produitRepo.existsById(produit.getId())) {
+	public Annonce update(Annonce annonce) {
+		if (annonce.getId() == null || !annonceRepo.existsById(annonce.getId())) {
 			throw new IdException();
 		}
-		return save(produit);
+		return save(annonce);
 	}
 
-	private Produit save(Produit produit) {
-		if (produit.getLibelle() == null || produit.getLibelle().isBlank() || produit.getLibelle().length() > 30) {
-			throw new CompteException("probleme libelle");
+	private Annonce save(Annonce annonce) {
+		if (annonce.getLibelle() == null || annonce.getLibelle().isBlank()) {
+			throw new AnnonceException("probleme libelle");
 		}
-		if (produit.getPrix() <= 0) {
-			throw new CompteException("probleme prix");
+		if (annonce.getModele() == null) {
+			throw new AnnonceException("probleme modele");
 		}
-		return produitRepo.save(produit);
+		if (annonce.getLoueur() == null) {
+			throw new AnnonceException("probleme loueur");
+		}
+		if (annonce.getPlein() == null) {
+			throw new AnnonceException("probleme plein");
+		}
+		if (annonce.getKilometrage() <= 0) {
+			throw new AnnonceException("probleme kilometrage");
+		}
+		if (annonce.getAgence() == null || annonce.getAgence().isBlank()) {
+			throw new AnnonceException("probleme agence");
+		}
+		if (annonce.getEtat() == null) {
+			throw new AnnonceException("probleme etat");
+		}
+		if (annonce.getDisponible() == null) {
+			throw new AnnonceException("probleme dispo");
+		}
+		return annonceRepo.save(annonce);
 	}
 
-	public void delete(Produit produit) {
-		produitRepo.delete(produit);
+	public void delete(Annonce annonce) {
+		annonceRepo.delete(annonce);
 	}
 
 	public void deleteId(Integer id) {
-		produitRepo.deleteById(id);
+		annonceRepo.deleteById(id);
 	}
 }
