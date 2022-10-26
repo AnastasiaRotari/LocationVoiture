@@ -1,66 +1,73 @@
 package service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.eshop.exception.IdException;
-import ajc.sopra.eshop.exception.ProduitException;
-import ajc.sopra.eshop.model.Produit;
-import ajc.sopra.eshop.repository.ProduitRepository;
+import exception.IdException;
+import exception.LocationException;
+import model.Client;
+import model.Location;
+import repository.LocationRepository;
 
 @Service
 public class LocationService {
 
 	@Autowired
-	private UtilisateurRepository produitRepo;
+	private LocationRepository locationRepo;
 
-	public List<Produit> findAll() {
-		return produitRepo.findAll();
+	public List<Location> findAll() {
+		return locationRepo.findAll();
 	}
 
-	public Produit findById(Integer id) {
-//		return produitRepo.findById(id).orElseThrow(()->{
-//			throw new IdException();
-//		});
-		return produitRepo.findById(id).orElseThrow(IdException::new);
+	public Location findById(Integer id) {
+		return locationRepo.findById(id).orElseThrow(IdException::new);
 	}
 
-	public List<Produit> findByLibelle(String libelle) {
-		return produitRepo.findByLibelleContaining(libelle);
+	public List<Location> findByClient(Client client) {
+		return locationRepo.findByClient(client);
+	}
+	
+	public List<Location> findByDateDebut(LocalDate dateDebut) {
+		return locationRepo.findByDateDebut(dateDebut);
+	}
+	
+	public List<Location> findByDateFin(LocalDate dateFin) {
+		return locationRepo.findByDateFin(dateFin);
 	}
 
-	public Produit create(Produit produit) {
-		if (produit.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+	public Location create(Location location) {
+		if (location.getId() != null) {
+			throw new LocationException("produit deja dans la base");
 		}
-		return save(produit);
+		return save(location);
 
 	}
 
-	public Produit update(Produit produit) {
-		if (produit.getId() == null || !produitRepo.existsById(produit.getId())) {
+	public Location update(Location location) {
+		if (location.getId() == null || !locationRepo.existsById(location.getId())) {
 			throw new IdException();
 		}
-		return save(produit);
+		return save(location);
 	}
 
-	private Produit save(Produit produit) {
-		if (produit.getLibelle() == null || produit.getLibelle().isBlank() || produit.getLibelle().length() > 30) {
-			throw new CompteException("probleme libelle");
+	private Location save(Location location) {
+		if (location.getDateDebut() == null || location.getDateDebut() == null) {
+			throw new LocationException("probleme date");
 		}
-		if (produit.getPrix() <= 0) {
-			throw new CompteException("probleme prix");
+		if (location.getPrixTotal() <= 0) {
+			throw new LocationException("probleme prix total");
 		}
-		return produitRepo.save(produit);
+		return locationRepo.save(location);
 	}
 
-	public void delete(Produit produit) {
-		produitRepo.delete(produit);
+	public void delete(Location location) {
+		locationRepo.delete(location);
 	}
 
 	public void deleteId(Integer id) {
-		produitRepo.deleteById(id);
+		locationRepo.deleteById(id);
 	}
 }

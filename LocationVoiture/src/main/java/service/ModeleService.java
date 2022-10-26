@@ -5,62 +5,66 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.eshop.exception.IdException;
-import ajc.sopra.eshop.exception.ProduitException;
-import ajc.sopra.eshop.model.Produit;
-import ajc.sopra.eshop.repository.ProduitRepository;
+import exception.IdException;
+import exception.ModeleException;
+import model.Categorie;
+import model.Modele;
+import repository.ModeleRepository;
 
 @Service
 public class ModeleService {
 
 	@Autowired
-	private UtilisateurRepository produitRepo;
+	private ModeleRepository modeleRepo;
 
-	public List<Produit> findAll() {
-		return produitRepo.findAll();
+	public List<Modele> findAll() {
+		return modeleRepo.findAll();
 	}
 
-	public Produit findById(Integer id) {
-//		return produitRepo.findById(id).orElseThrow(()->{
-//			throw new IdException();
-//		});
-		return produitRepo.findById(id).orElseThrow(IdException::new);
+	public Modele findById(Integer id) {
+		return modeleRepo.findById(id).orElseThrow(()->{
+			throw new IdException();
+		});
 	}
 
-	public List<Produit> findByLibelle(String libelle) {
-		return produitRepo.findByLibelleContaining(libelle);
+	public List<Modele> findByNom(String nom) {
+		return modeleRepo.findByNom(nom);
+	}
+	
+	public List<Modele> findByCategorie(Categorie categorie) {
+		return modeleRepo.findByCategorie(categorie);
 	}
 
-	public Produit create(Produit produit) {
-		if (produit.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+	public Modele create(Modele modele) {
+		if (modele.getId() != null) {
+			throw new ModeleException("modele deja dans la base");
 		}
-		return save(produit);
+		return save(modele);
 
 	}
 
-	public Produit update(Produit produit) {
-		if (produit.getId() == null || !produitRepo.existsById(produit.getId())) {
+	public Modele update(Modele modele) {
+		if (modele.getId() == null || !modeleRepo.existsById(modele.getId())) {
 			throw new IdException();
 		}
-		return save(produit);
+		return save(modele);
 	}
 
-	private Produit save(Produit produit) {
-		if (produit.getLibelle() == null || produit.getLibelle().isBlank() || produit.getLibelle().length() > 30) {
-			throw new CompteException("probleme libelle");
+	private Modele save(Modele modele) {
+		if (modele.getNom() == null || modele.getNom().isBlank() || modele.getNom().length() > 35) {
+			throw new ModeleException("probleme Nom");
 		}
-		if (produit.getPrix() <= 0) {
-			throw new CompteException("probleme prix");
+		if (modele.getAnnee()==null || modele.getAnnee().length()>4) {
+			throw new ModeleException("probleme Annee");
 		}
-		return produitRepo.save(produit);
+		return modeleRepo.save(modele);
 	}
 
-	public void delete(Produit produit) {
-		produitRepo.delete(produit);
+	public void delete(Modele modele) {
+		modeleRepo.delete(modele);
 	}
 
 	public void deleteId(Integer id) {
-		produitRepo.deleteById(id);
+		modeleRepo.deleteById(id);
 	}
 }
