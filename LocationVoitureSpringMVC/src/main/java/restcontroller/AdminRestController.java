@@ -14,17 +14,22 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import ajc.sopra.eshop.model.Fournisseur;
+import ajc.sopra.eshop.model.JsonViews;
 import model.Admin;
 import model.Adresse;
 import model.Client;
@@ -60,7 +65,25 @@ public class AdminRestController {
 	public List<Admin> findAll() {
 		return adminsrvc.findAll();
 	}
-	
+	@PostMapping("")
+	@JsonView(JsonViews.Common.class)
+	@ResponseStatus(code = HttpStatus.CREATED)
+	public Admin create(@Valid @RequestBody Admin admin, BindingResult br) {
+		if (br.hasErrors()) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+		return adminsrvc.save(admin);
+	}
+
+	@PutMapping("/{id}")
+	@JsonView(JsonViews.Common.class)
+	public Admin update(@Valid @RequestBody Admin admin, BindingResult br, @PathVariable Integer id) {
+		if (br.hasErrors() && adminsrvc.findById(id) == null) {
+			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+		}
+		return adminsrvc.save(admin);
+	}
+
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Admin patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
@@ -81,6 +104,14 @@ public class AdminRestController {
 		});
 		return adminsrvc.save(admin);
 	}
+	
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(code = HttpStatus.NO_CONTENT)
+	public void deleteById(@PathVariable Integer id) {
+		adminsrvc.deleteId(id);
+	}
+
 
 }
 
