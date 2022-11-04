@@ -24,12 +24,8 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import ajc.sopra.eshop.model.Adresse;
-import ajc.sopra.eshop.model.Fournisseur;
-import ajc.sopra.eshop.model.JsonViews;
-import ajc.sopra.eshop.model.Produit;
-import ajc.sopra.eshop.service.FournisseurService;
 import model.Categorie;
+import model.JsonViews;
 import model.Modele;
 import service.ModeleService;
 

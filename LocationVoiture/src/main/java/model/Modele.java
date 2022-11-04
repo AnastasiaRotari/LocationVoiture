@@ -14,6 +14,7 @@ import model.JsonViews;
 
 @Entity
 public class Modele {
+	
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

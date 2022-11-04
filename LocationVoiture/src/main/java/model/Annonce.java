@@ -10,41 +10,53 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Annonce {
 	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name="libelle")
 	private String libelle;
 	
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	@JoinColumn(name="modele")
 	private Modele modele;
 	
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	@JoinColumn(name="loueur")
 	private Loueur loueur;
 	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "ENUM('vide','quart','moitie','trois-quart','rempli')")
 	private Plein plein;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="kilometrage",nullable = false,length = 7)
 	private int kilometrage;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="agence",length = 35)
 	private String agence;
 	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "ENUM('mint','nearMint','excellent','fine','good','played','poor')")
 	private Etat etat;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="prixJour",length = 35)
 	private double prixJour; 
 	
+	@JsonView(JsonViews.Common.class)
 	private Boolean disponible;
 	
 	public Annonce(String libelle, Modele modele, Plein plein, int kilometrage, String agence,

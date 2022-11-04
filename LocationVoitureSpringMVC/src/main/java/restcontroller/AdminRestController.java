@@ -1,8 +1,5 @@
 package restcontroller;
 
-
-
-
 import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Map;
@@ -28,11 +25,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
-import ajc.sopra.eshop.model.Fournisseur;
-import ajc.sopra.eshop.model.JsonViews;
 import model.Admin;
 import model.Adresse;
 import model.Client;
+import model.JsonViews;
 import service.AdminService;
 import service.ClientService;
 

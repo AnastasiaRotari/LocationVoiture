@@ -10,23 +10,36 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Loueur','Client')")
 @Table(name="compte")
 public abstract class Compte {
 	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
+	
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 100,nullable = false)
 	protected String password;
+	
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 35,nullable = false,unique=true)
 	protected String login;
+	
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 35,nullable = false)
 	protected String nom;
+	
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 35,nullable = false)
 	protected String prenom;
+	
+	@JsonView(JsonViews.Common.class)
 	@Column(length = 35)
 	protected Adresse adresse;
 	

@@ -10,7 +10,7 @@ import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("restcontroller")
+@ComponentScan({"restcontroller"})
 @Import(JpaConfig.class)
 public class WebConfig {
 	

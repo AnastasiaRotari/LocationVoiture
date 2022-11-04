@@ -4,22 +4,27 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public  class Client extends Utilisateur {
 	
-	
+	@JsonView(JsonViews.Common.class)
 	@Column (length = 30, nullable = false)
 	private int age;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column (length = 50, nullable = false)
 	private int anneePermis;
 	
-	
+	@JsonView(JsonViews.Common.class)
 	private boolean assurance;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column (length = 50, nullable = false)
 	private Integer accident;
 	
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	private Location location;
 	

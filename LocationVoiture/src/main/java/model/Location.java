@@ -10,25 +10,33 @@ import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
 @Entity
 public class Location {
 
+	@JsonView(JsonViews.Common.class)
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
 	private LocalDate dateDebut;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
 	private LocalDate dateFin;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(columnDefinition = "DECIMAL(7,2)",nullable = false)
 	private double prixTotal;
 
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	private Annonce annonce;
 	
+	@JsonView(JsonViews.Common.class)
 	@OneToOne
 	private Client client;
 	
