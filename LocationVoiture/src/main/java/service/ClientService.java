@@ -61,7 +61,7 @@ public class ClientService {
 		return save(client);
 	}
 
-	private Client save(Client client) {
+	public Client save(Client client) {
 		if (client.getAge() <=0) {
 			throw new CompteException("probleme age");
 		}
