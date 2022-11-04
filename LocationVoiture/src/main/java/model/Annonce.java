@@ -42,6 +42,8 @@ public class Annonce {
 	@Column(columnDefinition = "ENUM('mint','nearMint','excellent','fine','good','played','poor')")
 	private Etat etat;
 	
+	@Column(name="prixJour",length = 35)
+	private double prixJour; 
 	
 	private Boolean disponible;
 	

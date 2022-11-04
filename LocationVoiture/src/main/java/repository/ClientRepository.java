@@ -18,9 +18,5 @@ public interface ClientRepository extends JpaRepository<Client, Integer>{
 	List<Client> findByAccidentContaining(int accident);
 	List<Client> findByAssuranceContaining(boolean Assurance);
 	
-	//@Query("select c from Client c left join fetch c.visites where p.id=:id")
 	
-	Optional<Client> findByIdFetchVisites(@Param("id") Integer id);
-
-
 }

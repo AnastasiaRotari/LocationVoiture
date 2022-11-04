@@ -27,7 +27,7 @@ public abstract class Compte {
 	protected String nom;
 	@Column(length = 35,nullable = false)
 	protected String prenom;
-	@Column(length = 35,nullable = false)
+	@Column(length = 35)
 	protected Adresse adresse;
 	
 	public Compte() {

@@ -16,8 +16,5 @@ public interface LoueurRepository extends JpaRepository<Loueur, Integer>{
 	List<Loueur> findByAnnonceContaining(Annonce annonce);
 
 	
-	//@Query("select c from Client c left join fetch c.visites where p.id=:id")
 	
-	Optional<Loueur> findByIdFetchVisites(@Param("id") Integer id);
-
 }
