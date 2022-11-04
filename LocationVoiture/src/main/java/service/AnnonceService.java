@@ -9,6 +9,7 @@ import exception.AnnonceException;
 import exception.IdException;
 import model.Annonce;
 import model.Loueur;
+import model.Modele;
 import repository.AnnonceRepository;
 
 @Service
@@ -37,6 +38,17 @@ public class AnnonceService {
 		return annonceRepo.findByAgenceContaining(agence);
 	}
 	
+	public List<Annonce> findByModelContaining(Modele modele) {
+		return annonceRepo.findByModelContaining(modele);
+	}
+	
+	public List<Annonce> findByPrixJourContaining(double prix) {
+		return annonceRepo.findByPrixJourContaining(prix);
+	}
+	
+	public List<Annonce> findByDisponibilite(Boolean disponible) {
+		return annonceRepo.findByDisponibilite(disponible);
+	}
 
 	public Annonce create(Annonce annonce) {
 		if (annonce.getId() != null) {
