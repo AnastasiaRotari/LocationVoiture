@@ -60,7 +60,7 @@ public class AdminService {
 		return save(admin);
 	}
 
-	private Admin save(Admin admin) {
+	public Admin save(Admin admin) {
 		if (admin.getLogin() == null || admin.getLogin().isBlank() || admin.getLogin().length() > 35) {
 			throw new CompteException("probleme login");
 		}
