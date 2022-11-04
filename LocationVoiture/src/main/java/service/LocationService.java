@@ -30,13 +30,13 @@ public class LocationService {
 		return locationRepo.findByClient(client);
 	}
 	
-	public List<Location> findByDateDebut(LocalDate dateDebut) {
+	/*public List<Location> findByDateDebut(LocalDate dateDebut) {
 		return locationRepo.findByDateDebut(dateDebut);
 	}
 	
 	public List<Location> findByDateFin(LocalDate dateFin) {
 		return locationRepo.findByDateFin(dateFin);
-	}
+	}*/
 
 	public Location create(Location location) {
 		if (location.getId() != null) {

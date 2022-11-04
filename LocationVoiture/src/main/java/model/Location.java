@@ -83,6 +83,26 @@ public class Location {
 	public void setPrixTotal(double prixTotal) {
 		this.prixTotal = prixTotal;
 	}
+	
+
+	public Annonce getAnnonce() {
+		return annonce;
+	}
+
+
+	public void setAnnonce(Annonce annonce) {
+		this.annonce = annonce;
+	}
+
+
+	public Client getClient() {
+		return client;
+	}
+
+
+	public void setClient(Client client) {
+		this.client = client;
+	}
 
 
 	@Override
