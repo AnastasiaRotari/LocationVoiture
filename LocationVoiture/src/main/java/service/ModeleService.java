@@ -64,7 +64,7 @@ public class ModeleService {
 		modeleRepo.delete(modele);
 	}
 
-	public void deleteId(Integer id) {
+	public void deleteById(Integer id) {
 		modeleRepo.deleteById(id);
 	}
 }
