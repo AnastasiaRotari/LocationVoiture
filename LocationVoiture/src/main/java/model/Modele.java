@@ -8,20 +8,27 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonView;
+
+import model.JsonViews;
+
 @Entity
 public class Modele {
-	
+	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="nom",nullable = false, length = 35)
 	private String nom;
 	
+	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
 	@Column(columnDefinition = "ENUM('Berline','Familliale','Sportive','Utilitaire','Citadine')")
 	private Categorie categorie;
 	
+	@JsonView(JsonViews.Common.class)
 	@Column(name="annee",nullable = false, length = 4)
 	private String annee;
 	
