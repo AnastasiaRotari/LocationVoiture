@@ -53,7 +53,7 @@ public class AnnonceService {
 		return save(annonce);
 	}
 
-	private Annonce save(Annonce annonce) {
+	public Annonce save(Annonce annonce) {
 		if (annonce.getLibelle() == null || annonce.getLibelle().isBlank()) {
 			throw new AnnonceException("probleme libelle");
 		}
@@ -88,4 +88,6 @@ public class AnnonceService {
 	public void deleteId(Integer id) {
 		annonceRepo.deleteById(id);
 	}
+	
+	
 }

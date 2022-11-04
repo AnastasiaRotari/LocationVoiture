@@ -72,6 +72,15 @@ public abstract class Compte {
 	public void setPrenom(String prenom) {
 		this.prenom = prenom;
 	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
 	
 
 

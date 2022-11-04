@@ -21,6 +21,10 @@ public class LoueurService {
 	public List<Loueur> findAll() {
 		return loueurRepo.findAll();
 	}
+	
+	public Loueur findByIdFetchAnnonce(Integer id) {
+		return loueurRepo.findByIdFetchingAnnonce(id).orElseThrow(IdException::new);
+	}
 
 	public Loueur findById(Integer id) {
 //		return produitRepo.findById(id).orElseThrow(()->{
@@ -48,7 +52,7 @@ public class LoueurService {
 		return save(loueur);
 	}
 
-	private Loueur save(Loueur loueur) {
+	public Loueur save(Loueur loueur) {
 		
 		return loueurRepo.save(loueur);
 	}
