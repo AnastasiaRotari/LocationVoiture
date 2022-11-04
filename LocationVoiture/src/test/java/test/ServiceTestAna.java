@@ -11,7 +11,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 import config.JpaConfig;
+import service.AdminService;
 import service.CompteService;
+import service.UtilisateurService;
 
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = { JpaConfig.class })
@@ -21,11 +23,30 @@ class ServiceTestAna {
 
 	@Autowired
 	CompteService compteSrv;
+	
+	@Autowired
+	AdminService adminSrv;
+	
+	@Autowired
+	UtilisateurService utilisateurSrv;
 
 	@Test
 	void InjectionProduitServicetest() {
 		assertNotNull(compteSrv);
 	}
+	
+	@Test
+	@Commit
+	@Disabled
+	void initProduit() {
+		//produitSrv.create(new Produit("velo", 100, null));
+		//produitSrv.create(new Produit("voiture", 200, null));
+		//produitSrv.create(new Produit("taxi", 50, null));
+		//produitSrv.update(new Produit(6,"jambon", 4, null));
+		//produitSrv.deleteId(7);
+		//System.out.println(produitSrv.findByLibelle("taxi"));
+	}
+	
 	
 	
 
