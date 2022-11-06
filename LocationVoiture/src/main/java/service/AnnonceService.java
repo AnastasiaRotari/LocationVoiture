@@ -38,8 +38,8 @@ public class AnnonceService {
 		return annonceRepo.findByAgenceContaining(agence);
 	}
 	
-	public List<Annonce> findByModelContaining(Modele modele) {
-		return annonceRepo.findByModelContaining(modele);
+	public List<Annonce> findByModeleContaining(Modele modele) {
+		return annonceRepo.findByModeleContaining(modele);
 	}
 	
 	public List<Annonce> findByPrixJourContaining(double prix) {
@@ -47,7 +47,7 @@ public class AnnonceService {
 	}
 	
 	public List<Annonce> findByDisponibilite(Boolean disponible) {
-		return annonceRepo.findByDisponibilite(disponible);
+		return annonceRepo.findByDisponibleContaining(disponible);
 	}
 
 	public Annonce create(Annonce annonce) {

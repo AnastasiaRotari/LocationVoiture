@@ -2,6 +2,8 @@ package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.LocalDate;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -12,8 +14,22 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 import config.JpaConfig;
 import model.Admin;
+import model.Adresse;
+import model.Annonce;
+import model.Categorie;
+import model.Client;
+import model.Etat;
+import model.Location;
+import model.Loueur;
+import model.Modele;
+import model.Plein;
 import service.AdminService;
+import service.AnnonceService;
+import service.ClientService;
 import service.CompteService;
+import service.LocationService;
+import service.LoueurService;
+import service.ModeleService;
 import service.UtilisateurService;
 
 @ExtendWith(SpringExtension.class)
@@ -29,23 +45,38 @@ class ServiceTestAna {
 	AdminService adminSrv;
 	
 	@Autowired
+	ClientService clientSrv;
+	
+	@Autowired
+	LoueurService loueurSrv;
+	
+	@Autowired
 	UtilisateurService utilisateurSrv;
+	
+	@Autowired
+	ModeleService modeleSrv;
+	
+	@Autowired
+	LocationService locationSrv;
+	
+	@Autowired
+	AnnonceService annonceSrv;
 
-	@Test
-	void InjectionProduitServicetest() {
-		assertNotNull(compteSrv);
-	}
 	
 	@Test
 	@Commit
-	void initProduit() {
-		//produitSrv.create(new Produit("velo", 100, null));
-		//produitSrv.create(new Produit("voiture", 200, null));
-		//produitSrv.create(new Produit("taxi", 50, null));
-		//produitSrv.update(new Produit(6,"jambon", 4, null));
-		//produitSrv.deleteId(7);
-		adminSrv.create(new Admin("1111","admin","toto","john"));
-		//System.out.println(produitSrv.findByLibelle("taxi"));
+	void init() {
+		
+		adminSrv.create(new Admin("1111","admin","Doe","John"));
+		Adresse adresse1 = new Adresse("5","rue de Paris","Paris","55555");
+		clientSrv.create(new Client("1234","client","Abid","Jordan",adresse1,29,5,true,0,null));
+		loueurSrv.create(new Loueur("1234","loueur","Rotari","Anastasia",null));
+		
+	
+		modeleSrv.create(new Modele ("C2",Categorie.citadine,"2005"));
+		annonceSrv.create(new Annonce("Superbe C2",modeleSrv.findById(1),loueurSrv.findById(3),Plein.rempli,205000,"Lille",Etat.excellent,70.00,true));
+		
+		locationSrv.create(new Location(LocalDate.parse("2022-11-07"),LocalDate.parse("2022-11-08"),70,annonceSrv.findById(1),clientSrv.findById(2)));                             
 	}
 	
 	

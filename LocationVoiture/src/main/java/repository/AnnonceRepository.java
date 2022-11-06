@@ -13,8 +13,8 @@ public interface AnnonceRepository extends JpaRepository<Annonce, Integer>{
 	List<Annonce> findByLoueurContaining(Loueur loueur);
 	List<Annonce> findByAgenceContaining(String agence);
 	
-	List<Annonce> findByModelContaining(Modele modele);
+	List<Annonce> findByModeleContaining(Modele modele);
 	List<Annonce> findByPrixJourContaining(double prix);
-	List<Annonce> findByDisponibilite(Boolean disponible);
+	List<Annonce> findByDisponibleContaining(Boolean disponible);
 	
 }

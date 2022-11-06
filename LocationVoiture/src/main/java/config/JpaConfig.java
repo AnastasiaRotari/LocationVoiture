@@ -21,12 +21,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-@ComponentScan({ "service" })
+@ComponentScan("service")
 @EnableJpaRepositories(basePackages = "repository")
 //chargement du fichier config.properties dans une map
 @PropertySource("classpath:config.properties")
 public class JpaConfig {
-	//injection de la map contenant les infos du fichier
+	
 	@Autowired
 	private Environment env;
 	

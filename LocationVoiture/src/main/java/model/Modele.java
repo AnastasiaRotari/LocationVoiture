@@ -37,6 +37,8 @@ public class Modele {
 	}
 	
 	
+	
+	
 	public Modele(String nom, Categorie categorie, String annee) {
 		this.nom = nom;
 		this.categorie = categorie;

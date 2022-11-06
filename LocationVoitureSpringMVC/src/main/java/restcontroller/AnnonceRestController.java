@@ -71,8 +71,8 @@ public class AnnonceRestController {
 	
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public List<Annonce> findByModelContaining(Modele modele) {
-		return annonceSrv.findByModelContaining(modele);
+	public List<Annonce> findByModeleContaining(Modele modele) {
+		return annonceSrv.findByModeleContaining(modele);
 	}
 	
 	@JsonView(JsonViews.Common.class)

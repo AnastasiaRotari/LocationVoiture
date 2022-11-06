@@ -10,6 +10,14 @@ public abstract class Utilisateur extends Compte {
 	{
 	}
 	
+	
+	
+	public Utilisateur(String password, String login, String nom, String prenom, Adresse adresse) {
+		super(password, login, nom, prenom, adresse);
+	}
+
+
+
 	public Utilisateur(String password, String login, String nom, String prenom) {
 		super(password, login, nom, prenom);
 	}

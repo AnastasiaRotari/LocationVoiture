@@ -59,17 +59,22 @@ public class Annonce {
 	@JsonView(JsonViews.Common.class)
 	private Boolean disponible;
 	
-	public Annonce(String libelle, Modele modele, Plein plein, int kilometrage, String agence,
-			Etat etat, Boolean disponible) {
+	
+	
+	public Annonce(String libelle, Modele modele, Loueur loueur, Plein plein, int kilometrage, String agence, Etat etat,
+			double prixJour, Boolean disponible) {
 		super();
 		this.libelle = libelle;
+		this.modele = modele;
+		this.loueur = loueur;
 		this.plein = plein;
 		this.kilometrage = kilometrage;
 		this.agence = agence;
 		this.etat = etat;
+		this.prixJour = prixJour;
 		this.disponible = disponible;
 	}
-	
+
 	public Annonce() {
 	}
 

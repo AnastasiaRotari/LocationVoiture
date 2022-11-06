@@ -45,6 +45,19 @@ public class Location {
 	public Location() {
 	}
 
+	
+	
+	
+	public Location(LocalDate dateDebut, LocalDate dateFin, double prixTotal, Annonce annonce,
+			Client client) {
+		super();
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+		this.prixTotal = prixTotal;
+		this.annonce = annonce;
+		this.client = client;
+	}
+
 
 	public Location(LocalDate dateDebut, LocalDate dateFin, double prixTotal) {
 		this.dateDebut = dateDebut;

@@ -10,18 +10,18 @@ import com.fasterxml.jackson.annotation.JsonView;
 public  class Client extends Utilisateur {
 	
 	@JsonView(JsonViews.Common.class)
-	@Column (length = 30, nullable = false)
+	@Column (length = 30)
 	private int age;
 	
 	@JsonView(JsonViews.Common.class)
-	@Column (length = 50, nullable = false)
+	@Column (length = 50)
 	private int anneePermis;
 	
 	@JsonView(JsonViews.Common.class)
 	private boolean assurance;
 	
 	@JsonView(JsonViews.Common.class)
-	@Column (length = 50, nullable = false)
+	@Column (length = 50)
 	private Integer accident;
 	
 	@JsonView(JsonViews.Common.class)
@@ -29,6 +29,17 @@ public  class Client extends Utilisateur {
 	private Location location;
 	
 	public Client (){
+	}
+
+
+	public Client(String password, String login, String nom, String prenom, Adresse adresse, int age, int anneePermis,
+			boolean assurance, Integer accident, Location location) {
+		super(password, login, nom, prenom, adresse);
+		this.age = age;
+		this.anneePermis = anneePermis;
+		this.assurance = assurance;
+		this.accident = accident;
+		this.location = location;
 	}
 
 

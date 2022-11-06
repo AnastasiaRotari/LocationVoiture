@@ -55,6 +55,20 @@ public abstract class Compte {
 		this.nom = nom;
 		this.prenom = prenom;
 	}
+	
+	
+	
+	public Compte(String password, String login, String nom, String prenom, Adresse adresse) {
+		super();
+		this.password = password;
+		this.login = login;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+	}
+
+
+
 	public String getPassword() {
 		return password;
 	}

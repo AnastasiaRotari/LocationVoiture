@@ -68,7 +68,7 @@ public class ClientService {
 		if (client.getAnneePermis() <=0) {
 			throw new CompteException("probleme Annee de permis");
 		}
-		if (client.getAccident() <=0) {
+		if (client.getAccident() <0) {
 			throw new CompteException("probleme Accident");
 		}
 		

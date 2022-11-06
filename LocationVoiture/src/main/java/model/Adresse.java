@@ -9,19 +9,19 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Adresse {
 	
 	@JsonView(JsonViews.Common.class)
-	@Column(nullable = false)
+	@Column()
 	private String numero;
 	
 	@JsonView(JsonViews.Common.class)
-	@Column(nullable = false)
+	@Column()
 	private String voie;
 	
 	@JsonView(JsonViews.Common.class)
-	@Column(nullable = false)
+	@Column()
 	private String ville;
 	
 	@JsonView(JsonViews.Common.class)
-	@Column(nullable = false)
+	@Column()
 	private String cp;
 
 	
