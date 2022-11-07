@@ -30,24 +30,24 @@ public class AnnonceService {
 		return annonceRepo.findByLibelleContaining(libelle);
 	}
 	
-	public List<Annonce> findByLoueur(Loueur loueur) {
-		return annonceRepo.findByLoueurContaining(loueur);
+	public List<Annonce> findByLoueurId(Integer id) {
+		return annonceRepo.findByLoueurId(id);
 	}
 	
 	public List<Annonce> findByAgence(String agence) {
 		return annonceRepo.findByAgenceContaining(agence);
 	}
 	
-	public List<Annonce> findByModeleContaining(Modele modele) {
-		return annonceRepo.findByModeleContaining(modele);
+	public List<Annonce> findByModeleNomContening(String nom) {
+		return annonceRepo.findByModeleNomContaining(nom);
 	}
 	
-	public List<Annonce> findByPrixJourContaining(double prix) {
-		return annonceRepo.findByPrixJourContaining(prix);
+	public List<Annonce> findByPrixJour(double prix) {
+		return annonceRepo.findByPrixJour(prix);
 	}
 	
 	public List<Annonce> findByDisponibilite(Boolean disponible) {
-		return annonceRepo.findByDisponibleContaining(disponible);
+		return annonceRepo.findByDisponible(disponible);
 	}
 
 	public Annonce create(Annonce annonce) {

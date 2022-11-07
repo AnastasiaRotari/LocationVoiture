@@ -33,7 +33,7 @@ import service.AdminService;
 import service.ClientService;
 
 @RestController
-@RequestMapping("/api/client")
+@RequestMapping("/api/admin")
 public class AdminRestController {
 
 

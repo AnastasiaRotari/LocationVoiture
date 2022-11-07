@@ -26,7 +26,7 @@ public class Modele {
 	
 	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "ENUM('Berline','Familliale','Sportive','Utilitaire','Citadine')")
+	@Column(columnDefinition = "ENUM('berline','familliale','sportive','utilitaire','citadine')")
 	private Categorie categorie;
 	
 	@JsonView(JsonViews.Common.class)

@@ -49,13 +49,13 @@ public class ModeleRestController {
 	}
 	
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{categorie}")
+	@GetMapping("/categorie/{categorie}")
 	public List<Modele> findByCategorie(@PathVariable Categorie categorie) {
 		return modeleSrv.findByCategorie(categorie);
 	}
 	
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{nom}")
+	@GetMapping("/nom/{nom}")
 	public List<Modele> findByNom(@PathVariable String nom) {
 		return modeleSrv.findByNom(nom);
 	}

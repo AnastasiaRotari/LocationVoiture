@@ -22,4 +22,8 @@ public class WebConfig {
 		uBVR.setSuffix(".jsp");
 		return uBVR;
 	}
+	
+	public WebConfig() {
+		System.out.println("lancement");
+	}
 }

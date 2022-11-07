@@ -35,58 +35,58 @@ import service.AnnonceService;
 @RestController
 @RequestMapping("/api/annonce")
 public class AnnonceRestController {
-	
+
 	@Autowired
 	private AnnonceService annonceSrv;
-	
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
-	public List<Annonce> findAll(){
+	public List<Annonce> findAll() {
 		return annonceSrv.findAll();
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public Annonce findById(@PathVariable Integer id) {
 		return annonceSrv.findById(id);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Annonce> findByLibelle(String libelle) {
+	@GetMapping("/libelle/{libelle}")
+	public List<Annonce> findByLibelle(@PathVariable String libelle) {
 		return annonceSrv.findByLibelle(libelle);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Annonce> findByLoueur(Loueur loueur) {
-		return annonceSrv.findByLoueur(loueur);
+	@GetMapping("/loueur/{loueur}")
+	public List<Annonce> findByLoueurId(@PathVariable Integer id) {
+		return annonceSrv.findByLoueurId(id);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Annonce> findByAgence(String agence) {
+	@GetMapping("/agence/{agence}")
+	public List<Annonce> findByAgence(@PathVariable String agence) {
 		return annonceSrv.findByAgence(agence);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Annonce> findByModeleContaining(Modele modele) {
-		return annonceSrv.findByModeleContaining(modele);
+	@GetMapping("/modele/{modele}")
+	public List<Annonce> findByModeleNomContaining(@PathVariable String nom) {
+		return annonceSrv.findByModeleNomContening(nom);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Annonce> findByPrixJourContaining(double prix) {
-		return annonceSrv.findByPrixJourContaining(prix);
+	@GetMapping("/prix/{prix}")
+	public List<Annonce> findByPrixJour(@PathVariable double prix) {
+		return annonceSrv.findByPrixJour(prix);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Annonce> findByDisponibiliteContaining(Boolean disponible) {
+	@GetMapping("/dispo/{disponible}")
+	public List<Annonce> findByDisponibilite(@PathVariable Boolean disponible) {
 		return annonceSrv.findByDisponibilite(disponible);
 	}
-	
+
 	@ResponseStatus(code = HttpStatus.CREATED)
 	@JsonView(JsonViews.Common.class)
 	@PostMapping("")
@@ -94,10 +94,10 @@ public class AnnonceRestController {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");
 		}
-		
+
 		return annonceSrv.save(annonce);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteById(@PathVariable Integer id) {
@@ -107,7 +107,7 @@ public class AnnonceRestController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "id inconnu");
 		}
 	}
-	
+
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Annonce update(@Valid @RequestBody Annonce annonce, BindingResult br, @PathVariable Integer id) {
@@ -117,22 +117,38 @@ public class AnnonceRestController {
 		annonce.setId(id);
 		return annonceSrv.update(annonce);
 	}
-	
+
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Annonce patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		Annonce annonce = annonceSrv.findById(id);
 
 		fields.forEach((k, v) -> {
-			
+
+			if (k.equals("modele")) {
+				Map<String, Object> mapModele = (Map<String, Object>) v;
+				mapModele.forEach((kModele, vModele) -> {
+					Field fieldModele = ReflectionUtils.findField(Modele.class, kModele);
+					ReflectionUtils.makeAccessible(fieldModele);
+					ReflectionUtils.setField(fieldModele, annonce.getModele(), vModele);
+				});
+			} else if (k.equals("loueur")) {
+				Map<String, Object> mapLoueur = (Map<String, Object>) v;
+				mapLoueur.forEach((kLoueur, vLoueur) -> {
+					Field fieldLoueur = ReflectionUtils.findField(Loueur.class, kLoueur);
+					ReflectionUtils.makeAccessible(fieldLoueur);
+					ReflectionUtils.setField(fieldLoueur, annonce.getLoueur(), vLoueur);
+				});
+			} else {
+
 				Field field = ReflectionUtils.findField(Location.class, k);
 				ReflectionUtils.makeAccessible(field);
 				ReflectionUtils.setField(field, annonce, v);
-	
+
+			}
 		});
 
 		return annonceSrv.update(annonce);
 	}
-	
 
 }

@@ -12,7 +12,7 @@ import model.Location;
 
 public interface LocationRepository extends JpaRepository<Location, Integer>{
 
-	List<Location> findByClient(Client client);
+	List<Location> findByClientId(Integer id);
 	
 	List<Location> findByDateDebut(LocalDate dateDebut);
 	

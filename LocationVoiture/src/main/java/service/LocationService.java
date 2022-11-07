@@ -26,8 +26,8 @@ public class LocationService {
 		return locationRepo.findById(id).orElseThrow(IdException::new);
 	}
 
-	public List<Location> findByClient(Client client) {
-		return locationRepo.findByClient(client);
+	public List<Location> findByClientId(Integer id) {
+		return locationRepo.findByClientId(id);
 	}
 	
 	/*public List<Location> findByDateDebut(LocalDate dateDebut) {

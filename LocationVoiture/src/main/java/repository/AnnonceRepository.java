@@ -10,11 +10,11 @@ import model.Modele;
 
 public interface AnnonceRepository extends JpaRepository<Annonce, Integer>{
 	List<Annonce> findByLibelleContaining(String libelle);
-	List<Annonce> findByLoueurContaining(Loueur loueur);
+	List<Annonce> findByLoueurId(Integer id);
 	List<Annonce> findByAgenceContaining(String agence);
 	
-	List<Annonce> findByModeleContaining(Modele modele);
-	List<Annonce> findByPrixJourContaining(double prix);
-	List<Annonce> findByDisponibleContaining(Boolean disponible);
+	List<Annonce> findByModeleNomContaining(String nom);
+	List<Annonce> findByPrixJour(double prix);
+	List<Annonce> findByDisponible(Boolean disponible);
 	
 }

@@ -50,9 +50,9 @@ public class LocationRestController {
 	}
 
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/{id}")
-	public List<Location> findByClient(Client client) {
-		return locationSrv.findByClient(client);
+	@GetMapping("/client/{id}")
+	public List<Location> findByClientId(Integer id) {
+		return locationSrv.findByClientId(id);
 	}
 
 	@ResponseStatus(code = HttpStatus.CREATED)
