@@ -1,7 +1,10 @@
 package model;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -25,15 +28,17 @@ public  class Client extends Utilisateur {
 	private Integer accident;
 	
 	@JsonView(JsonViews.Common.class)
-	@OneToOne
-	private Location location;
+	@OneToMany(mappedBy = "client")
+	private List<Location> location;
 	
 	public Client (){
 	}
 
 
+
+
 	public Client(String password, String login, String nom, String prenom, Adresse adresse, int age, int anneePermis,
-			boolean assurance, Integer accident, Location location) {
+			boolean assurance, Integer accident, List<Location> location) {
 		super(password, login, nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
@@ -43,7 +48,10 @@ public  class Client extends Utilisateur {
 	}
 
 
-	public Client(String password, String login, String nom, String prenom, int age, int anneePermis, boolean assurance, int accident,Location location) {
+
+
+	public Client(String password, String login, String nom, String prenom, int age, int anneePermis, boolean assurance,
+			Integer accident, List<Location> location) {
 		super(password, login, nom, prenom);
 		this.age = age;
 		this.anneePermis = anneePermis;
@@ -51,7 +59,8 @@ public  class Client extends Utilisateur {
 		this.accident = accident;
 		this.location = location;
 	}
-	
+
+
 
 
 	public int getAge() {

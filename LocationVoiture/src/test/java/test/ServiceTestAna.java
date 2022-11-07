@@ -74,7 +74,7 @@ class ServiceTestAna {
 		
 	
 		modeleSrv.create(new Modele ("C2",Categorie.valueOf("citadine"),"2005"));
-		annonceSrv.create(new Annonce("Superbe C2",modeleSrv.findById(1),loueurSrv.findById(3),Plein.valueOf("rempli"),205000,"Lille",Etat.valueOf("exellent"),70.00,true));
+		annonceSrv.create(new Annonce("Superbe C2",modeleSrv.findById(1),loueurSrv.findById(3),Plein.valueOf("rempli"),205000,"Lille",Etat.valueOf("excellent"),70.00,true));
 		
 		locationSrv.create(new Location(LocalDate.parse("2022-11-07"),LocalDate.parse("2022-11-08"),70,annonceSrv.findById(1),clientSrv.findById(2)));                             
 	}

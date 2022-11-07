@@ -25,6 +25,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import model.Adresse;
+import model.Annonce;
 import model.JsonViews;
 import model.Loueur;
 import service.LoueurService;
@@ -32,10 +33,10 @@ import service.LoueurService;
 @RestController
 @RequestMapping("/api/loueur")
 public class LoueurRestController {
-	
+
 	@Autowired
 	private LoueurService loueurSrv;
-	
+
 	@PostMapping("/inscription")
 	@JsonView(JsonViews.Common.class)
 	public Loueur inscription(@Valid @RequestBody Loueur loueur, BindingResult br) {
@@ -44,7 +45,7 @@ public class LoueurRestController {
 		}
 		return loueurSrv.save(loueur);
 	}
-	
+
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Loueur update(@Valid @RequestBody Loueur loueur, BindingResult br, @PathVariable Integer id) {
@@ -53,18 +54,19 @@ public class LoueurRestController {
 		}
 		return loueurSrv.save(loueur);
 	}
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
 	public Loueur findById(@PathVariable Integer id) {
 		return loueurSrv.findById(id);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("")
 	public List<Loueur> findAll() {
 		return loueurSrv.findAll();
 	}
-	
+
 	@JsonView(JsonViews.LoueurWithAnnonce.class)
 	@GetMapping("/{id}/Annonce")
 	public Loueur findByIdWithProduit(@PathVariable Integer id) {
@@ -83,6 +85,13 @@ public class LoueurRestController {
 					ReflectionUtils.makeAccessible(fieldAdresse);
 					ReflectionUtils.setField(fieldAdresse, loueur.getAdresse(), vAdresse);
 				});
+			} else if (k.equals("annonce")) {
+				Map<String, Object> mapAnnonce = (Map<String, Object>) v;
+				mapAnnonce.forEach((kAnnonce, vAnnonce) -> {
+					Field fieldAnnonce = ReflectionUtils.findField(Annonce.class, kAnnonce);
+					ReflectionUtils.makeAccessible(fieldAnnonce);
+					ReflectionUtils.setField(fieldAnnonce, loueur.getAnnonce(), vAnnonce);
+				});
 			} else {
 				Field field = ReflectionUtils.findField(Loueur.class, k);
 				ReflectionUtils.makeAccessible(field);
@@ -91,7 +100,7 @@ public class LoueurRestController {
 		});
 		return loueurSrv.save(loueur);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteById(@PathVariable Integer id) {

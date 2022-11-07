@@ -141,7 +141,7 @@ public class AnnonceRestController {
 				});
 			} else {
 
-				Field field = ReflectionUtils.findField(Location.class, k);
+				Field field = ReflectionUtils.findField(Annonce.class, k);
 				ReflectionUtils.makeAccessible(field);
 				ReflectionUtils.setField(field, annonce, v);
 

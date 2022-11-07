@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -37,7 +39,8 @@ public class Location {
 	private Annonce annonce;
 	
 	@JsonView(JsonViews.Common.class)
-	@OneToOne
+	@ManyToOne
+	@JoinColumn(name = "client")
 	private Client client;
 	
 	

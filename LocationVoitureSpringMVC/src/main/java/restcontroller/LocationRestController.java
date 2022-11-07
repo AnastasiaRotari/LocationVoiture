@@ -1,6 +1,7 @@
 package restcontroller;
 
 import java.lang.reflect.Field;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -107,7 +108,10 @@ public class LocationRestController {
 					ReflectionUtils.makeAccessible(fieldAnnonce);
 					ReflectionUtils.setField(fieldAnnonce, location.getAnnonce(), vAnnonce);
 				});
-			} 			
+			} 
+			else if(k.equals("dateDebut")) {
+				location.setDateDebut(LocalDate.parse(v.toString()));
+			}
 			else {
 				Field field = ReflectionUtils.findField(Location.class, k);
 				ReflectionUtils.makeAccessible(field);

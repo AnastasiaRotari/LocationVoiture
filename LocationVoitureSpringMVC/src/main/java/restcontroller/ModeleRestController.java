@@ -24,6 +24,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import model.Adresse;
 import model.Categorie;
 import model.JsonViews;
 import model.Modele;
@@ -47,13 +48,13 @@ public class ModeleRestController {
 	public Modele findById(@PathVariable Integer id) {
 		return modeleSrv.findById(id);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/categorie/{categorie}")
 	public List<Modele> findByCategorie(@PathVariable Categorie categorie) {
 		return modeleSrv.findByCategorie(categorie);
 	}
-	
+
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/nom/{nom}")
 	public List<Modele> findByNom(@PathVariable String nom) {
@@ -78,27 +79,33 @@ public class ModeleRestController {
 		}
 		return modeleSrv.update(modele);
 	}
-	
+
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
 	public Modele update(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
 		Modele modele = modeleSrv.findById(id);
 
 		fields.forEach((k, v) -> {
-					Field fieldNom = ReflectionUtils.findField(Modele.class, k);
-					ReflectionUtils.makeAccessible(fieldNom);
-					ReflectionUtils.setField(fieldNom, modele.getNom(), v);
+			if (k.equals("categorie")) {
 				
+				modele.setCategorie(Categorie.valueOf(v.toString()));
+				
+				}
+			 else {
+				Field field = ReflectionUtils.findField(Modele.class, k);
+				ReflectionUtils.makeAccessible(field);
+				ReflectionUtils.setField(field, modele, v);
+			}
+
 		});
 
 		return modeleSrv.update(modele);
 	}
-	
+
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
 	public void deleteById(@PathVariable Integer id) {
 		modeleSrv.deleteById(id);
 	}
-	
-	
+
 }
