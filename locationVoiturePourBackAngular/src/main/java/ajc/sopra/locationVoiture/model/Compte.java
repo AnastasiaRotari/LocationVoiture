@@ -31,43 +31,23 @@ public class Compte implements UserDetails {
 	@Column(name = "password", length = 255, nullable = false)
 	private String password;
 	@OneToOne(mappedBy = "compte")
-	private Client client;
-	@OneToOne(mappedBy = "compte")
-	private Loueur loueur;
-	@OneToOne(mappedBy = "compte")
-	private Admin admin;
+	private Personne personne;
 	
 	public Compte() {
 
 	}
-
-	public Compte(@NotBlank @Email String email, String password, Client client) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.client = client;
-	}
 	
-
-	public Compte(@NotBlank @Email String email, String password, Loueur loueur) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.loueur = loueur;
-	}
-	
-
-	public Compte(@NotBlank @Email String email, String password, Admin admin) {
-		super();
-		this.email = email;
-		this.password = password;
-		this.admin = admin;
-	}
-
 	public Compte(@NotBlank @Email String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;
+	}
+	
+
+	public Compte(@NotBlank @Email String email, String password, Personne personne) {
+		this.email = email;
+		this.password = password;
+		this.personne = personne;
 	}
 
 	public Long getId() {
@@ -94,30 +74,6 @@ public class Compte implements UserDetails {
 		this.password = password;
 	}
 
-	public Client getClient() {
-		return client;
-	}
-
-	public void setClient(Client client) {
-		this.client = client;
-	}
-
-	public Loueur getLoueur() {
-		return loueur;
-	}
-
-	public void setLoueur(Loueur loueur) {
-		this.loueur = loueur;
-	}
-
-	public Admin getAdmin() {
-		return admin;
-	}
-
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
-	}
-
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -137,12 +93,12 @@ public class Compte implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		String role=null;
-		if(admin!=null && client==null && loueur==null) {
+		String role = null;
+		if(personne instanceof Admin) {
 			role="ROLE_ADMIN";
-		}else if(admin==null && client!=null && loueur==null) {
+		}else if(personne instanceof Client) {
 			role="ROLE_CLIENT";
-		}else if(admin==null && client==null && loueur!=null){
+		}else if(personne instanceof Loueur) {
 			role="ROLE_LOUEUR";
 		}
 		return Arrays.asList(new SimpleGrantedAuthority(role));

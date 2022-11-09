@@ -8,6 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonView;
@@ -34,6 +35,10 @@ public abstract class Personne {
 	@JsonView(JsonViews.Common.class)
 	@Column(length = 35)
 	protected Adresse adresse;
+	
+	@OneToOne
+	private Compte compte;
+
 	
 	public Personne() {
 	}
