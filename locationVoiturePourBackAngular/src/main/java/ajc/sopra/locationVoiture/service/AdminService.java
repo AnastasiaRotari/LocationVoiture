@@ -37,10 +37,6 @@ public class AdminService {
 	}
 	
 	
-	public Admin findByLogin(String login) {
-		return adminRepo.findByLoginContaining(login);
-	}
-	
 	public List<Admin> findByNom(String nom) {
 		return adminRepo.findByNomContaining(nom);
 	}

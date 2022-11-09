@@ -48,17 +48,21 @@ class ServiceTestAna {
 	
 	@Autowired
 	AnnonceService annonceSrv;
+	
+	@Autowired
+	CompteService compteSrv;
 
 	
 	@Test
 	@Commit
 	void init() {
 		
-		//adminSrv.create(new Admin("1111","admin","Doe","John"));
+		adminSrv.create(new Admin("Doe","John"));
 		Adresse adresse1 = new Adresse("5","rue de Paris","Paris","55555");
-		//clientSrv.create(new Client("1234","client","Abid","Jordan",adresse1,29,5,true,0,null));
-		//loueurSrv.create(new Loueur("1234","loueur","Rotari","Anastasia",null));
-		
+		//clientSrv.create(new Client("Abid","Jordan",adresse1,29,5,true,0,null));
+		//loueurSrv.create(new Loueur("Rotari","Anastasia",null));
+
+		compteSrv.create(new Compte)
 	
 		modeleSrv.create(new Modele ("C2",Categorie.valueOf("citadine"),"2005"));
 		annonceSrv.create(new Annonce("Superbe C2",modeleSrv.findById(1),loueurSrv.findById(3),Plein.valueOf("rempli"),205000,"Lille",Etat.valueOf("excellent"),70.00,true));

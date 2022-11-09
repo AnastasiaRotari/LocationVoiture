@@ -41,14 +41,30 @@ public class Compte implements UserDetails {
 
 	}
 
-	public Compte(String email, String password, Client client) {
+	public Compte(@NotBlank @Email String email, String password, Client client) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.client = client;
 	}
+	
 
-	public Compte(String email, String password) {
+	public Compte(@NotBlank @Email String email, String password, Loueur loueur) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.loueur = loueur;
+	}
+	
+
+	public Compte(@NotBlank @Email String email, String password, Admin admin) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.admin = admin;
+	}
+
+	public Compte(@NotBlank @Email String email, String password) {
 		super();
 		this.email = email;
 		this.password = password;

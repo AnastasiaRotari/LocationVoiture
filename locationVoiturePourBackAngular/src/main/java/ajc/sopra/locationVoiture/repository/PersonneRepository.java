@@ -9,7 +9,7 @@ import ajc.sopra.locationVoiture.model.Personne;
 
 
 public interface PersonneRepository extends JpaRepository<Personne, Integer> {
-	Personne findByLoginContaining(String login);
+	
 
 	List<Personne> findByNomContaining(String nom);
 

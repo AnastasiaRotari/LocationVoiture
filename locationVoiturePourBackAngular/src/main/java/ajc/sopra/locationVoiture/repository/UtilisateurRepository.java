@@ -9,7 +9,7 @@ import ajc.sopra.locationVoiture.model.Utilisateur;
 
 
 public interface UtilisateurRepository extends JpaRepository<Utilisateur, Integer> {
-	Utilisateur findByLoginContaining(String login);
+
 
 	List<Utilisateur> findByNomContaining(String nom);
 
