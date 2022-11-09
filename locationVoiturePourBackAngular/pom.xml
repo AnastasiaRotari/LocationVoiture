@@ -10,8 +10,8 @@
 	<groupId>ajc.sopra</groupId>
 	<artifactId>locationVoitureBack</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>eshop version spring boot</name>
-	<description>Le projet eshop en mode spring boot</description>
+	<name>locationVoiture version spring boot</name>
+	<description>Le projet locationVoiture en mode spring boot</description>
 	<properties>
 		<java.version>17</java.version>
 	</properties>
@@ -31,8 +31,8 @@
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>
@@ -51,7 +51,6 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>

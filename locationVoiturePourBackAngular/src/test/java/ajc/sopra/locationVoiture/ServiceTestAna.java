@@ -1,41 +1,33 @@
 package ajc.sopra.locationVoiture;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.LocalDate;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
-import config.JpaConfig;
-import model.Admin;
-import model.Adresse;
-import model.Annonce;
-import model.Categorie;
-import model.Client;
-import model.Etat;
-import model.Location;
-import model.Loueur;
-import model.Modele;
-import model.Plein;
-import service.AdminService;
-import service.AnnonceService;
-import service.ClientService;
-import service.CompteService;
-import service.LocationService;
-import service.LoueurService;
-import service.ModeleService;
-import service.UtilisateurService;
 
-@ExtendWith(SpringExtension.class)
-@ContextConfiguration(classes = { JpaConfig.class })
-@Transactional
-//par defaut rollback a la fin de chaque transaction
+import ajc.sopra.locationVoiture.model.Admin;
+import ajc.sopra.locationVoiture.model.Adresse;
+import ajc.sopra.locationVoiture.model.Annonce;
+import ajc.sopra.locationVoiture.model.Categorie;
+import ajc.sopra.locationVoiture.model.Client;
+import ajc.sopra.locationVoiture.model.Etat;
+import ajc.sopra.locationVoiture.model.Location;
+import ajc.sopra.locationVoiture.model.Loueur;
+import ajc.sopra.locationVoiture.model.Modele;
+import ajc.sopra.locationVoiture.model.Plein;
+import ajc.sopra.locationVoiture.service.AdminService;
+import ajc.sopra.locationVoiture.service.AnnonceService;
+import ajc.sopra.locationVoiture.service.ClientService;
+import ajc.sopra.locationVoiture.service.CompteService;
+import ajc.sopra.locationVoiture.service.LocationService;
+import ajc.sopra.locationVoiture.service.LoueurService;
+import ajc.sopra.locationVoiture.service.ModeleService;
+import ajc.sopra.locationVoiture.service.UtilisateurService;
+
+
+@SpringBootTest
 class ServiceTestAna {
 
 	@Autowired
