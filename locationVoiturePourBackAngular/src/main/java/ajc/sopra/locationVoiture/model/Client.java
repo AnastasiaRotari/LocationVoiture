@@ -9,59 +9,64 @@ import javax.persistence.OneToOne;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+
 @Entity
-public  class Client extends Utilisateur {
-	
+public class Client extends Utilisateur {
+
 	@JsonView(JsonViews.Common.class)
 	@Column (length = 30)
-	private int age;
-	
+	private Integer age;
+
 	@JsonView(JsonViews.Common.class)
 	@Column (length = 50)
 	private int anneePermis;
-	
+
 	@JsonView(JsonViews.Common.class)
 	private boolean assurance;
-	
+
 	@JsonView(JsonViews.Common.class)
 	@Column (length = 50)
 	private Integer accident;
-	
+
 	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy = "client")
 	private List<Location> location;
 	
+	@OneToOne
+	private Compte compte;
+
 	public Client (){
 	}
-
-
-
-
-	public Client(String password, String login, String nom, String prenom, Adresse adresse, int age, int anneePermis,
+	
+	public Client(Integer id, String nom, String prenom, Adresse adresse, Integer age, int anneePermis,
 			boolean assurance, Integer accident, List<Location> location) {
-		super(password, login, nom, prenom, adresse);
+		super(id, nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
 		this.assurance = assurance;
 		this.accident = accident;
 		this.location = location;
 	}
-
-
-
-
-	public Client(String password, String login, String nom, String prenom, int age, int anneePermis, boolean assurance,
+	
+	public Client(String nom, String prenom, Adresse adresse, Integer age, int anneePermis, boolean assurance,
 			Integer accident, List<Location> location) {
-		super(password, login, nom, prenom);
+		super(nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
 		this.assurance = assurance;
 		this.accident = accident;
 		this.location = location;
 	}
-
-
-
+	
+	public Client(String nom, String prenom, Integer age, int anneePermis, boolean assurance, Integer accident,
+			List<Location> location) {
+		super(nom, prenom);
+		this.age = age;
+		this.anneePermis = anneePermis;
+		this.assurance = assurance;
+		this.accident = accident;
+		this.location = location;
+	}
 
 	public int getAge() {
 		return age;
@@ -97,14 +102,42 @@ public  class Client extends Utilisateur {
 		return anneePermis;
 	}
 
+	
+	public List<Location> getLocation() {
+		return location;
+	}
+
+	public void setLocation(List<Location> location) {
+		this.location = location;
+	}
+
+	public Compte getCompte() {
+		return compte;
+	}
+
+	public void setCompte(Compte compte) {
+		this.compte = compte;
+	}
+
+	public void setAge(Integer age) {
+		this.age = age;
+	}
+
+	public void setAnneePermis(int anneePermis) {
+		this.anneePermis = anneePermis;
+	}
 
 	@Override
 	public String toString() {
-		return "Client [password=" + password + ", login=" + login + ", id=" + id + ", nom=" + nom + ", prenom="
-				+ prenom + ", adresse=" + adresse + ", age=" + age + ", anneePermis=" + anneePermis + ", assurance="
-				+ assurance + ", accident=" + accident + "]";
+		return "Client [age=" + age + ", anneePermis=" + anneePermis + ", assurance=" + assurance + ", accident="
+				+ accident + ", location=" + location + ", compte=" + compte + ", id=" + id + ", nom=" + nom
+				+ ", prenom=" + prenom + ", adresse=" + adresse + ", getAge()=" + getAge() + ", isAssurance()="
+				+ isAssurance() + ", getAccident()=" + getAccident() + ", getAnneePermis()=" + getAnneePermis()
+				+ ", getLocation()=" + getLocation() + ", getCompte()=" + getCompte() + ", toString()="
+				+ super.toString() + ", getId()=" + getId() + ", getNom()=" + getNom() + ", getPrenom()=" + getPrenom()
+				+ ", getAdresse()=" + getAdresse() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
 	}
 
 
-	
-	}
+
+}

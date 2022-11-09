@@ -16,10 +16,11 @@ import javax.validation.constraints.NotBlank;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 @Entity
 @Table(name = "compte")
-public class Compte {
+public class Compte implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
@@ -31,7 +32,10 @@ public class Compte {
 	private String password;
 	@OneToOne(mappedBy = "compte")
 	private Client client;
-	
+	@OneToOne(mappedBy = "compte")
+	private Loueur loueur;
+	@OneToOne(mappedBy = "compte")
+	private Admin admin;
 	
 	public Compte() {
 
@@ -82,6 +86,22 @@ public class Compte {
 		this.client = client;
 	}
 
+	public Loueur getLoueur() {
+		return loueur;
+	}
+
+	public void setLoueur(Loueur loueur) {
+		this.loueur = loueur;
+	}
+
+	public Admin getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Admin admin) {
+		this.admin = admin;
+	}
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
@@ -102,10 +122,12 @@ public class Compte {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		String role=null;
-		if(client==null) {
+		if(admin!=null && client==null && loueur==null) {
 			role="ROLE_ADMIN";
-		}else {
+		}else if(admin==null && client!=null && loueur==null) {
 			role="ROLE_CLIENT";
+		}else if(admin==null && client==null && loueur!=null){
+			role="ROLE_LOUEUR";
 		}
 		return Arrays.asList(new SimpleGrantedAuthority(role));
 	}
@@ -134,10 +156,5 @@ public class Compte {
 	public boolean isEnabled() {
 		return true;
 	}
-	
-	
-	
-	
-	
 	
 }

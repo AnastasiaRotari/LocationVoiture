@@ -3,12 +3,15 @@ package ajc.sopra.locationVoiture.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.exception.IdException;
+import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.model.Client;
+import ajc.sopra.locationVoiture.model.Compte;
 import ajc.sopra.locationVoiture.repository.ClientRepository;
+import ajc.sopra.locationVoiture.repository.CompteRepository;
 
 
 
@@ -16,34 +19,37 @@ import ajc.sopra.locationVoiture.repository.ClientRepository;
 public class ClientService {
 
 	@Autowired
-	private ClientRepository clientrepo;
+	private ClientRepository clientRepo;
+	
+	@Autowired
+	private CompteRepository compteRepo;
+	
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public List<Client> findAll() {
-		return clientrepo.findAll();
+		return clientRepo.findAll();
 	}
 
 	public Client findById(Integer id) {
-//		return produitRepo.findById(id).orElseThrow(()->{
-//			throw new IdException();
-//		});
-		return clientrepo.findById(id).orElseThrow(IdException::new);
+		return clientRepo.findById(id).orElseThrow(IdException::new);
 	}
 
 	public List<Client> findByAge(int age) {
-		return clientrepo.findByAgeContaining(age);
+		return clientRepo.findByAgeContaining(age);
 	}
 	
 	public List<Client> findByAnnePermis(int AnneePermis) {
-		return clientrepo.findByAnneePermisContaining(AnneePermis);
+		return clientRepo.findByAnneePermisContaining(AnneePermis);
 	}
 
 	public List<Client> findByAccident(int accident) {
-		return clientrepo.findByAccidentContaining(accident);
+		return clientRepo.findByAccidentContaining(accident);
 	}
 	
 	
 	public List<Client> findByAssurance(boolean assurance) {
-		return clientrepo.findByAssuranceContaining(assurance);
+		return clientRepo.findByAssuranceContaining(assurance);
 	}
 
 
@@ -56,7 +62,7 @@ public class ClientService {
 	}
 
 	public Client update(Client client) {
-		if (client.getId() == null || !clientrepo.existsById(client.getId())) {
+		if (client.getId() == null || !clientRepo.existsById(client.getId())) {
 			throw new IdException();
 		}
 		return save(client);
@@ -72,15 +78,17 @@ public class ClientService {
 		if (client.getAccident() <0) {
 			throw new PersonneException("probleme Accident");
 		}
-		
-		return clientrepo.save(client);
+		Compte compte=client.getCompte();
+		compte.setPassword(passwordEncoder.encode(compte.getPassword()));
+		compteRepo.save(compte);
+		return clientRepo.save(client);
 	}
 
 	public void delete(Client client) {
-		clientrepo.delete(client);
+		clientRepo.delete(client);
 	}
 
 	public void deleteId(Integer id) {
-		clientrepo.deleteById(id);
+		clientRepo.deleteById(id);
 	}
 }
