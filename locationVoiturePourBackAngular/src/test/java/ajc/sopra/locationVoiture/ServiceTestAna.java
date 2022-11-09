@@ -20,19 +20,16 @@ import ajc.sopra.locationVoiture.model.Plein;
 import ajc.sopra.locationVoiture.service.AdminService;
 import ajc.sopra.locationVoiture.service.AnnonceService;
 import ajc.sopra.locationVoiture.service.ClientService;
-import ajc.sopra.locationVoiture.service.PersonneService;
+
 import ajc.sopra.locationVoiture.service.LocationService;
 import ajc.sopra.locationVoiture.service.LoueurService;
 import ajc.sopra.locationVoiture.service.ModeleService;
-import ajc.sopra.locationVoiture.service.UtilisateurService;
+
 
 
 @SpringBootTest
 class ServiceTestAna {
 
-	@Autowired
-	PersonneService compteSrv;
-	
 	@Autowired
 	AdminService adminSrv;
 	
@@ -42,8 +39,6 @@ class ServiceTestAna {
 	@Autowired
 	LoueurService loueurSrv;
 	
-	@Autowired
-	UtilisateurService utilisateurSrv;
 	
 	@Autowired
 	ModeleService modeleSrv;
@@ -59,10 +54,10 @@ class ServiceTestAna {
 	@Commit
 	void init() {
 		
-		adminSrv.create(new Admin("1111","admin","Doe","John"));
+		//adminSrv.create(new Admin("1111","admin","Doe","John"));
 		Adresse adresse1 = new Adresse("5","rue de Paris","Paris","55555");
-		clientSrv.create(new Client("1234","client","Abid","Jordan",adresse1,29,5,true,0,null));
-		loueurSrv.create(new Loueur("1234","loueur","Rotari","Anastasia",null));
+		//clientSrv.create(new Client("1234","client","Abid","Jordan",adresse1,29,5,true,0,null));
+		//loueurSrv.create(new Loueur("1234","loueur","Rotari","Anastasia",null));
 		
 	
 		modeleSrv.create(new Modele ("C2",Categorie.valueOf("citadine"),"2005"));
