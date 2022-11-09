@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 
 @Entity
-public class Admin extends Compte{
+public class Admin extends Personne{
 	
 	
 	public Admin() {

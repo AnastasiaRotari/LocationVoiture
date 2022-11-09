@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.CompteException;
+import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Client;
 import ajc.sopra.locationVoiture.repository.ClientRepository;
@@ -49,7 +49,7 @@ public class ClientService {
 
 	public Client create(Client client) {
 		if (client.getId() != null) {
-			throw new CompteException("client deja dans la base");
+			throw new PersonneException("client deja dans la base");
 		}
 		return save(client);
 
@@ -64,13 +64,13 @@ public class ClientService {
 
 	public Client save(Client client) {
 		if (client.getAge() <=0) {
-			throw new CompteException("probleme age");
+			throw new PersonneException("probleme age");
 		}
 		if (client.getAnneePermis() <=0) {
-			throw new CompteException("probleme Annee de permis");
+			throw new PersonneException("probleme Annee de permis");
 		}
 		if (client.getAccident() <0) {
-			throw new CompteException("probleme Accident");
+			throw new PersonneException("probleme Accident");
 		}
 		
 		return clientrepo.save(client);

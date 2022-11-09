@@ -1,114 +1,143 @@
 package ajc.sopra.locationVoiture.model;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Objects;
+
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
 
-import com.fasterxml.jackson.annotation.JsonView;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name="type_compte",columnDefinition = "ENUM('Admin','Loueur','Client')")
-@Table(name="compte")
-public abstract class Compte {
-	
-	@JsonView(JsonViews.Common.class)
+@Table(name = "compte")
+public class Compte {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	protected Integer id;
+	private Long id;
+	@NotBlank
+	@Email
+	@Column(name = "email", length = 255, nullable = false, unique = true)
+	private String email;
+	@Column(name = "password", length = 255, nullable = false)
+	private String password;
+	@OneToOne(mappedBy = "compte")
+	private Client client;
 	
-	@JsonView(JsonViews.Common.class)
-	@Column(length = 100,nullable = false)
-	protected String password;
-	
-	@JsonView(JsonViews.Common.class)
-	@Column(length = 35,nullable = false,unique=true)
-	protected String login;
-	
-	@JsonView(JsonViews.Common.class)
-	@Column(length = 35,nullable = false)
-	protected String nom;
-	
-	@JsonView(JsonViews.Common.class)
-	@Column(length = 35,nullable = false)
-	protected String prenom;
-	
-	@JsonView(JsonViews.Common.class)
-	@Column(length = 35)
-	protected Adresse adresse;
 	
 	public Compte() {
-	}
-	
-	
-	
-	public Compte(String password, String login, String nom, String prenom) {
-		super();
-		this.password = password;
-		this.login = login;
-		this.nom = nom;
-		this.prenom = prenom;
-	}
-	
-	
-	
-	public Compte(String password, String login, String nom, String prenom, Adresse adresse) {
-		super();
-		this.password = password;
-		this.login = login;
-		this.nom = nom;
-		this.prenom = prenom;
-		this.adresse = adresse;
+
 	}
 
+	public Compte(String email, String password, Client client) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.client = client;
+	}
 
+	public Compte(String email, String password) {
+		super();
+		this.email = email;
+		this.password = password;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
 
 	public String getPassword() {
 		return password;
 	}
+
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getLogin() {
-		return login;
-	}
-	public void setLogin(String login) {
-		this.login = login;
-	}
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getNom() {
-		return nom;
-	}
-	public void setNom(String nom) {
-		this.nom = nom;
-	}
-	public String getPrenom() {
-		return prenom;
-	}
-	public void setPrenom(String prenom) {
-		this.prenom = prenom;
+
+	public Client getClient() {
+		return client;
 	}
 
-	public Adresse getAdresse() {
-		return adresse;
+	public void setClient(Client client) {
+		this.client = client;
 	}
 
-	public void setAdresse(Adresse adresse) {
-		this.adresse = adresse;
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compte other = (Compte) obj;
+		return Objects.equals(id, other.id);
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		String role=null;
+		if(client==null) {
+			role="ROLE_ADMIN";
+		}else {
+			role="ROLE_CLIENT";
+		}
+		return Arrays.asList(new SimpleGrantedAuthority(role));
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isAccountNonLocked() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
 	}
 	
 	
-
-
+	
+	
+	
+	
 }

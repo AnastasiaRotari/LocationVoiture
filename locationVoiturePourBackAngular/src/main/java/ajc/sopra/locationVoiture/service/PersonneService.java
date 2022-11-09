@@ -5,77 +5,77 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.CompteException;
+import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Adresse;
-import ajc.sopra.locationVoiture.model.Compte;
-import ajc.sopra.locationVoiture.repository.CompteRepository;
+import ajc.sopra.locationVoiture.model.Personne;
+import ajc.sopra.locationVoiture.repository.PersonneRepository;
 
 
 
 @Service
-public class CompteService {
+public class PersonneService {
 
 	@Autowired
-	private CompteRepository compteRepo;
+	private PersonneRepository compteRepo;
 
-	public List<Compte> findAll() {
+	public List<Personne> findAll() {
 		return compteRepo.findAll();
 	}
 
-	public Compte findById(Integer id) {
+	public Personne findById(Integer id) {
 		return compteRepo.findById(id).orElseThrow(IdException::new);
 	}
 
-	public Compte findByLogin(String login) {
+	public Personne findByLogin(String login) {
 		return compteRepo.findByLoginContaining(login);
 	}
 	
-	public List<Compte> findByNom(String nom) {
+	public List<Personne> findByNom(String nom) {
 		return compteRepo.findByNomContaining(nom);
 	}
 	
-	public List<Compte> findByPrenom(String prenom) {
+	public List<Personne> findByPrenom(String prenom) {
 		return compteRepo.findByPrenomContaining(prenom);
 	}
 	
-	public List<Compte> findByAdresse(Adresse adresse) {
+	public List<Personne> findByAdresse(Adresse adresse) {
 		return compteRepo.findByAdresseContaining(adresse);
 	}
 
-	public Compte create(Compte compte) {
+	public Personne create(Personne compte) {
 		if (compte.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+			throw new PersonneException("produit deja dans la base");
 		}
 		return save(compte);
 
 	}
 
-	public Compte update(Compte compte) {
+	public Personne update(Personne compte) {
 		if (compte.getId() == null || !compteRepo.existsById(compte.getId())) {
 			throw new IdException();
 		}
 		return save(compte);
 	}
 
-	private Compte save(Compte compte) {
+	private Personne save(Personne compte) {
 		if (compte.getLogin() == null || compte.getLogin().isBlank() || compte.getLogin().length() > 35) {
-			throw new CompteException("probleme login");
+			throw new PersonneException("probleme login");
 		}
 		if (compte.getPassword() == null || compte.getPassword().isBlank() || compte.getPassword().length() > 35) {
-			throw new CompteException("probleme password");
+			throw new PersonneException("probleme password");
 		}
 		if (compte.getNom() == null || compte.getNom().isBlank() || compte.getNom().length() > 35) {
-			throw new CompteException("probleme nom");
+			throw new PersonneException("probleme nom");
 		}
 		if (compte.getPrenom() == null || compte.getPrenom().isBlank() || compte.getPrenom().length() > 35) {
-			throw new CompteException("probleme prenom");
+			throw new PersonneException("probleme prenom");
 		}
 		
 		return compteRepo.save(compte);
 	}
 
-	public void delete(Compte produit) {
+	public void delete(Personne produit) {
 		compteRepo.delete(produit);
 	}
 

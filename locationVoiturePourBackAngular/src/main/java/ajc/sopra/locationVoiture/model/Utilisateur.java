@@ -3,7 +3,7 @@ package ajc.sopra.locationVoiture.model;
 import javax.persistence.Entity;
 
 @Entity
-public abstract class Utilisateur extends Compte {
+public abstract class Utilisateur extends Personne {
 
 	
 	public Utilisateur ()

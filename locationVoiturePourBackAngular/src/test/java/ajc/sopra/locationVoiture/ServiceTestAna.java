@@ -20,7 +20,7 @@ import ajc.sopra.locationVoiture.model.Plein;
 import ajc.sopra.locationVoiture.service.AdminService;
 import ajc.sopra.locationVoiture.service.AnnonceService;
 import ajc.sopra.locationVoiture.service.ClientService;
-import ajc.sopra.locationVoiture.service.CompteService;
+import ajc.sopra.locationVoiture.service.PersonneService;
 import ajc.sopra.locationVoiture.service.LocationService;
 import ajc.sopra.locationVoiture.service.LoueurService;
 import ajc.sopra.locationVoiture.service.ModeleService;
@@ -31,7 +31,7 @@ import ajc.sopra.locationVoiture.service.UtilisateurService;
 class ServiceTestAna {
 
 	@Autowired
-	CompteService compteSrv;
+	PersonneService compteSrv;
 	
 	@Autowired
 	AdminService adminSrv;

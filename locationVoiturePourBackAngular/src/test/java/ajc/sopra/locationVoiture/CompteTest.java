@@ -9,14 +9,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.annotation.Commit;
 
-import ajc.sopra.locationVoiture.model.Compte;
-import ajc.sopra.locationVoiture.repository.CompteRepository;
+import ajc.sopra.locationVoiture.model.Personne;
+import ajc.sopra.locationVoiture.repository.PersonneRepository;
 
 @SpringBootTest
 public class CompteTest {
 
 	@Autowired
-	CompteRepository compteRepo;
+	PersonneRepository compteRepo;
 //	@Autowired
 //	PasswordEncoder passwordEncoder;
 	

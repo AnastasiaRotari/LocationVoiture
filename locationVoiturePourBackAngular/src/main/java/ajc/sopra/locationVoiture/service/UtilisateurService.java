@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.CompteException;
+import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Adresse;
 import ajc.sopra.locationVoiture.model.Utilisateur;
@@ -47,7 +47,7 @@ public class UtilisateurService {
 
 	public Utilisateur create(Utilisateur utilisateur) {
 		if (utilisateur.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+			throw new PersonneException("produit deja dans la base");
 		}
 		return save(utilisateur);
 
@@ -62,16 +62,16 @@ public class UtilisateurService {
 
 	private Utilisateur save(Utilisateur utilisateur) {
 		if (utilisateur.getLogin() == null || utilisateur.getLogin().isBlank() || utilisateur.getLogin().length() > 35) {
-			throw new CompteException("probleme login");
+			throw new PersonneException("probleme login");
 		}
 		if (utilisateur.getPassword() == null || utilisateur.getPassword().isBlank() || utilisateur.getPassword().length() > 35) {
-			throw new CompteException("probleme password");
+			throw new PersonneException("probleme password");
 		}
 		if (utilisateur.getNom() == null || utilisateur.getNom().isBlank() || utilisateur.getNom().length() > 35) {
-			throw new CompteException("probleme nom");
+			throw new PersonneException("probleme nom");
 		}
 		if (utilisateur.getPrenom() == null || utilisateur.getPrenom().isBlank() || utilisateur.getPrenom().length() > 35) {
-			throw new CompteException("probleme prenom");
+			throw new PersonneException("probleme prenom");
 		}
 		return utilisateurRepo.save(utilisateur);
 	}

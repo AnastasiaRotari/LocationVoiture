@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.CompteException;
+import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Annonce;
 import ajc.sopra.locationVoiture.model.Loueur;
@@ -40,7 +40,7 @@ public class LoueurService {
 
 	public Loueur create(Loueur loueur) {
 		if (loueur.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+			throw new PersonneException("produit deja dans la base");
 		}
 		return save(loueur);
 

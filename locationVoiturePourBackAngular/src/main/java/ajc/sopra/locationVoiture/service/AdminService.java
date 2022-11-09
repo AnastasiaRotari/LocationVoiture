@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.CompteException;
+import ajc.sopra.locationVoiture.exception.PersonneException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Admin;
 import ajc.sopra.locationVoiture.model.Adresse;
@@ -47,7 +47,7 @@ public class AdminService {
 
 	public Admin create(Admin admin) {
 		if (admin.getId() != null) {
-			throw new CompteException("produit deja dans la base");
+			throw new PersonneException("produit deja dans la base");
 		}
 		return save(admin);
 
@@ -62,16 +62,16 @@ public class AdminService {
 
 	public Admin save(Admin admin) {
 		if (admin.getLogin() == null || admin.getLogin().isBlank() || admin.getLogin().length() > 35) {
-			throw new CompteException("probleme login");
+			throw new PersonneException("probleme login");
 		}
 		if (admin.getPassword() == null || admin.getPassword().isBlank() || admin.getPassword().length() > 35) {
-			throw new CompteException("probleme password");
+			throw new PersonneException("probleme password");
 		}
 		if (admin.getNom() == null || admin.getNom().isBlank() || admin.getNom().length() > 35) {
-			throw new CompteException("probleme nom");
+			throw new PersonneException("probleme nom");
 		}
 		if (admin.getPrenom() == null || admin.getPrenom().isBlank() || admin.getPrenom().length() > 35) {
-			throw new CompteException("probleme prenom");
+			throw new PersonneException("probleme prenom");
 		}
 		
 		return adminRepo.save(admin);
