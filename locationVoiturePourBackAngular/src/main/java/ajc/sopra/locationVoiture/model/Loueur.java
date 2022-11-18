@@ -10,7 +10,7 @@ import javax.persistence.OneToOne;
 import com.fasterxml.jackson.annotation.JsonView;
 
 @Entity
-public class Loueur extends Utilisateur {
+public class Loueur extends Personne {
 
 	@JsonView(JsonViews.Common.class)
 	@OneToMany(mappedBy = "loueur")

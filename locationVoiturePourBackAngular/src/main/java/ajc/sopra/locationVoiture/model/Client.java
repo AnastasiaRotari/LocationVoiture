@@ -11,7 +11,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
-public class Client extends Utilisateur {
+public class Client extends Personne {
 
 	@JsonView(JsonViews.Common.class)
 	@Column (length = 30)
