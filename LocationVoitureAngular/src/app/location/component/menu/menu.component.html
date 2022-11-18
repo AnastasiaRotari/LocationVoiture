@@ -1,0 +1,70 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <div class="container-fluid">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active"
+          ><img
+            src="assets/images/logolocarnaque.jpg"
+            alt=""
+            height="100px"
+            width="150px"
+        /></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home" routerLinkActive="active"
+          >Home</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="admin"
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          >Clients</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="admin"
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          >Loueurs</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="admin"
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          >Annonces</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="anonymous"
+          class="nav-link"
+          routerLink="/inscription"
+          routerLinkActive="active"
+          >Inscription</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="anonymous"
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          >Connexion</a
+        >
+      </li>
+      <li *ngIf="authenticated" class="nav-item">
+        <button class="btn btn-link nav-link" (click)="logoff()">
+          Deconnexion
+        </button>
+      </li>
+    </ul>
+  </div>
+</nav>

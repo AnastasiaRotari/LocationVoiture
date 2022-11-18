@@ -52,7 +52,10 @@ public class ClientService {
 		return clientRepo.findByAssuranceContaining(assurance);
 	}
 
-
+	public boolean checkEmailExists(String email) {
+		return compteRepo.findByEmail(email).isPresent();
+	}
+	
 	public Client create(Client client) {
 		if (client.getId() != null) {
 			throw new PersonneException("client deja dans la base");

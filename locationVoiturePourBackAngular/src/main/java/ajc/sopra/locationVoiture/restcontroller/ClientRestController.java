@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
@@ -33,10 +34,16 @@ import ajc.sopra.locationVoiture.service.ClientService;
 
 @RestController
 @RequestMapping("/api/client")
+@CrossOrigin(origins = {"*"})
 public class ClientRestController {
 
 	@Autowired
 	private ClientService clientSrv;
+	
+	@GetMapping("/check/email/{email}")
+	public boolean checkEmailExists(@PathVariable String email) {
+		return clientSrv.checkEmailExists(email);
+	}
 
 	@PostMapping("/inscription")
 	@JsonView(JsonViews.Common.class)
