@@ -22,9 +22,6 @@ public class Client extends Personne {
 	private int anneePermis;
 
 	@JsonView(JsonViews.Common.class)
-	private boolean assurance;
-
-	@JsonView(JsonViews.Common.class)
 	@Column (length = 50)
 	private Integer accident;
 
@@ -38,32 +35,30 @@ public class Client extends Personne {
 	public Client (){
 	}
 	
-	public Client(Integer id, String nom, String prenom, Adresse adresse, Integer age, int anneePermis,
-			boolean assurance, Integer accident, List<Location> location) {
+	public Client(Integer id, String nom, String prenom, Adresse adresse, Integer age, int anneePermis, Integer accident, List<Location> location) {
 		super(id, nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
-		this.assurance = assurance;
 		this.accident = accident;
 		this.location = location;
 	}
 	
-	public Client(String nom, String prenom, Adresse adresse, Integer age, int anneePermis, boolean assurance,
+	public Client(String nom, String prenom, Adresse adresse, Integer age, int anneePermis, 
 			Integer accident, List<Location> location) {
 		super(nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
-		this.assurance = assurance;
+		
 		this.accident = accident;
 		this.location = location;
 	}
 	
-	public Client(String nom, String prenom, Integer age, int anneePermis, boolean assurance, Integer accident,
+	public Client(String nom, String prenom, Integer age, int anneePermis,  Integer accident,
 			List<Location> location) {
 		super(nom, prenom);
 		this.age = age;
 		this.anneePermis = anneePermis;
-		this.assurance = assurance;
+		
 		this.accident = accident;
 		this.location = location;
 	}
@@ -78,15 +73,7 @@ public class Client extends Personne {
 	}
 
 
-	public boolean isAssurance() {
-		return assurance;
-	}
-
-
-	public void setAssurance(boolean assurance) {
-		this.assurance = assurance;
-	}
-
+	
 
 	public Integer getAccident() {
 		return accident;
@@ -129,15 +116,11 @@ public class Client extends Personne {
 
 	@Override
 	public String toString() {
-		return "Client [age=" + age + ", anneePermis=" + anneePermis + ", assurance=" + assurance + ", accident="
-				+ accident + ", location=" + location + ", compte=" + compte + ", id=" + id + ", nom=" + nom
-				+ ", prenom=" + prenom + ", adresse=" + adresse + ", getAge()=" + getAge() + ", isAssurance()="
-				+ isAssurance() + ", getAccident()=" + getAccident() + ", getAnneePermis()=" + getAnneePermis()
-				+ ", getLocation()=" + getLocation() + ", getCompte()=" + getCompte() + ", toString()="
-				+ super.toString() + ", getId()=" + getId() + ", getNom()=" + getNom() + ", getPrenom()=" + getPrenom()
-				+ ", getAdresse()=" + getAdresse() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + "]";
+		return "Client [age=" + age + ", anneePermis=" + anneePermis + ", accident=" + accident + ", location="
+				+ location + ", compte=" + compte + "]";
 	}
 
+	
 
 
 }

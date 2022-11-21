@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ClientService {
-  static URL: string = 'http://localhost:8080/eshop/api/client';
+  static URL: string = 'http://localhost:8080/locarnaque/api/client';
 
   constructor(private httpClient: HttpClient) {}
 

@@ -3,6 +3,7 @@ import { Client } from './../../model/client';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './../../service/authentication.service';
 import { Component, OnInit } from '@angular/core';
+import { Loueur } from '../../model/loueur';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
         this.error = false;
         sessionStorage.setItem(
           'token',
-          'Basic ' + btoa(this.email + ':' + this.password)
+          'Basic ' + window.btoa(this.email + ':' + this.password)
         );
         if (data.role == 'ROLE_CLIENT') {
           let client = new Client(
@@ -32,11 +33,25 @@ export class LoginComponent implements OnInit {
             data.client.nom,
             data.client.prenom,
             data.client.adresse ? data.adresse : undefined,
-            data.client.naissance,
+            data.client.age,
+            data.client.anneePermis,
+            data.client.accident,
             new Compte(data.id, data.email)
           );
           sessionStorage.setItem('client', JSON.stringify(client));
           sessionStorage.setItem('role', 'client');
+          sessionStorage.setItem('compte', JSON.stringify(data.email));
+        } else if (data.role == 'ROLE_LOUEUR') {
+          let loueur = new Loueur(
+            data.loueur.id,
+            data.loueur.nom,
+            data.loueur.prenom,
+            data.loueur.adresse ? data.adresse : undefined,
+
+            new Compte(data.id, data.email)
+          );
+          sessionStorage.setItem('loueur', JSON.stringify(loueur));
+          sessionStorage.setItem('role', 'loueur');
           sessionStorage.setItem('compte', JSON.stringify(data.email));
         } else {
           sessionStorage.setItem('compte', JSON.stringify(data.email));

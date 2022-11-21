@@ -12,7 +12,7 @@ export class AuthenticationService {
     let headers = new HttpHeaders({
       Authorization: 'Basic ' + window.btoa(email + ':' + password),
     });
-    return this.httpClient.get('http://localhost:8080/eshop/api/auth', {
+    return this.httpClient.get('http://localhost:8080/locarnaque/api/auth', {
       headers: headers,
     });
   }
@@ -27,5 +27,8 @@ export class AuthenticationService {
 
   public isClient(): boolean {
     return sessionStorage.getItem('role') == 'client';
+  }
+  public isLoueur(): boolean {
+    return sessionStorage.getItem('role') == 'loueur';
   }
 }

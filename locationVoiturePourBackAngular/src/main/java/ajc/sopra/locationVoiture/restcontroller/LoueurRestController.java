@@ -41,6 +41,10 @@ public class LoueurRestController {
 	@Autowired
 	private LoueurService loueurSrv;
 
+	@GetMapping("/check/email/{email}")
+	public boolean checkEmailExists(@PathVariable String email) {
+		return loueurSrv.checkEmailExists(email);
+	}
 	@PostMapping("/inscription")
 	@JsonView(JsonViews.Common.class)
 	public Loueur inscription(@Valid @RequestBody Loueur loueur, BindingResult br) {

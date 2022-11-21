@@ -27,7 +27,9 @@ export class InscriptionComponent implements OnInit {
       voie: new FormControl(),
       cp: new FormControl(),
       ville: new FormControl(),
-      naissance: new FormControl(''),
+      age: new FormControl(),
+      anneePermis: new FormControl(),
+      accident: new FormControl(),
       email: new FormControl(
         '',
         [Validators.required, Validators.email],

@@ -32,6 +32,11 @@ public class LoueurService {
 		return loueurRepo.findAll();
 	}
 	
+	public boolean checkEmailExists(String email) {
+		return compteRepo.findByEmail(email).isPresent();
+	}
+	
+	
 	public Loueur findByIdFetchAnnonce(Integer id) {
 		return loueurRepo.findByIdFetchingAnnonce(id).orElseThrow(IdException::new);
 	}

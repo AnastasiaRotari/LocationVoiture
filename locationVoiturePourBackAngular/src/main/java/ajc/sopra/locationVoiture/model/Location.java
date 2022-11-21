@@ -4,6 +4,8 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +35,11 @@ public class Location {
 	@JsonView(JsonViews.Common.class)
 	@Column(columnDefinition = "DECIMAL(7,2)",nullable = false)
 	private double prixTotal;
+	
+	@JsonView(JsonViews.Common.class)
+	@Enumerated(EnumType.STRING)
+	@Column(columnDefinition = "ENUM('basique','advanced','premium')")
+	private Assurance assurance;
 
 	@JsonView(JsonViews.Common.class)
 	@OneToOne
@@ -127,6 +134,21 @@ public class Location {
 	public void setClient(Client client) {
 		this.client = client;
 	}
+
+	
+
+	public Assurance getAssurance() {
+		return assurance;
+	}
+
+
+
+
+	public void setAssurance(Assurance assurance) {
+		this.assurance = assurance;
+	}
+
+
 
 
 	@Override

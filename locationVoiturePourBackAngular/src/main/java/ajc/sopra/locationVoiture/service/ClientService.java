@@ -47,10 +47,6 @@ public class ClientService {
 		return clientRepo.findByAccidentContaining(accident);
 	}
 	
-	
-	public List<Client> findByAssurance(boolean assurance) {
-		return clientRepo.findByAssuranceContaining(assurance);
-	}
 
 	public boolean checkEmailExists(String email) {
 		return compteRepo.findByEmail(email).isPresent();

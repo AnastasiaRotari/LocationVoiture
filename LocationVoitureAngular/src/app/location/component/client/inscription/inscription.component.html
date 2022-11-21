@@ -2,7 +2,7 @@
   <form (ngSubmit)="save()" [formGroup]="form">
     <ng-container formGroupName="groupeInfo">
       <div class="form-group">
-        <label for="prenom">prenom:</label>
+        <label for="prenom">nom:</label>
         <input formControlName="prenom" class="form-control" />
         <div
           *ngIf="
@@ -11,11 +11,11 @@
           "
           class="alert alert-danger"
         >
-          probleme prenom
+          probleme nom
         </div>
       </div>
       <div class="form-group">
-        <label for="nom">nom:</label>
+        <label for="nom">prenom:</label>
         <input formControlName="nom" class="form-control" />
         <div
           *ngIf="
@@ -24,7 +24,7 @@
           "
           class="alert alert-danger"
         >
-          probleme nom
+          probleme prenom
         </div>
       </div>
       <ng-container formGroupName="groupePassword">
@@ -67,8 +67,16 @@
       </div>
     </div>
     <div class="form-group">
-      <label for="naissance">date de naissance:</label>
-      <input type="date" formControlName="naissance" class="form-control" />
+      <label for="age">age:</label>
+      <input type="number" formControlName="age" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="anneePermis">anneePermis:</label>
+      <input type="number" formControlName="anneePermis" class="form-control" />
+    </div>
+    <div class="form-group">
+      <label for="accident">accident:</label>
+      <input type="number" formControlName="accident" class="form-control" />
     </div>
     <div class="form-group">
       <label for="numero">numero:</label>

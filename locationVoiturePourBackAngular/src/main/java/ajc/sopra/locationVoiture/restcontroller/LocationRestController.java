@@ -27,6 +27,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.fasterxml.jackson.annotation.JsonView;
 
 import ajc.sopra.locationVoiture.model.Annonce;
+import ajc.sopra.locationVoiture.model.Assurance;
+import ajc.sopra.locationVoiture.model.Categorie;
 import ajc.sopra.locationVoiture.model.Client;
 import ajc.sopra.locationVoiture.model.JsonViews;
 import ajc.sopra.locationVoiture.model.Location;
@@ -116,6 +118,11 @@ public class LocationRestController {
 			else if(k.equals("dateDebut")) {
 				location.setDateDebut(LocalDate.parse(v.toString()));
 			}
+			else if (k.equals("assurance")) {
+				
+				location.setAssurance(Assurance.valueOf(v.toString()));
+				
+				}
 			else {
 				Field field = ReflectionUtils.findField(Location.class, k);
 				ReflectionUtils.makeAccessible(field);

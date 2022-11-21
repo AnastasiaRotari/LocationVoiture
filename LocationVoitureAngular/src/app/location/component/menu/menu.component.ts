@@ -25,6 +25,10 @@ export class MenuComponent implements OnInit {
     return this.authSrv.isClient();
   }
 
+  get loueur() {
+    return this.authSrv.isLoueur();
+  }
+
   get anonymous() {
     return !this.authSrv.isAuthenticated();
   }
