@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import ajc.sopra.locationVoiture.exception.PersonneException;
+import ajc.sopra.locationVoiture.exception.CompteException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Admin;
 import ajc.sopra.locationVoiture.model.Adresse;
@@ -32,7 +32,7 @@ public class AdminService {
 		return adminRepo.findAll();
 	}
 
-	public Admin findById(Integer id) {
+	public Admin findById(Long id) {
 		return adminRepo.findById(id).orElseThrow(IdException::new);
 	}
 	
@@ -52,7 +52,7 @@ public class AdminService {
 
 	public Admin create(Admin admin) {
 		if (admin.getId() != null) {
-			throw new PersonneException("produit deja dans la base");
+			throw new CompteException("produit deja dans la base");
 		}
 		return save(admin);
 
@@ -67,14 +67,14 @@ public class AdminService {
 
 	public Admin save(Admin admin) {
 		if (admin.getNom() == null || admin.getNom().isBlank() || admin.getNom().length() > 35) {
-			throw new PersonneException("probleme nom");
+			throw new CompteException("probleme nom");
 		}
 		if (admin.getPrenom() == null || admin.getPrenom().isBlank() || admin.getPrenom().length() > 35) {
-			throw new PersonneException("probleme prenom");
+			throw new CompteException("probleme prenom");
 		}
-		Compte compte=admin.getCompte();
-		compte.setPassword(passwordEncoder.encode(compte.getPassword()));
-		compteRepo.save(compte);
+	
+		admin.setPassword(passwordEncoder.encode(admin.getPassword()));
+		
 		return adminRepo.save(admin);
 	}
 
@@ -82,7 +82,7 @@ public class AdminService {
 		adminRepo.delete(admin);
 	}
 
-	public void deleteId(Integer id) {
+	public void deleteId(Long id) {
 		adminRepo.deleteById(id);
 	}
 }

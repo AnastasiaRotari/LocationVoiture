@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ajc.sopra.locationVoiture.exception.IdException;
-import ajc.sopra.locationVoiture.exception.PersonneException;
+import ajc.sopra.locationVoiture.exception.CompteException;
 import ajc.sopra.locationVoiture.model.Client;
 import ajc.sopra.locationVoiture.model.Compte;
 import ajc.sopra.locationVoiture.repository.ClientRepository;
@@ -31,7 +31,7 @@ public class ClientService {
 		return clientRepo.findAll();
 	}
 
-	public Client findById(Integer id) {
+	public Client findById(Long id) {
 		return clientRepo.findById(id).orElseThrow(IdException::new);
 	}
 
@@ -54,7 +54,7 @@ public class ClientService {
 	
 	public Client create(Client client) {
 		if (client.getId() != null) {
-			throw new PersonneException("client deja dans la base");
+			throw new CompteException("client deja dans la base");
 		}
 		return save(client);
 
@@ -69,17 +69,16 @@ public class ClientService {
 
 	public Client save(Client client) {
 		if (client.getAge() <=0) {
-			throw new PersonneException("probleme age");
+			throw new CompteException("probleme age");
 		}
 		if (client.getAnneePermis() <=0) {
-			throw new PersonneException("probleme Annee de permis");
+			throw new CompteException("probleme Annee de permis");
 		}
 		if (client.getAccident() <0) {
-			throw new PersonneException("probleme Accident");
+			throw new CompteException("probleme Accident");
 		}
-		Compte compte=client.getCompte();
-		compte.setPassword(passwordEncoder.encode(compte.getPassword()));
-		compteRepo.save(compte);
+		//Compte compte=client.getCompte();
+		client.setPassword(passwordEncoder.encode(client.getPassword()));
 		return clientRepo.save(client);
 	}
 
@@ -87,7 +86,7 @@ public class ClientService {
 		clientRepo.delete(client);
 	}
 
-	public void deleteId(Integer id) {
+	public void deleteId(Long id) {
 		clientRepo.deleteById(id);
 	}
 }

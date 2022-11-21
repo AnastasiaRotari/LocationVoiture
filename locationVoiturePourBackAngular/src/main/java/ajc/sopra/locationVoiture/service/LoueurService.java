@@ -7,7 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import ajc.sopra.locationVoiture.exception.IdException;
-import ajc.sopra.locationVoiture.exception.PersonneException;
+import ajc.sopra.locationVoiture.exception.CompteException;
 import ajc.sopra.locationVoiture.model.Annonce;
 import ajc.sopra.locationVoiture.model.Compte;
 import ajc.sopra.locationVoiture.model.Loueur;
@@ -37,11 +37,11 @@ public class LoueurService {
 	}
 	
 	
-	public Loueur findByIdFetchAnnonce(Integer id) {
+	public Loueur findByIdFetchAnnonce(Long id) {
 		return loueurRepo.findByIdFetchingAnnonce(id).orElseThrow(IdException::new);
 	}
 
-	public Loueur findById(Integer id) {
+	public Loueur findById(Long id) {
 		return loueurRepo.findById(id).orElseThrow(IdException::new);
 	}
 
@@ -51,7 +51,7 @@ public class LoueurService {
 
 	public Loueur create(Loueur loueur) {
 		if (loueur.getId() != null) {
-			throw new PersonneException("produit deja dans la base");
+			throw new CompteException("produit deja dans la base");
 		}
 		return save(loueur);
 
@@ -65,9 +65,9 @@ public class LoueurService {
 	}
 
 	public Loueur save(Loueur loueur) {
-		Compte compte=loueur.getCompte();
-		compte.setPassword(passwordEncoder.encode(compte.getPassword()));
-		compteRepo.save(compte);
+		
+		loueur.setPassword(passwordEncoder.encode(loueur.getPassword()));
+	
 		return loueurRepo.save(loueur);
 	}
 
@@ -75,7 +75,7 @@ public class LoueurService {
 		loueurRepo.delete(loueur);
 	}
 
-	public void deleteId(Integer id) {
+	public void deleteId(Long id) {
 		loueurRepo.deleteById(id);
 	}
 }

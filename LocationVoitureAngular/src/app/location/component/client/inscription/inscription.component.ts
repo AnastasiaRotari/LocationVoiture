@@ -96,11 +96,13 @@ export class InscriptionComponent implements OnInit {
     let client = {
       prenom: this.form.get('groupeInfo.prenom')?.value,
       nom: this.form.get('groupeInfo.nom')?.value,
-      naissance: this.form.get('naissance')?.value,
-      compte: {
-        email: this.form.get('email')?.value,
-        password: this.form.get('groupeInfo.groupePassword.password')?.value,
-      },
+      age: this.form.get('age')?.value,
+      anneePermis: this.form.get('anneePermis')?.value,
+      accident: this.form.get('accident')?.value,
+      email: this.form.get('email')?.value,
+      //compte: {
+      password: this.form.get('groupeInfo.groupePassword.password')?.value,
+      // },
     };
     if (
       this.form.get('numero')?.value ||

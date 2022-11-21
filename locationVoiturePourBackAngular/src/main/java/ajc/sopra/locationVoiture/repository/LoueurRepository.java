@@ -12,13 +12,13 @@ import ajc.sopra.locationVoiture.model.Loueur;
 
 
 
-public interface LoueurRepository extends JpaRepository<Loueur, Integer>{
+public interface LoueurRepository extends JpaRepository<Loueur, Long>{
 	
 	
 	List<Loueur> findByAnnonceContaining(Annonce annonce);
 	
 	@Query("select l from Loueur l left join fetch l.annonce where l.id=:id")
-	Optional<Loueur> findByIdFetchingAnnonce(@Param("id") Integer id);
+	Optional<Loueur> findByIdFetchingAnnonce(@Param("id") Long id);
 
 	
 	

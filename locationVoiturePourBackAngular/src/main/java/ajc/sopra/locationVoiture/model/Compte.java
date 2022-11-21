@@ -6,6 +6,8 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,10 +15,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+
+import com.fasterxml.jackson.annotation.JsonView;
+
 
 @Entity
 @Table(name = "compte")
@@ -30,25 +36,48 @@ public class Compte implements UserDetails {
 	private String email;
 	@Column(name = "password", length = 255, nullable = false)
 	private String password;
-	@OneToOne(mappedBy = "compte")
-	private Personne personne;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(length = 35,nullable = false)
+	protected String nom;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(length = 35,nullable = false)
+	protected String prenom;
+	
+	@JsonView(JsonViews.Common.class)
+	@Column(length = 35)
+	protected Adresse adresse;
+
 	
 	public Compte() {
 
 	}
 	
-	public Compte(@NotBlank @Email String email, String password) {
+
+	public Compte(Long id, @NotBlank @Email String email, String password, String nom, String prenom, Adresse adresse
+			) {
+		super();
+		this.id = id;
+		this.email = email;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		
+	}
+
+	public Compte(@NotBlank @Email String email, String password, String nom, String prenom, Adresse adresse
+			) {
 		super();
 		this.email = email;
 		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		
 	}
-	
 
-	public Compte(@NotBlank @Email String email, String password, Personne personne) {
-		this.email = email;
-		this.password = password;
-		this.personne = personne;
-	}
 
 	public Long getId() {
 		return id;
@@ -73,6 +102,35 @@ public class Compte implements UserDetails {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+
+	public String getNom() {
+		return nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public Adresse getAdresse() {
+		return adresse;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public void setAdresse(Adresse adresse) {
+		this.adresse = adresse;
+	}
+	
+	
+
 
 	@Override
 	public int hashCode() {
@@ -93,15 +151,10 @@ public class Compte implements UserDetails {
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
-		String role = null;
-		if(personne instanceof Admin) {
-			role="ROLE_ADMIN";
-		}else if(personne instanceof Client) {
-			role="ROLE_CLIENT";
-		}else if(personne instanceof Loueur) {
-			role="ROLE_LOUEUR";
-		}
-		return Arrays.asList(new SimpleGrantedAuthority(role));
+		
+		
+		
+		return Arrays.asList(new SimpleGrantedAuthority("ROLE_"+getClass().getSimpleName()));
 	}
 
 	@Override

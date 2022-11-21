@@ -1,11 +1,11 @@
 package ajc.sopra.locationVoiture.exception;
 
-public class PersonneException extends RuntimeException {
-	public PersonneException() {
+public class CompteException extends RuntimeException {
+	public CompteException() {
 
 	}
 
-	public PersonneException(String message) {
+	public CompteException(String message) {
 		super(message);
 	}
 }

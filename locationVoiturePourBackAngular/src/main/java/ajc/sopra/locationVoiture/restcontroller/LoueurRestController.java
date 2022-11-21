@@ -56,7 +56,7 @@ public class LoueurRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Loueur update(@Valid @RequestBody Loueur loueur, BindingResult br, @PathVariable Integer id) {
+	public Loueur update(@Valid @RequestBody Loueur loueur, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors() && loueurSrv.findById(id) == null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
@@ -65,7 +65,7 @@ public class LoueurRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public Loueur findById(@PathVariable Integer id) {
+	public Loueur findById(@PathVariable Long id) {
 		return loueurSrv.findById(id);
 	}
 
@@ -77,13 +77,13 @@ public class LoueurRestController {
 
 	@JsonView(JsonViews.LoueurWithAnnonce.class)
 	@GetMapping("/{id}/Annonce")
-	public Loueur findByIdWithProduit(@PathVariable Integer id) {
+	public Loueur findByIdWithProduit(@PathVariable Long id) {
 		return loueurSrv.findByIdFetchAnnonce(id);
 	}
 
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Loueur patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+	public Loueur patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Loueur loueur = loueurSrv.findById(id);
 		fields.forEach((k, v) -> {
 			if (k.equals("adresse")) {
@@ -111,7 +111,7 @@ public class LoueurRestController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		loueurSrv.deleteId(id);
 	}
 }

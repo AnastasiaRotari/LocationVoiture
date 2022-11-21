@@ -9,7 +9,7 @@ import ajc.sopra.locationVoiture.model.Client;
 
 
 
-public interface ClientRepository extends JpaRepository<Client, Integer>{
+public interface ClientRepository extends JpaRepository<Client, Long>{
 	
 	
 	List<Client> findByAgeContaining(int age);

@@ -6,12 +6,15 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
 
 @Entity
-public class Client extends Personne {
+public class Client extends Compte {
 
 	@JsonView(JsonViews.Common.class)
 	@Column (length = 30)
@@ -29,36 +32,33 @@ public class Client extends Personne {
 	@OneToMany(mappedBy = "client")
 	private List<Location> location;
 	
-	@OneToOne
-	private Compte compte;
 
 	public Client (){
 	}
-	
-	public Client(Integer id, String nom, String prenom, Adresse adresse, Integer age, int anneePermis, Integer accident, List<Location> location) {
-		super(id, nom, prenom, adresse);
+
+	public Client(Long id, @NotBlank @Email String email, String password, String nom, String prenom, Adresse adresse,
+			Integer age, int anneePermis, Integer accident, List<Location> location) {
+		super(id, email, password, nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
 		this.accident = accident;
 		this.location = location;
 	}
-	
-	public Client(String nom, String prenom, Adresse adresse, Integer age, int anneePermis, 
-			Integer accident, List<Location> location) {
-		super(nom, prenom, adresse);
+
+
+	public Client(@NotBlank @Email String email, String password, String nom, String prenom, Adresse adresse,
+			 Integer age, int anneePermis, Integer accident, List<Location> location) {
+		super(email, password, nom, prenom, adresse);
 		this.age = age;
 		this.anneePermis = anneePermis;
-		
 		this.accident = accident;
 		this.location = location;
 	}
+
+	public Client(Integer age, int anneePermis, Integer accident, List<Location> location) {
 	
-	public Client(String nom, String prenom, Integer age, int anneePermis,  Integer accident,
-			List<Location> location) {
-		super(nom, prenom);
 		this.age = age;
 		this.anneePermis = anneePermis;
-		
 		this.accident = accident;
 		this.location = location;
 	}
@@ -71,9 +71,6 @@ public class Client extends Personne {
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-
-	
 
 	public Integer getAccident() {
 		return accident;
@@ -98,13 +95,7 @@ public class Client extends Personne {
 		this.location = location;
 	}
 
-	public Compte getCompte() {
-		return compte;
-	}
-
-	public void setCompte(Compte compte) {
-		this.compte = compte;
-	}
+	
 
 	public void setAge(Integer age) {
 		this.age = age;
@@ -117,10 +108,8 @@ public class Client extends Personne {
 	@Override
 	public String toString() {
 		return "Client [age=" + age + ", anneePermis=" + anneePermis + ", accident=" + accident + ", location="
-				+ location + ", compte=" + compte + "]";
+				+ location + "]";
 	}
-
-	
 
 
 }

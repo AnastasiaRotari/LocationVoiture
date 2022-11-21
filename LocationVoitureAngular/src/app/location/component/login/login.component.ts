@@ -30,13 +30,13 @@ export class LoginComponent implements OnInit {
         if (data.role == 'ROLE_CLIENT') {
           let client = new Client(
             data.client.id,
+            data.client.email,
             data.client.nom,
             data.client.prenom,
             data.client.adresse ? data.adresse : undefined,
             data.client.age,
             data.client.anneePermis,
-            data.client.accident,
-            new Compte(data.id, data.email)
+            data.client.accident
           );
           sessionStorage.setItem('client', JSON.stringify(client));
           sessionStorage.setItem('role', 'client');
@@ -44,11 +44,10 @@ export class LoginComponent implements OnInit {
         } else if (data.role == 'ROLE_LOUEUR') {
           let loueur = new Loueur(
             data.loueur.id,
+            data.client.email,
             data.loueur.nom,
             data.loueur.prenom,
-            data.loueur.adresse ? data.adresse : undefined,
-
-            new Compte(data.id, data.email)
+            data.loueur.adresse ? data.adresse : undefined
           );
           sessionStorage.setItem('loueur', JSON.stringify(loueur));
           sessionStorage.setItem('role', 'loueur');

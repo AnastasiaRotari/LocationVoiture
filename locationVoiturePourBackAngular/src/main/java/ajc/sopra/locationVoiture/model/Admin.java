@@ -2,44 +2,37 @@ package ajc.sopra.locationVoiture.model;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Entity
-public class Admin extends Personne{
+public class Admin extends Compte{
 	
-	@OneToOne
-	private Compte compte;
 	
 	public Admin() {
 	
 	}
 
-	public Admin(Integer id, String nom, String prenom, Adresse adresse) {
-		super(id, nom, prenom, adresse);
+	public Admin(Long id, @NotBlank @Email String email, String password, String nom, String prenom, Adresse adresse
+			) {
+		super(id, email, password, nom, prenom, adresse);
+		
 	}
 
-	public Admin(String nom, String prenom, Adresse adresse) {
-		super(nom, prenom, adresse);
-	}
-
-	public Admin(String nom, String prenom) {
-		super(nom, prenom);
-	}
-
-	public Compte getCompte() {
-		return compte;
-	}
-
-	public void setCompte(Compte compte) {
-		this.compte = compte;
+	public Admin(@NotBlank @Email String email, String password, String nom, String prenom, Adresse adresse
+			) {
+		super(email, password, nom, prenom, adresse);
+		
 	}
 
 	@Override
 	public String toString() {
-		return "Admin [compte=" + compte + ", id=" + id + ", nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse
-				+ ", getCompte()=" + getCompte() + ", getId()=" + getId() + ", getNom()=" + getNom() + ", getPrenom()="
-				+ getPrenom() + ", getAdresse()=" + getAdresse() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+		return "Admin [nom=" + nom + ", prenom=" + prenom + ", adresse=" + adresse + "]";
 	}
 
+	
+
+	
 
 }

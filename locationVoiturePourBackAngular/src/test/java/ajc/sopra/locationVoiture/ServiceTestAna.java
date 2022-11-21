@@ -26,7 +26,7 @@ import ajc.sopra.locationVoiture.service.LoueurService;
 import ajc.sopra.locationVoiture.service.ModeleService;
 
 
-
+/*
 @SpringBootTest
 class ServiceTestAna {
 
@@ -69,4 +69,4 @@ class ServiceTestAna {
 	
 	
 
-}
+}*/

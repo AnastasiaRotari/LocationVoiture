@@ -49,14 +49,18 @@ public class ClientRestController {
 	@JsonView(JsonViews.Common.class)
 	public Client inscription(@Valid @RequestBody Client client, BindingResult br) {
 		if (br.hasErrors()) {
+			System.out.println(br);
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
+		
 		return clientSrv.save(client);
+		
+		
 	}
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public Client findById(@PathVariable Integer id) {
+	public Client findById(@PathVariable Long id) {
 		return clientSrv.findById(id);
 	}
 
@@ -79,7 +83,7 @@ public class ClientRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Client update(@Valid @RequestBody Client client, BindingResult br, @PathVariable Integer id) {
+	public Client update(@Valid @RequestBody Client client, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors() && clientSrv.findById(id) == null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
@@ -89,7 +93,7 @@ public class ClientRestController {
 	
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Client patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+	public Client patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Client client = clientSrv.findById(id);
 		fields.forEach((k, v) -> {
 			if (k.equals("adresse")) {
@@ -111,7 +115,7 @@ public class ClientRestController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		clientSrv.deleteId(id);
 	}
 

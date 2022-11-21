@@ -54,7 +54,7 @@ public class AdminRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public Admin findById(@PathVariable Integer id) {
+	public Admin findById(@PathVariable Long id) {
 		return adminsrvc.findById(id);
 	}
 
@@ -75,7 +75,7 @@ public class AdminRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Admin update(@Valid @RequestBody Admin admin, BindingResult br, @PathVariable Integer id) {
+	public Admin update(@Valid @RequestBody Admin admin, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors() && adminsrvc.findById(id) == null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
@@ -84,7 +84,7 @@ public class AdminRestController {
 
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Admin patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+	public Admin patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Admin admin = adminsrvc.findById(id);
 		fields.forEach((k, v) -> {
 			if (k.equals("adresse")) {
@@ -106,7 +106,7 @@ public class AdminRestController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		adminsrvc.deleteId(id);
 	}
 

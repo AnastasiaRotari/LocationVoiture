@@ -8,7 +8,7 @@ import ajc.sopra.locationVoiture.model.Admin;
 import ajc.sopra.locationVoiture.model.Adresse;
 
 
-public interface AdminRepository extends JpaRepository<Admin, Integer> {
+public interface AdminRepository extends JpaRepository<Admin, Long> {
 	
 	List<Admin> findByNomContaining(String nom);
 

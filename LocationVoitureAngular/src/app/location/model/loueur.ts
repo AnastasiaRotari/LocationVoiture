@@ -1,21 +1,14 @@
 import { Adresse } from './adresse';
 import { Compte } from './compte';
-import { Personne } from './personne';
 
-export class Loueur extends Personne {
-  public get compte(): Compte {
-    return this._compte;
-  }
-  public set compte(value: Compte) {
-    this._compte = value;
-  }
+export class Loueur extends Compte {
   constructor(
     _id?: number,
     _nom?: string,
     _prenom?: string,
-    _adresse?: Adresse,
-    private _compte: Compte = new Compte()
+    _email?: string,
+    _adresse?: Adresse
   ) {
-    super(_id, _nom, _prenom, _adresse);
+    super(_id, _nom, _prenom, _email, _adresse);
   }
 }

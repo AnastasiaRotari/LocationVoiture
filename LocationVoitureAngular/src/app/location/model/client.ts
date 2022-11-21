@@ -1,8 +1,7 @@
 import { Adresse } from './adresse';
 import { Compte } from './compte';
-import { Personne } from './personne';
 
-export class Client extends Personne {
+export class Client extends Compte {
   public get accident(): number | undefined {
     return this._accident;
   }
@@ -22,24 +21,17 @@ export class Client extends Personne {
   public set age(value: number | undefined) {
     this._age = value;
   }
-  public get compte(): Compte {
-    return this._compte;
-  }
-  public set compte(value: Compte) {
-    this._compte = value;
-  }
 
   constructor(
     _id?: number,
     _nom?: string,
     _prenom?: string,
+    _email?: string,
     _adresse?: Adresse,
     private _age?: number,
     private _anneePermis?: number,
-
-    private _accident?: number,
-    private _compte: Compte = new Compte()
+    private _accident?: number
   ) {
-    super(_id, _nom, _prenom, _adresse);
+    super(_id, _nom, _prenom, _email, _adresse);
   }
 }
