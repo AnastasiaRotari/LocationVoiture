@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.annotation.JsonView;
 
+import ajc.sopra.locationVoiture.model.Client;
 import ajc.sopra.locationVoiture.model.Compte;
 import ajc.sopra.locationVoiture.model.JsonViews;
 
@@ -17,8 +18,14 @@ import ajc.sopra.locationVoiture.model.JsonViews;
 public class AuthencitationRestController {
 
 	@GetMapping("")
-	@JsonView(JsonViews.CompteWithClient.class)
+	@JsonView(JsonViews.Common.class)
 	public Compte authentication(@AuthenticationPrincipal Compte compte) {
 		return compte;
 	}
+	
+	/*@GetMapping("")
+	@JsonView(JsonViews.Common.class)
+	public Client authentication(@AuthenticationPrincipal Client client) {
+		return client;
+	}*/
 }
