@@ -11,6 +11,7 @@ import { routes } from './router';
 import { AuthenticationInterceptor } from './location/interceptor/authentication.interceptor';
 import { InscriptionComponent } from './location/component/client/inscription/inscription.component';
 import { HomeComponent } from './location/component/home/home.component';
+import { PageRechercheComponent } from './location/component/page-recherche/page-recherche.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { HomeComponent } from './location/component/home/home.component';
     LoginComponent,
     InscriptionComponent,
     HomeComponent,
+    PageRechercheComponent,
   ],
   imports: [
     BrowserModule,
