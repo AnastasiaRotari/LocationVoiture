@@ -1,9 +1,10 @@
-<div>
+<div class="d-flex justify-content-center">
   <form (ngSubmit)="save()" [formGroup]="form">
+    <h4>Vos informations générales</h4>
     <ng-container formGroupName="groupeInfo">
       <div class="form-group">
         <label for="prenom">nom:</label>
-        <input formControlName="prenom" class="form-control" />
+        <input formControlName="prenom" class="form-control" placeholder="Votre nom" />
         <div
           *ngIf="
             form.get('groupeInfo.prenom')?.dirty &&
@@ -16,7 +17,7 @@
       </div>
       <div class="form-group">
         <label for="nom">prenom:</label>
-        <input formControlName="nom" class="form-control" />
+        <input formControlName="nom" class="form-control" placeholder="Votre prénom" />
         <div
           *ngIf="
             form.get('groupeInfo.nom')?.dirty &&
@@ -30,7 +31,8 @@
       <ng-container formGroupName="groupePassword">
         <div class="form-group">
           <label for="password">password:</label>
-          <input formControlName="password" class="form-control" />
+          <input formControlName="password" class="form-control" placeholder="Entrez votre mot de passe"/>
+          <small id="emailHelp" class="form-text text-muted">Essayez de ne pas utiliser le nom de votre chien.</small>
           <div
             *ngIf="
               form.get('groupeInfo.groupePassword.password')?.dirty &&
@@ -43,7 +45,7 @@
         </div>
         <div class="form-group">
           <label for="confirmation">confirmation:</label>
-          <input formControlName="confirmation" class="form-control" />
+          <input formControlName="confirmation" class="form-control" placeholder="Confirmez le" />
           <div
             *ngIf="
               form.get('groupeInfo.groupePassword')?.dirty &&
@@ -58,7 +60,8 @@
     </ng-container>
     <div class="form-group">
       <label for="email">email:</label>
-      <input type="email" formControlName="email" class="form-control" />
+      <input type="email" formControlName="email" class="form-control" placeholder="Entre votre email" />
+      <small id="emailHelp" class="form-text text-muted">Pour que l'on puisse communiquer.</small>
       <div
         *ngIf="form.get('email')?.dirty && form.get('email')?.invalid"
         class="alert alert-danger"
@@ -68,22 +71,28 @@
     </div>
     <div class="form-group">
       <label for="age">age:</label>
-      <input type="number" formControlName="age" class="form-control" />
+      <input type="number" formControlName="age" class="form-control" placeholder="Entrez votre age" />
+      <small id="emailHelp" class="form-text text-muted">Pour savoir si vous êtes un enfant ou pas.</small>
     </div>
     <div class="form-group">
       <label for="anneePermis">anneePermis:</label>
-      <input type="number" formControlName="anneePermis" class="form-control" />
+      <input type="number" formControlName="anneePermis" class="form-control" placeholder="Entrez votre date de permis" />
+      <small id="emailHelp" class="form-text text-muted">On ne sais jamais...</small>
     </div>
     <div class="form-group">
       <label for="accident">accident:</label>
-      <input type="number" formControlName="accident" class="form-control" />
+      <input type="number" formControlName="accident" class="form-control" placeholder="0 ?"/>
+      <small id="emailHelp" class="form-text text-muted">Pour savoir si vous êtes un chauffard ou pas.</small>
+
     </div>
-    <div class="form-group">
+    <h4>Votre adresse</h4>
+    <div>
+     <div class="form-group">
       <label for="numero">numero:</label>
       <input formControlName="numero" class="form-control" />
     </div>
     <div class="form-group">
-      <label for="voie">rue:</label>
+      <label for="voie">voie:</label>
       <input formControlName="voie" class="form-control" />
     </div>
     <div class="form-group">
@@ -94,6 +103,7 @@
       <label for="ville">ville:</label>
       <input formControlName="ville" class="form-control" />
     </div>
+  </div>
     <div>
       <button
         type="submit"
