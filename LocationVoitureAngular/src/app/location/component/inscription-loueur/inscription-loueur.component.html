@@ -1,9 +1,11 @@
-<div>
+<div class="d-flex justify-content-around">
+  <div>
   <form (ngSubmit)="save()" [formGroup]="form">
+    <h4>Vos informations générales</h4>
     <ng-container formGroupName="groupeInfo">
       <div class="form-group">
-        <label for="prenom">nom:</label>
-        <input formControlName="prenom" class="form-control" />
+        <label for="nom">nom:</label>
+        <input formControlName="prenom" class="form-control" placeholder="Votre nom" />
         <div
           *ngIf="
             form.get('groupeInfo.prenom')?.dirty &&
@@ -15,8 +17,8 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="nom">prenom:</label>
-        <input formControlName="nom" class="form-control" />
+        <label for="prenom">prenom:</label>
+        <input formControlName="nom" class="form-control" placeholder="Votre prénom"/>
         <div
           *ngIf="
             form.get('groupeInfo.nom')?.dirty &&
@@ -30,7 +32,8 @@
       <ng-container formGroupName="groupePassword">
         <div class="form-group">
           <label for="password">password:</label>
-          <input formControlName="password" class="form-control" />
+          <input type="password" formControlName="password" class="form-control" placeholder="Entrez votre mot de passe"/>
+          <small id="emailHelp" class="form-text text-muted">Essayez de ne pas utiliser le nom de votre chien.</small>
           <div
             *ngIf="
               form.get('groupeInfo.groupePassword.password')?.dirty &&
@@ -43,7 +46,7 @@
         </div>
         <div class="form-group">
           <label for="confirmation">confirmation:</label>
-          <input formControlName="confirmation" class="form-control" />
+          <input type="password" formControlName="confirmation" class="form-control" placeholder="Confirmez le" />
           <div
             *ngIf="
               form.get('groupeInfo.groupePassword')?.dirty &&
@@ -58,7 +61,8 @@
     </ng-container>
     <div class="form-group">
       <label for="email">email:</label>
-      <input type="email" formControlName="email" class="form-control" />
+      <input type="email" formControlName="email" class="form-control" placeholder="Entre votre email" />
+      <small id="emailHelp" class="form-text text-muted">Pour que l'on puisse communiquer.</small>
       <div
         *ngIf="form.get('email')?.dirty && form.get('email')?.invalid"
         class="alert alert-danger"
@@ -66,7 +70,11 @@
         probleme email
       </div>
     </div>
-
+  </form>
+  </div>
+  <div>
+    <form (ngSubmit)="save()" [formGroup]="form">
+    <h4>Votre adresse</h4>
     <div class="form-group">
       <label for="numero">numero:</label>
       <input formControlName="numero" class="form-control" />
@@ -93,4 +101,5 @@
       </button>
     </div>
   </form>
+</div>
 </div>

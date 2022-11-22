@@ -1,9 +1,10 @@
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-around">
+  <div>
   <form (ngSubmit)="save()" [formGroup]="form">
     <h4>Vos informations générales</h4>
     <ng-container formGroupName="groupeInfo">
       <div class="form-group">
-        <label for="prenom">nom:</label>
+        <label for="nom">nom:</label>
         <input formControlName="prenom" class="form-control" placeholder="Votre nom" />
         <div
           *ngIf="
@@ -16,7 +17,7 @@
         </div>
       </div>
       <div class="form-group">
-        <label for="nom">prenom:</label>
+        <label for="prenom">prenom:</label>
         <input formControlName="nom" class="form-control" placeholder="Votre prénom" />
         <div
           *ngIf="
@@ -31,7 +32,7 @@
       <ng-container formGroupName="groupePassword">
         <div class="form-group">
           <label for="password">password:</label>
-          <input formControlName="password" class="form-control" placeholder="Entrez votre mot de passe"/>
+          <input type="password" formControlName="password" class="form-control" placeholder="Entrez votre mot de passe"/>
           <small id="emailHelp" class="form-text text-muted">Essayez de ne pas utiliser le nom de votre chien.</small>
           <div
             *ngIf="
@@ -45,7 +46,7 @@
         </div>
         <div class="form-group">
           <label for="confirmation">confirmation:</label>
-          <input formControlName="confirmation" class="form-control" placeholder="Confirmez le" />
+          <input type="password" formControlName="confirmation" class="form-control" placeholder="Confirmez le" />
           <div
             *ngIf="
               form.get('groupeInfo.groupePassword')?.dirty &&
@@ -83,10 +84,12 @@
       <label for="accident">accident:</label>
       <input type="number" formControlName="accident" class="form-control" placeholder="0 ?"/>
       <small id="emailHelp" class="form-text text-muted">Pour savoir si vous êtes un chauffard ou pas.</small>
-
     </div>
+  </form>
+  </div>
+  <div>
+    <form (ngSubmit)="save()" [formGroup]="form">
     <h4>Votre adresse</h4>
-    <div>
      <div class="form-group">
       <label for="numero">numero:</label>
       <input formControlName="numero" class="form-control" />
@@ -103,7 +106,6 @@
       <label for="ville">ville:</label>
       <input formControlName="ville" class="form-control" />
     </div>
-  </div>
     <div>
       <button
         type="submit"
@@ -114,4 +116,5 @@
       </button>
     </div>
   </form>
+</div>
 </div>
