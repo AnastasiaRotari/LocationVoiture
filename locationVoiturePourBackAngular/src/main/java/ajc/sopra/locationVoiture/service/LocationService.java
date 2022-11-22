@@ -22,11 +22,11 @@ public class LocationService {
 		return locationRepo.findAll();
 	}
 
-	public Location findById(Integer id) {
+	public Location findById(Long id) {
 		return locationRepo.findById(id).orElseThrow(IdException::new);
 	}
 
-	public List<Location> findByClientId(Integer id) {
+	public List<Location> findByClientId(Long id) {
 		return locationRepo.findByClientId(id);
 	}
 	
@@ -67,7 +67,7 @@ public class LocationService {
 		locationRepo.delete(location);
 	}
 
-	public void deleteId(Integer id) {
+	public void deleteId(Long id) {
 		locationRepo.deleteById(id);
 	}
 }

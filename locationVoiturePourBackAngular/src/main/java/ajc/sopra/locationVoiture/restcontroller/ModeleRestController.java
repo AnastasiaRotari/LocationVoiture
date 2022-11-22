@@ -48,7 +48,7 @@ public class ModeleRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public Modele findById(@PathVariable Integer id) {
+	public Modele findById(@PathVariable Long id) {
 		return modeleSrv.findById(id);
 	}
 
@@ -76,7 +76,7 @@ public class ModeleRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Modele update(@Valid @RequestBody Modele modele, BindingResult br, @PathVariable Integer id) {
+	public Modele update(@Valid @RequestBody Modele modele, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors() && modeleSrv.findById(id) == null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
@@ -85,7 +85,7 @@ public class ModeleRestController {
 
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Modele update(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+	public Modele update(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Modele modele = modeleSrv.findById(id);
 
 		fields.forEach((k, v) -> {
@@ -107,7 +107,7 @@ public class ModeleRestController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		modeleSrv.deleteById(id);
 	}
 

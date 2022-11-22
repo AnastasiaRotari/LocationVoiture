@@ -10,9 +10,9 @@ import ajc.sopra.locationVoiture.model.Location;
 
 
 
-public interface LocationRepository extends JpaRepository<Location, Integer>{
+public interface LocationRepository extends JpaRepository<Location, Long>{
 
-	List<Location> findByClientId(Integer id);
+	List<Location> findByClientId(Long id);
 	
 	List<Location> findByDateDebut(LocalDate dateDebut);
 	

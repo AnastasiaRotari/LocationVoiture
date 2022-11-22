@@ -15,7 +15,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 @Entity
 public class Loueur extends Compte {
 
-	
+	@JsonView(JsonViews.LoueurwithAnnonce.class)
 	@OneToMany(mappedBy = "loueur")
 	private List<Annonce> annonce;
 

@@ -46,10 +46,23 @@ public class AnnonceRestController {
 	public List<Annonce> findAll() {
 		return annonceSrv.findAll();
 	}
+	
+	@JsonView(JsonViews.AnnoncewithModele.class)
+	@GetMapping("/{id}/modele")
+	public Annonce findByIdWithModele(@PathVariable Long id) {
+		return annonceSrv.findByIdFetchModele(id);
+	}
+	
+	@JsonView(JsonViews.AnnoncewithLoueur.class)
+	@GetMapping("/{id}/loueur")
+	public Annonce findByIdWithLoueur(@PathVariable Long id) {
+		return annonceSrv.findByIdFetchLoueur(id);
+	}
+	
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public Annonce findById(@PathVariable Integer id) {
+	public Annonce findById(@PathVariable Long id) {
 		return annonceSrv.findById(id);
 	}
 
@@ -60,8 +73,8 @@ public class AnnonceRestController {
 	}
 
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/loueur/{loueur}")
-	public List<Annonce> findByLoueurId(@PathVariable Integer id) {
+	@GetMapping("/loueur/{id}")
+	public List<Annonce> findByLoueurId(@PathVariable Long id) {
 		return annonceSrv.findByLoueurId(id);
 	}
 
@@ -72,7 +85,7 @@ public class AnnonceRestController {
 	}
 
 	@JsonView(JsonViews.Common.class)
-	@GetMapping("/modele/{modele}")
+	@GetMapping("/modele/{nom}")
 	public List<Annonce> findByModeleNomContaining(@PathVariable String nom) {
 		return annonceSrv.findByModeleNomContening(nom);
 	}
@@ -102,7 +115,7 @@ public class AnnonceRestController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		try {
 			annonceSrv.deleteId(id);
 		} catch (Exception e) {
@@ -112,7 +125,7 @@ public class AnnonceRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Annonce update(@Valid @RequestBody Annonce annonce, BindingResult br, @PathVariable Integer id) {
+	public Annonce update(@Valid @RequestBody Annonce annonce, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");
 		}
@@ -122,7 +135,7 @@ public class AnnonceRestController {
 
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Annonce patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+	public Annonce patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Annonce annonce = annonceSrv.findById(id);
 
 		fields.forEach((k, v) -> {

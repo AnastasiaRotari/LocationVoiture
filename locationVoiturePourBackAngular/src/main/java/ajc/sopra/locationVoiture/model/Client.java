@@ -28,6 +28,7 @@ public class Client extends Compte {
 	@Column (length = 50)
 	private Integer accident;
 
+	@JsonView(JsonViews.ClientwithLocation.class)
 	@OneToMany(mappedBy = "client")
 	private List<Location> location;
 	

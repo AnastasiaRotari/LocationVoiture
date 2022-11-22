@@ -18,7 +18,7 @@ public class Modele {
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(name="nom",nullable = false, length = 35)
@@ -47,10 +47,10 @@ public class Modele {
 	
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNom() {

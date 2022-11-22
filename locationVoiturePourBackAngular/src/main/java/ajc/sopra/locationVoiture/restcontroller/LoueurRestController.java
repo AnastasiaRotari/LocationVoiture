@@ -75,9 +75,9 @@ public class LoueurRestController {
 		return loueurSrv.findAll();
 	}
 
-	@JsonView(JsonViews.LoueurWithAnnonce.class)
-	@GetMapping("/{id}/Annonce")
-	public Loueur findByIdWithProduit(@PathVariable Long id) {
+	@JsonView(JsonViews.LoueurwithAnnonce.class)
+	@GetMapping("/{id}/annonce")
+	public Loueur findByIdWithAnnonce(@PathVariable Long id) {
 		return loueurSrv.findByIdFetchAnnonce(id);
 	}
 

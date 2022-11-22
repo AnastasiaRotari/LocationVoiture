@@ -52,13 +52,13 @@ public class LocationRestController {
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/{id}")
-	public Location findById(@PathVariable Integer id) {
+	public Location findById(@PathVariable Long id) {
 		return locationSrv.findById(id);
 	}
 
 	@JsonView(JsonViews.Common.class)
 	@GetMapping("/client/{id}")
-	public List<Location> findByClientId(Integer id) {
+	public List<Location> findByClientId(Long id) {
 		return locationSrv.findByClientId(id);
 	}
 
@@ -75,7 +75,7 @@ public class LocationRestController {
 
 	@DeleteMapping("/{id}")
 	@ResponseStatus(code = HttpStatus.NO_CONTENT)
-	public void deleteById(@PathVariable Integer id) {
+	public void deleteById(@PathVariable Long id) {
 		try {
 			locationSrv.deleteId(id);
 		} catch (Exception e) {
@@ -85,7 +85,7 @@ public class LocationRestController {
 
 	@PutMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Location update(@Valid @RequestBody Location location, BindingResult br, @PathVariable Integer id) {
+	public Location update(@Valid @RequestBody Location location, BindingResult br, @PathVariable Long id) {
 		if (br.hasErrors()) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "données incorrectes");
 		}
@@ -95,7 +95,7 @@ public class LocationRestController {
 
 	@PatchMapping("/{id}")
 	@JsonView(JsonViews.Common.class)
-	public Location patch(@RequestBody Map<String, Object> fields, @PathVariable Integer id) {
+	public Location patch(@RequestBody Map<String, Object> fields, @PathVariable Long id) {
 		Location location = locationSrv.findById(id);
 
 		fields.forEach((k, v) -> {

@@ -28,6 +28,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import ajc.sopra.locationVoiture.model.Adresse;
 import ajc.sopra.locationVoiture.model.Client;
 import ajc.sopra.locationVoiture.model.JsonViews;
+import ajc.sopra.locationVoiture.model.Loueur;
 import ajc.sopra.locationVoiture.service.ClientService;
 
 
@@ -53,9 +54,13 @@ public class ClientRestController {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		
-		return clientSrv.save(client);
-		
-		
+		return clientSrv.save(client);	
+	}
+	
+	@JsonView(JsonViews.ClientwithLocation.class)
+	@GetMapping("/{id}/location")
+	public Client findByIdWithLocation(@PathVariable Long id) {
+		return clientSrv.findByIdFetchLocation(id);
 	}
 
 	@JsonView(JsonViews.Common.class)

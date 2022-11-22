@@ -22,7 +22,7 @@ public class Location {
 	@JsonView(JsonViews.Common.class)
 	@Id 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@JsonView(JsonViews.Common.class)
 	@Column(nullable = false)
@@ -76,12 +76,12 @@ public class Location {
 	}
 
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
