@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { InscriptionComponent } from './location/component/client/inscription/inscription.component';
 import { HomeComponent } from './location/component/home/home.component';
+import { InscriptionLoueurComponent } from './location/component/inscription-loueur/inscription-loueur.component';
 import { LoginComponent } from './location/component/login/login.component';
 import { AdminGuardService } from './location/guard/admin-guard.service';
 import { AnonymousGuardService } from './location/guard/anonymous-guard.service';
@@ -10,6 +11,11 @@ export const routes: Routes = [
   {
     path: 'inscription',
     component: InscriptionComponent,
+    canActivate: [AnonymousGuardService],
+  },
+  {
+    path: 'inscriptionloueur',
+    component: InscriptionLoueurComponent,
     canActivate: [AnonymousGuardService],
   },
   {
