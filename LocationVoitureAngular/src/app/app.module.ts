@@ -11,6 +11,7 @@ import { routes } from './router';
 import { AuthenticationInterceptor } from './location/interceptor/authentication.interceptor';
 import { InscriptionComponent } from './location/component/client/inscription/inscription.component';
 import { HomeComponent } from './location/component/home/home.component';
+import { PageRechercheComponent } from './location/component/page-recherche/page-recherche.component';
 import { InscriptionLoueurComponent } from './location/component/inscription-loueur/inscription-loueur.component';
 
 @NgModule({
@@ -21,6 +22,7 @@ import { InscriptionLoueurComponent } from './location/component/inscription-lou
     InscriptionComponent,
     HomeComponent,
     InscriptionLoueurComponent,
+    PageRechercheComponent,
   ],
   imports: [
     BrowserModule,
