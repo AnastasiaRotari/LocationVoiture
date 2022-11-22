@@ -1,3 +1,4 @@
+<div class="d-flex justify-content-center">
 <div *ngIf="error" class="alert alert-danger">données incorrectes</div>
 <form (ngSubmit)="send()" #form="ngForm">
   <div class="form-group">
@@ -5,6 +6,7 @@
     <input
       type="email"
       name="email"
+      placeholder="Votre email"
       class="form-control"
       [(ngModel)]="email"
       required
@@ -22,6 +24,7 @@
     <input
       type="password"
       name="password"
+      placeholder="********"
       class="form-control"
       [(ngModel)]="password"
       required
@@ -44,3 +47,4 @@
     >
   </div>
 </form>
+</div>
