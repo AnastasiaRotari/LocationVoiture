@@ -1,11 +1,13 @@
 <nav class="p-3 text-bg-dark">
   <div class="container-fluid">
-    <ul style="list-style-type: none;" class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-      <li class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
-        <a
-        class="nav-link"
-        routerLink="/home"
-        routerLinkActive="active">
+    <ul
+      style="list-style-type: none"
+      class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
+    >
+      <li
+        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
+      >
+        <a class="nav-link" routerLink="/home" routerLinkActive="active">
           <img
             src="assets/images/logolocarnaque.jpg"
             alt=""
@@ -17,7 +19,9 @@
         <a
           *ngIf="admin"
           class="nav-link"
-          routerLink="/"
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/client"
           routerLinkActive="active"
           >Clients</a
         >
@@ -26,7 +30,9 @@
         <a
           *ngIf="admin"
           class="nav-link"
-          routerLink="/"
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/loueur"
           routerLinkActive="active"
           >Loueurs</a
         >
@@ -35,7 +41,9 @@
         <a
           *ngIf="admin"
           class="nav-link"
-          routerLink="/"
+          type="button"
+          class="btn btn-outline-light me-2"
+          routerLink="/annonce-admin"
           routerLinkActive="active"
           >Annonces</a
         >
@@ -71,7 +79,7 @@
         >
       </li>
       <li *ngIf="authenticated" class="nav-item">
-        <button class="btn btn-link nav-link" (click)="logoff()">
+        <button type="button" class="btn btn-warning" (click)="logoff()">
           Deconnexion
         </button>
       </li>

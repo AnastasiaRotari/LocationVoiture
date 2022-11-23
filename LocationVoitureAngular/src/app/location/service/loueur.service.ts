@@ -27,6 +27,31 @@ export class LoueurService {
       `${LoueurService.URL}/check/email/${email}`
     );
   }
+
+  public deleteById(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${LoueurService.URL}/${id}`);
+  }
+
+  public findById(id: number): Observable<Loueur> {
+    return this.httpClient.get<Loueur>(`${LoueurService.URL}/${id}`);
+  }
+
+  public update(loueur: Loueur): Observable<Loueur> {
+    console.debug(loueur);
+    return this.httpClient.put<Loueur>(
+      `${LoueurService.URL}/${loueur.id}`,
+      this.loueurToJson(loueur)
+    );
+  }
+
+  public create(loueur: Loueur): Observable<Loueur> {
+    console.debug(loueur);
+    return this.httpClient.post<Loueur>(
+      LoueurService.URL,
+      this.loueurToJson(loueur)
+    );
+  }
+
   public loueurToJson(loueur: Loueur): any {
     let loueurJson = {
       prenom: loueur.prenom,

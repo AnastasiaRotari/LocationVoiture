@@ -116,6 +116,21 @@
               >
                 Louer ce véhicule
               </button>
+              <button
+                type="button"
+                routerLink="/annonce/edit/{{ a.id }}"
+                routerLinkActive="active"
+                class="btn btn-primary btn-sm btn-block me-2"
+              >
+                Editer
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm btn-block me-2"
+                (click)="delete(a.id!)"
+              >
+                Supprimer
+              </button>
             </div>
           </div>
         </div>

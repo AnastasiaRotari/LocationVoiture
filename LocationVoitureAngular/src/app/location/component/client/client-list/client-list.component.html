@@ -1,0 +1,47 @@
+<div *ngFor="let c of clients" class="row mb-3">
+  <div class="row text-center">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <img
+              src="assets\images\doge.png"
+              height="100px"
+              width="100px"
+              alt=""
+            />
+          </div>
+          <div class="col-md-5">
+            <h4>{{ c.prenom }} {{ c.nom }}</h4>
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">Age: {{ c.age }} /</li>
+              <li class="list-inline-item">Accidents : {{ c.accident }} /</li>
+              <li class="list-inline-item">
+                Années permis: {{ c.anneePermis }}
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <div class="sub-row">
+              <button
+                type="button"
+                routerLink="/client/edit/{{ c.id }}"
+                routerLinkActive="active"
+                class="btn btn-primary btn-sm btn-block me-2"
+              >
+                Editer
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm btn-block me-2"
+                (click)="delete(c.id!)"
+              >
+                Supprimer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

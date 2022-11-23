@@ -32,6 +32,8 @@ public class SecurityConfig {
 				.antMatchers(HttpMethod.POST, "/api/modele/**").hasRole("LOUEUR")
 				.antMatchers(HttpMethod.PATCH, "/api/modele/**").hasRole("LOUEUR")
 				.antMatchers(HttpMethod.GET).permitAll()
+				.antMatchers(HttpMethod.DELETE).permitAll()
+				.antMatchers(HttpMethod.PUT).permitAll()
 				.anyRequest().hasRole("ADMIN")
 			.and()
 			.httpBasic()

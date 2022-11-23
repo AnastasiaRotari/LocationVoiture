@@ -38,7 +38,7 @@ public class Annonce {
 	
 	@JsonView(JsonViews.Common.class)
 	@Enumerated(EnumType.STRING)
-	@Column(columnDefinition = "ENUM('vide','quart','moitie','trois-quart','rempli')")
+	@Column(columnDefinition = "ENUM('vide','quart','moitie','rempli')")
 	private Plein plein;
 	
 	@JsonView(JsonViews.Common.class)

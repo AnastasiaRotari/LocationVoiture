@@ -21,6 +21,9 @@ import { ModeleListComponent } from './location/component/modele/modele-list/mod
 import { ModeleEditComponent } from './location/component/modele/modele-edit/modele-edit.component';
 import { AnnonceViewComponent } from './location/component/annonce/annonce-view/annonce-view.component';
 import { FooterComponent } from './location/component/footer/footer.component';
+import { AnnonceAdminComponent } from './location/component/annonce/annonce-admin/annonce-admin.component';
+import { ClientListComponent } from './location/component/client/client-list/client-list.component';
+import { LoueurListComponent } from './location/component/loueur/loueur-list/loueur-list.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +42,9 @@ import { FooterComponent } from './location/component/footer/footer.component';
     ModeleEditComponent,
     AnnonceViewComponent,
     FooterComponent,
+    AnnonceAdminComponent,
+    ClientListComponent,
+    LoueurListComponent,
   ],
   imports: [
     BrowserModule,

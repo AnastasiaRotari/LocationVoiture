@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Annonce } from 'src/app/location/model/annonce';
 import { Loueur } from 'src/app/location/model/loueur';
 import { Modele } from 'src/app/location/model/modele';
@@ -8,11 +7,11 @@ import { LoueurService } from 'src/app/location/service/loueur.service';
 import { ModeleService } from 'src/app/location/service/modele.service';
 
 @Component({
-  selector: 'app-annonce-list',
-  templateUrl: './annonce-list.component.html',
-  styleUrls: ['./annonce-list.component.css'],
+  selector: 'app-annonce-admin',
+  templateUrl: './annonce-admin.component.html',
+  styleUrls: ['./annonce-admin.component.css'],
 })
-export class AnnonceListComponent implements OnInit {
+export class AnnonceAdminComponent implements OnInit {
   annonces: Annonce[] = [];
   modele: Modele[] = [];
   loueur: Loueur[] = [];
