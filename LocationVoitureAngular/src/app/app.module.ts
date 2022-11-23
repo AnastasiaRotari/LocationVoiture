@@ -20,6 +20,7 @@ import { LocationListComponent } from './location/component/location/location-li
 import { ModeleListComponent } from './location/component/modele/modele-list/modele-list.component';
 import { ModeleEditComponent } from './location/component/modele/modele-edit/modele-edit.component';
 import { AnnonceViewComponent } from './location/component/annonce/annonce-view/annonce-view.component';
+import { FooterComponent } from './location/component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AnnonceViewComponent } from './location/component/annonce/annonce-view/
     ModeleListComponent,
     ModeleEditComponent,
     AnnonceViewComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

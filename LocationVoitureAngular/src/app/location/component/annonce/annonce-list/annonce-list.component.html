@@ -1,43 +1,88 @@
-<table class="table">
-  <thead>
-    <tr>
-      <th>id:</th>
-      <th>libelle:</th>
-      <th>modele:</th>
-      <th>loueur:</th>
-      <th>plein:</th>
-      <th>kilometrage:</th>
-      <th>agence:</th>
-      <th>etat:</th>
-      <th>prixJour:</th>
-      <th>disponibilite:</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let a of annonces">
-      <td>{{ a.id }}</td>
-      <td>{{ a.libelle }}</td>
-      <td>{{ a.modele }}</td>
-      <td>{{ a.loueur }}</td>
-      <td>{{ a.plein }}</td>
-      <td>{{ a.kilometrage }}</td>
-      <td>{{ a.agence }}</td>
-      <td>{{ a.etat }}</td>
-      <td>{{ a.prixJour }}</td>
-      <td>{{ a.disponibilite }}</td>
-      <td>
-        <a routerLink="/annonce/edit/{{ a.id }}" routerLinkActive="active"
-          >Editer</a
-        >
-      </td>
-      <td>
-        <button class="btn btn-outline-danger" (click)="delete(a.id!)">
-          Supprimer
-        </button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-<!--<a routerLink="/annonce/edit" routerLinkActive="active">Nouvelle annonce</a>-->
+<section class="search-banner bg-dark text-white py-5" id="search-banner">
+  <div class="container py-5 my-5">
+    <div class="row text-center pb-4">
+      <div class="col-md-12">
+        <h2>Trouvez la voiture de vos rêves</h2>
+      </div>
+    </div>
+    <div class="row d-flex justify-content-between">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group ">
+                  <input [(ngModel)]="start" class="form-control" placeholder="Ville de départ" />
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group ">
+                  <input class="form-control" type="date" id="start" value="2022-01-25">
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group ">
+                  <input class="form-control" type="date" id="end" value="2022-01-28">
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group ">
+                  <select [(ngModel)]="plein" id="inputState" class="form-control">
+                    <option>rempli</option>
+                    <option>trois-quart</option>
+                    <option>moitie</option>
+                    <option>quart</option>
+                    <option>vide</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group ">
+                  <select [(ngModel)]="etat" id="inputState" class="form-control">
+                    <option>mint</option>
+                    <option>nearMint</option>
+                    <option>excellent</option>
+                    <option>fine</option>
+                    <option>good</option>
+                    <option>played</option>
+                    <option>poor</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<div *ngFor="let a of filterAnnonce()" class="row mb-3">
+  <div class="row text-center">
+    <div class="card">
+      <div class="card-body">
+        <div class="row ">
+          <div class="col-md-3">
+            <img src="assets\images\kart.avif" height="100px" width="150px" alt="">
+          </div>
+          <div class="col-md-5">
+            <h4>{{a.libelle}}</h4>
+            <a routerLink="/annonce-view" routerLinkActive="active">
+              Plus d'infos</a>
+            <ul class="list-unstyled list-inline">
+              <li class="list-inline-item">état : {{a.etat}} /</li>
+              <li class="list-inline-item">{{a.kilometrage}} km</li>
+            </ul>
+          </div>
+          <div class="col-md-4">
+            <h6>{{a.prixJour}} € / jour</h6>
+            <small>{{a.agence}}</small>
+            <div class="sub-row">
+              <button type="button" routerLink="/annonce-view" routerLinkActive="active"
+                class="btn btn-secondary btn-sm btn-block">Louer ce véhicule</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
