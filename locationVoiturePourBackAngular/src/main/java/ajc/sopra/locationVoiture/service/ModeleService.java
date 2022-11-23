@@ -23,7 +23,7 @@ public class ModeleService {
 		return modeleRepo.findAll();
 	}
 
-	public Modele findById(Integer id) {
+	public Modele findById(Long id) {
 		return modeleRepo.findById(id).orElseThrow(()->{
 			throw new IdException();
 		});
@@ -66,7 +66,7 @@ public class ModeleService {
 		modeleRepo.delete(modele);
 	}
 
-	public void deleteById(Integer id) {
+	public void deleteById(Long id) {
 		modeleRepo.deleteById(id);
 	}
 }

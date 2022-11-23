@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import ajc.sopra.locationVoiture.exception.AnnonceException;
 import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.model.Annonce;
+import ajc.sopra.locationVoiture.model.Loueur;
 import ajc.sopra.locationVoiture.repository.AnnonceRepository;
 
 
@@ -21,8 +22,16 @@ public class AnnonceService {
 	public List<Annonce> findAll() {
 		return annonceRepo.findAll();
 	}
+	
+	public Annonce findByIdFetchModele(Long id) {
+		return annonceRepo.findByIdFetchingModele(id).orElseThrow(IdException::new);
+	}
+	
+	public Annonce findByIdFetchLoueur(Long id) {
+		return annonceRepo.findByIdFetchingLoueur(id).orElseThrow(IdException::new);
+	}
 
-	public Annonce findById(Integer id) {
+	public Annonce findById(Long id) {
 		return annonceRepo.findById(id).orElseThrow(IdException::new);
 	}
 
@@ -30,7 +39,7 @@ public class AnnonceService {
 		return annonceRepo.findByLibelleContaining(libelle);
 	}
 	
-	public List<Annonce> findByLoueurId(Integer id) {
+	public List<Annonce> findByLoueurId(Long id) {
 		return annonceRepo.findByLoueurId(id);
 	}
 	
@@ -97,7 +106,7 @@ public class AnnonceService {
 		annonceRepo.delete(annonce);
 	}
 
-	public void deleteId(Integer id) {
+	public void deleteId(Long id) {
 		annonceRepo.deleteById(id);
 	}
 	

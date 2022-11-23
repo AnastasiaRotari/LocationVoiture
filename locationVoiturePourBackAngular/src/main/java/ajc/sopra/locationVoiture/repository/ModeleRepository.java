@@ -9,7 +9,7 @@ import ajc.sopra.locationVoiture.model.Categorie;
 import ajc.sopra.locationVoiture.model.Modele;
 
 
-public interface ModeleRepository extends JpaRepository<Modele, Integer> {
+public interface ModeleRepository extends JpaRepository<Modele, Long> {
 
 	List<Modele> findByNom(String Nom);
 	List<Modele> findByCategorie(Categorie categorie);

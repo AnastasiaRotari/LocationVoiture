@@ -31,7 +31,7 @@ public class SecurityConfig {
 				.antMatchers(HttpMethod.PATCH, "/api/annonce/**").hasRole("LOUEUR")
 				.antMatchers(HttpMethod.POST, "/api/modele/**").hasRole("LOUEUR")
 				.antMatchers(HttpMethod.PATCH, "/api/modele/**").hasRole("LOUEUR")
-				.antMatchers(HttpMethod.GET).authenticated()
+				.antMatchers(HttpMethod.GET).permitAll()
 				.anyRequest().hasRole("ADMIN")
 			.and()
 			.httpBasic()

@@ -10,6 +10,7 @@ import ajc.sopra.locationVoiture.exception.IdException;
 import ajc.sopra.locationVoiture.exception.CompteException;
 import ajc.sopra.locationVoiture.model.Client;
 import ajc.sopra.locationVoiture.model.Compte;
+import ajc.sopra.locationVoiture.model.Loueur;
 import ajc.sopra.locationVoiture.repository.ClientRepository;
 import ajc.sopra.locationVoiture.repository.CompteRepository;
 
@@ -45,6 +46,10 @@ public class ClientService {
 
 	public List<Client> findByAccident(int accident) {
 		return clientRepo.findByAccidentContaining(accident);
+	}
+	
+	public Client findByIdFetchLocation(Long id) {
+		return clientRepo.findByIdFetchingLocation(id).orElseThrow(IdException::new);
 	}
 	
 

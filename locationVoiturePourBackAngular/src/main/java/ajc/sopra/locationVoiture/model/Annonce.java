@@ -20,18 +20,18 @@ public class Annonce {
 	@JsonView(JsonViews.Common.class)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 	
 	@JsonView(JsonViews.Common.class)
 	@JoinColumn(name="libelle")
 	private String libelle;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.AnnoncewithModele.class) 
 	@OneToOne
 	@JoinColumn(name="modele")
 	private Modele modele;
 	
-	@JsonView(JsonViews.Common.class)
+	@JsonView(JsonViews.AnnoncewithLoueur.class)
 	@ManyToOne
 	@JoinColumn(name="loueur")
 	private Loueur loueur;
@@ -137,11 +137,11 @@ public class Annonce {
 	}
 	
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

@@ -33,6 +33,7 @@ public class Compte implements UserDetails {
 	@NotBlank
 	@Email
 	@Column(name = "email", length = 255, nullable = false, unique = true)
+	@JsonView(JsonViews.Common.class)
 	private String email;
 	@Column(name = "password", length = 255, nullable = false)
 	private String password;
