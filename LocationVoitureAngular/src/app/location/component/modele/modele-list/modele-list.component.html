@@ -1,1 +1,31 @@
-<p>modele-list works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id:</th>
+      <th>nom:</th>
+      <th>annee:</th>
+      <th>categorie:</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let m of modeles">
+      <td>{{ m.id }}</td>
+      <td>{{ m.nom }}</td>
+      <td>{{ m.annee }}</td>
+      <td>{{ m.categorie }}</td>
+      <td>
+        <a routerLink="/modele/edit/{{ m.id }}" routerLinkActive="active"
+          >editer</a
+        >
+      </td>
+      <td>
+        <button class="btn btn-outline-danger" (click)="delete(m.id!)">
+          supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/modele/edit" routerLinkActive="active">nouveau modele</a>
