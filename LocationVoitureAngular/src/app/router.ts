@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AnnonceViewComponent } from './location/component/annonce/annonce-view/annonce-view.component';
 import { InscriptionComponent } from './location/component/client/inscription/inscription.component';
 import { HomeComponent } from './location/component/home/home.component';
 import { InscriptionLoueurComponent } from './location/component/inscription-loueur/inscription-loueur.component';
@@ -30,6 +31,10 @@ export const routes: Routes = [
   {
     path: 'page-recherche',
     component: PageRechercheComponent,
+  },
+  {
+    path: 'annonce-view',
+    component: AnnonceViewComponent,
   },
 
   { path: '', redirectTo: 'home', pathMatch: 'full' },

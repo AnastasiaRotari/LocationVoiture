@@ -19,6 +19,7 @@ import { LocationEditComponent } from './location/component/location/location-ed
 import { LocationListComponent } from './location/component/location/location-list/location-list.component';
 import { ModeleListComponent } from './location/component/modele/modele-list/modele-list.component';
 import { ModeleEditComponent } from './location/component/modele/modele-edit/modele-edit.component';
+import { AnnonceViewComponent } from './location/component/annonce/annonce-view/annonce-view.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { ModeleEditComponent } from './location/component/modele/modele-edit/mod
     LocationListComponent,
     ModeleListComponent,
     ModeleEditComponent,
+    AnnonceViewComponent,
   ],
   imports: [
     BrowserModule,

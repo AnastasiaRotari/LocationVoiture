@@ -1,30 +1,41 @@
 <nav class="p-3 text-bg-dark">
   <div class="container-fluid">
-    <ul
-      style="list-style-type: none"
-      class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom"
-    >
-      <li
-        class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none"
-      >
-        <a class="nav-link" routerLink="/home" routerLinkActive="active"
-          ><img
+    <ul style="list-style-type: none;" class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <li class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+        <a
+        class="nav-link"
+        routerLink="/home"
+        routerLinkActive="active">
+          <img
             src="assets/images/logolocarnaque.jpg"
             alt=""
             height="100px"
             width="150px"
         /></a>
       </li>
-      <li *ngIf="admin" class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">Clients</a>
-      </li>
-      <li *ngIf="admin && !client" class="nav-item">
-        <a class="nav-link" routerLink="/" routerLinkActive="active">Loueurs</a>
-      </li>
-      <li *ngIf="loueur || admin" class="nav-item">
+      <li class="nav-item">
         <a
+          *ngIf="admin"
           class="nav-link"
-          routerLink="/pourmodifierannonce"
+          routerLink="/"
+          routerLinkActive="active"
+          >Clients</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="admin"
+          class="nav-link"
+          routerLink="/"
+          routerLinkActive="active"
+          >Loueurs</a
+        >
+      </li>
+      <li class="nav-item">
+        <a
+          *ngIf="admin"
+          class="nav-link"
+          routerLink="/"
           routerLinkActive="active"
           >Annonces</a
         >
