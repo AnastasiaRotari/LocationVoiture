@@ -5,14 +5,13 @@ import { Observable } from 'rxjs';
 import { Modele } from '../model/modele';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ModeleService {
-
   constructor(
-    private httpClient: HttpClient,
-   // private fournisseurSrv: FournisseurService
-  ) {}
+    private httpClient: HttpClient
+  ) // private fournisseurSrv: FournisseurService
+  {}
 
   public findAll(): Observable<Modele[]> {
     return this.httpClient.get<Modele[]>(
@@ -48,21 +47,12 @@ export class ModeleService {
     );
   }
 
-  private modeleToJson(modele: Modele): any {
+  public modeleToJson(modele: Modele): any {
     let modeleEnJsonPourJava = {
       nom: modele.nom,
       annee: modele.annee,
-      categorie : modele.categorie,
-
-
+      categorie: modele.categorie,
     };
     return modeleEnJsonPourJava;
   }
 }
-
-
-
-
-
-
-

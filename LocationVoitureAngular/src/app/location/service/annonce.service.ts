@@ -2,12 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Annonce } from '../model/annonce';
+import { LoueurService } from './loueur.service';
+import { ModeleService } from './modele.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnnonceService {
-  constructor(private httpClient: HttpClient) {}
+  constructor(
+    private httpClient: HttpClient,
+    private modeleSrv: ModeleService,
+    private loueurSrv: LoueurService
+  ) {}
 
   public findAll(): Observable<Annonce[]> {
     return this.httpClient.get<Annonce[]>(
@@ -43,7 +49,7 @@ export class AnnonceService {
     );
   }
 
-  private annonceToJson(annonce: Annonce): any {
+  public annonceToJson(annonce: Annonce): any {
     let annonceEnJsonPourJava = {
       libelle: annonce.libelle,
       modele: this.modeleSrv.modeleToJson(annonce.modele!),

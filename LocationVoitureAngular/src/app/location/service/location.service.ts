@@ -49,7 +49,7 @@ export class LocationService {
     );
   }
 
-  private locationToJson(location: Location): any {
+  public locationToJson(location: Location): any {
     let locationEnJsonPourJava = {
       dateDebut: location.dateDebut,
       dateFin: location.dateFin,

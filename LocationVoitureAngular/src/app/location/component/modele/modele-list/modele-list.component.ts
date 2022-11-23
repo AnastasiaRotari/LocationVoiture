@@ -5,11 +5,10 @@ import { ModeleService } from 'src/app/location/service/modele.service';
 @Component({
   selector: 'app-modele-list',
   templateUrl: './modele-list.component.html',
-  styleUrls: ['./modele-list.component.css']
+  styleUrls: ['./modele-list.component.css'],
 })
 export class ModeleListComponent implements OnInit {
   modeles: Modele[] = [];
-
 
   constructor(private modeleService: ModeleService) {}
 
