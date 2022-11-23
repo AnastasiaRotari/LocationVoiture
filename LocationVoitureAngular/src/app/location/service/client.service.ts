@@ -18,6 +18,10 @@ export class ClientService {
     );
   }
 
+  public findAll(): Observable<Client[]> {
+    return this.httpClient.get<Client[]>(`${ClientService.URL}`);
+  }
+
   public checkEmailExists(email: string): Observable<boolean> {
     return this.httpClient.get<boolean>(
       `${ClientService.URL}/check/email/${email}`

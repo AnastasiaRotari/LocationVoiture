@@ -1,1 +1,43 @@
-<p>annonce-list works!</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>id:</th>
+      <th>libelle:</th>
+      <th>modele:</th>
+      <th>loueur:</th>
+      <th>plein:</th>
+      <th>kilometrage:</th>
+      <th>agence:</th>
+      <th>etat:</th>
+      <th>prixJour:</th>
+      <th>disponibilite:</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let a of annonces">
+      <td>{{ a.id }}</td>
+      <td>{{ a.libelle }}</td>
+      <td>{{ a.modele }}</td>
+      <td>{{ a.loueur }}</td>
+      <td>{{ a.plein }}</td>
+      <td>{{ a.kilometrage }}</td>
+      <td>{{ a.agence }}</td>
+      <td>{{ a.etat }}</td>
+      <td>{{ a.prixJour }}</td>
+      <td>{{ a.disponibilite }}</td>
+      <td>
+        <a routerLink="/annonce/edit/{{ a.id }}" routerLinkActive="active"
+          >Editer</a
+        >
+      </td>
+      <td>
+        <button class="btn btn-outline-danger" (click)="delete(a.id!)">
+          Supprimer
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/annonce/edit" routerLinkActive="active">Nouvelle annonce</a>

@@ -18,6 +18,10 @@ export class LoueurService {
     );
   }
 
+  public findAll(): Observable<Loueur[]> {
+    return this.httpClient.get<Loueur[]>(`${LoueurService.URL}`);
+  }
+
   public checkEmailExists(email: string): Observable<boolean> {
     return this.httpClient.get<boolean>(
       `${LoueurService.URL}/check/email/${email}`

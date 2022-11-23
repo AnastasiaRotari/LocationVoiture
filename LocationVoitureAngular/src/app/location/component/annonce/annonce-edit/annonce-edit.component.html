@@ -1,1 +1,193 @@
-<p>annonce-edit works!</p>
+<div>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="id">id:</label>
+      <input
+        class="form-control"
+        id="id"
+        name="id"
+        [(ngModel)]="annonce.id"
+        readonly
+        placeholder="generation automatique"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="libelle">Nom de l'annonce:</label>
+      <input
+        class="form-control"
+        name="libelle"
+        id="libelle"
+        [(ngModel)]="annonce.libelle"
+        required
+        #libelleCtrl="ngModel"
+      />
+      <div
+        *ngIf="libelleCtrl.dirty && libelleCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Libelle obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="modele">Modele:</label>
+      <select
+        class="form-control"
+        name="annonce.modele"
+        [(ngModel)]="annonce.modele"
+        required
+        #modeleCtrl="ngModel"
+      >
+        <option *ngFor="let m of modele" [ngValue]="m">
+          {{ m.nom }} {{ m.categorie }} {{ m.annee }}
+        </option>
+      </select>
+      <div *ngIf="modeleCtrl.invalid">*Modele obligatoire</div>
+    </div>
+
+    <div class="form-group">
+      <label for="loueur">Loueur:</label>
+      <select
+        class="form-control"
+        name="annonce.loueur"
+        [(ngModel)]="annonce.loueur"
+        required
+        #loueurCtrl="ngModel"
+      >
+        <option *ngFor="let l of loueur" [ngValue]="l">
+          {{ l.nom }} {{ l.prenom }}
+        </option>
+      </select>
+      <div *ngIf="loueurCtrl.invalid">*Loueur obligatoire</div>
+    </div>
+
+    <div class="form-group">
+      <label for="plein">Plein:</label>
+      <input
+        class="form-control"
+        name="plein"
+        id="plein"
+        [(ngModel)]="annonce.plein"
+        required
+        #pleinCtrl="ngModel"
+      />
+      <div
+        *ngIf="pleinCtrl.dirty && pleinCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Plein obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="kilometrage">Kilometrage:</label>
+      <input
+        type="number"
+        step="1"
+        class="form-control"
+        id="kilometrage"
+        name="kilometrage"
+        [(ngModel)]="annonce.kilometrage"
+        min="0"
+        #kilometrageCtrl="ngModel"
+      />
+      <div
+        *ngIf="kilometrageCtrl.dirty && kilometrageCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Kilometrage obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="agence">Agence:</label>
+      <input
+        class="form-control"
+        name="agence"
+        id="agence"
+        [(ngModel)]="annonce.agence"
+        required
+        #agenceCtrl="ngModel"
+      />
+      <div
+        *ngIf="agenceCtrl.dirty && agenceCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Agence obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="etat">Etat:</label>
+      <input
+        class="form-control"
+        name="etat"
+        id="etat"
+        [(ngModel)]="annonce.etat"
+        required
+        #etatCtrl="ngModel"
+      />
+      <div
+        *ngIf="etatCtrl.dirty && etatCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Etat obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="prixJour">Prix par jour:</label>
+      <input
+        type="number"
+        step="0.1"
+        class="form-control"
+        id="prixJour"
+        name="prixJour"
+        [(ngModel)]="annonce.prixJour"
+        min="0.1"
+        #prixJourCtrl="ngModel"
+      />
+      <div
+        *ngIf="prixJourCtrl.dirty && prixJourCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Prix obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="disponibilite">Disponibilite:</label>
+      <input
+        class="form-control"
+        name="disponibilite"
+        id="disponibilite"
+        [(ngModel)]="annonce.disponibilite"
+        required
+        #disponibiliteCtrl="ngModel"
+      />
+      <div
+        *ngIf="disponibiliteCtrl.dirty && disponibiliteCtrl.invalid"
+        class="alert alert-danger"
+      >
+        Disponibilite obligatoire
+      </div>
+    </div>
+
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-outline-primary"
+        [disabled]="form.invalid"
+      >
+        Enregistrer
+      </button>
+      <a
+        routerLink="/annonce"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >Annuler</a
+      >
+    </div>
+  </form>
+</div>
