@@ -1,1 +1,83 @@
-<p>modele-edit works!</p>
+<div>
+  <form (ngSubmit)="save()" #form="ngForm">
+    <div class="form-group">
+      <label for="id">id:</label>
+      <input
+        class="form-control"
+        id="id"
+        name="id"
+        [(ngModel)]="modele.id"
+        readonly
+        placeholder="generation automatique"
+      />
+    </div>
+    <div class="form-group">
+      <label for="nom">nom du modele:</label>
+      <input
+        class="form-control"
+        name="nom"
+        id="nom"
+        [(ngModel)]="modele.nom"
+        required
+        #nomCtrl="ngModel"
+      />
+      <div
+        *ngIf="nomCtrl.dirty && nomCtrl.invalid"
+        class="alert alert-danger"
+      >
+        nom obligatoire
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="annee">annee du modele</label>
+      <input
+        type="number"
+        class="form-control"
+        id="annee"
+        name="annee"
+        [(ngModel)]="modele.annee"
+        min="1920"
+        #anneeCtrl="ngModel"
+      />
+      <div
+        *ngIf="anneeCtrl.dirty && anneeCtrl.invalid"
+        class="alert alert-danger"
+      >
+        la date doit etre supreieur à 1920
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="categorie">categorie:</label>
+      <input
+        class="form-control"
+        name="categorie"
+        id="categorie"
+        [(ngModel)]="modele.nom"
+        required
+        #categorieCtrl="ngModel"
+
+        />
+        <div
+          *ngIf="categorieCtrl.dirty && categorieCtrl.invalid"
+          class="alert alert-danger"
+        >
+          categorie obligatoire
+
+    <div class="form-group">
+      <button
+        type="submit"
+        class="btn btn-outline-primary"
+        [disabled]="form.invalid"
+      >
+        enregistrer
+      </button>
+      <a
+        routerLink="/modele"
+        routerLinkActive="active"
+        class="btn btn-outline-warning"
+        >annuler</a
+      >
+    </div>
+  </form>
+
+</div>
