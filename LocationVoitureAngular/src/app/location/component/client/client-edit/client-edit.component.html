@@ -1,0 +1,140 @@
+<div class="d-flex justify-content-around">
+  <div>
+    <form (ngSubmit)="save()" #form="ngForm">
+      <div class="form-group">
+        <label for="id">id:</label>
+        <input
+          class="form-control"
+          id="id"
+          name="id"
+          [(ngModel)]="client.id"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="prenom">prenom:</label>
+        <input
+          class="form-control"
+          id="prenom"
+          name="prenom"
+          [(ngModel)]="client.prenom"
+          #prenomCtrl="ngModel"
+          required
+          minlength="2"
+        />
+        <div
+          *ngIf="prenomCtrl.dirty && prenomCtrl.invalid"
+          class="alert alert-danger"
+        >
+          <ng-container *ngIf="prenomCtrl.hasError('required')">
+            prenom obligatoire
+          </ng-container>
+          <ng-container *ngIf="prenomCtrl.hasError('minlength')">
+            2 caracteres minimum
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nom">nom:</label>
+        <input
+          class="form-control"
+          id="nom"
+          name="nom"
+          [(ngModel)]="client.nom"
+          #nomCtrl="ngModel"
+          required
+        />
+        <div
+          *ngIf="nomCtrl.dirty && nomCtrl.invalid"
+          class="alert alert-danger"
+        >
+          nom obligatoire
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          class="form-control"
+          id="email"
+          name="email"
+          [(ngModel)]="client.email"
+          #emailCtrl="ngModel"
+          required
+        />
+        <div
+          *ngIf="emailCtrl.dirty && emailCtrl.invalid"
+          class="alert alert-danger"
+        >
+          Email obligatoire
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">password:</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="form-control"
+          placeholder="********"
+        />
+      </div>
+      <div class="form-group">
+        <label for="confirmation">confirmation:</label>
+        <input
+          type="password"
+          formControlName="confirmation"
+          class="form-control"
+          placeholder="Confirmez le"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="adresse.numero">numero:</label>
+        <input
+          class="form-control"
+          id="adresse.numero"
+          name="adresse.numero"
+          [(ngModel)]="client.adresse!.numero"
+        />
+      </div>
+      <div class="form-group">
+        <label for="adresse.voie">voie:</label>
+        <input
+          class="form-control"
+          id="adresse.voie"
+          name="adresse.voie"
+          [(ngModel)]="client.adresse!.voie"
+        />
+      </div>
+      <div class="form-group">
+        <label for="adresse.cp">code postal:</label>
+        <input
+          class="form-control"
+          id="adresse.cp"
+          name="adresse.cp"
+          [(ngModel)]="client.adresse!.cp"
+        />
+      </div>
+      <div class="form-group">
+        <label for="adresse.ville">code ville:</label>
+        <input
+          class="form-control"
+          id="adresse.ville"
+          name="adresse.ville"
+          [(ngModel)]="client.adresse!.ville"
+        />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-outline-primary">
+          enregistrer
+        </button>
+        <a
+          routerLink="/client"
+          routerLinkActive="active"
+          class="btn btn-outline-warning"
+          >annuler</a
+        >
+      </div>
+    </form>
+  </div>
+</div>

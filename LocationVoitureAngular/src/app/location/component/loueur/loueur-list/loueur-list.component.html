@@ -1,1 +1,41 @@
-<p>loueur-list works!</p>
+<div *ngFor="let l of loueurs" class="row mb-3">
+  <div class="row text-center">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-3">
+            <img
+              src="assets\images\doge.png"
+              height="100px"
+              width="100px"
+              alt=""
+            />
+          </div>
+          <div class="col-md-5">
+            <h4>{{ l.prenom }} {{ l.nom }}</h4>
+            <h6>{{ l.email }}</h6>
+          </div>
+          <div class="col-md-4">
+            <div class="sub-row">
+              <button
+                type="button"
+                routerLink="/loueur/edit/{{ l.id }}"
+                routerLinkActive="active"
+                class="btn btn-primary btn-sm btn-block me-2"
+              >
+                Editer
+              </button>
+              <button
+                type="button"
+                class="btn btn-danger btn-sm btn-block me-2"
+                (click)="delete(l.id!)"
+              >
+                Supprimer
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

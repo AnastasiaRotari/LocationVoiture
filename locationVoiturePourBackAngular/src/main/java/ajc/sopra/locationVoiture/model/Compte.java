@@ -29,6 +29,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 public class Compte implements UserDetails {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@JsonView(JsonViews.Common.class)
 	private Long id;
 	@NotBlank
 	@Email
