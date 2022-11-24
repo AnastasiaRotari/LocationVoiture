@@ -1,1 +1,112 @@
-<p>location-form works!</p>
+<div class="d-flex justify-content-around">
+  <div>
+    <form (ngSubmit)="valider()" #form="ngForm">
+      <h4>Vos informations de location</h4>
+      <div class="form-group">
+        <label for="dateDebut">Date de début :</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dateDebut"
+          name="dateDebut"
+          [(ngModel)]="location.dateDebut"
+          #dateDebutCtrl="ngModel"
+          required
+        />
+        <div
+          *ngIf="dateDebutCtrl.dirty && dateDebutCtrl.invalid"
+          class="alert alert-danger"
+        >
+          <ng-container *ngIf="dateDebutCtrl.hasError('required')">
+            date de début obligatoire
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="dateFin">Date de fin :</label>
+        <input
+          type="date"
+          class="form-control"
+          id="dateFin"
+          name="dateFin"
+          [(ngModel)]="location.dateFin"
+          #dateFinCtrl="ngModel"
+          required
+        />
+        <div
+          *ngIf="dateFinCtrl.dirty && dateFinCtrl.invalid"
+          class="alert alert-danger"
+        >
+          <ng-container *ngIf="dateFinCtrl.hasError('required')">
+            date de fin obligatoire
+          </ng-container>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="assurance"> Assurance: </label>
+        <select
+          [(ngModel)]="location.assurance"
+          id="inputState"
+          class="form-control"
+        >
+          <option value="" selected id="gris">
+            Selectionnez le type d'assurance
+          </option>
+          <option>basique</option>
+          <option>advanced</option>
+          <option>premium</option>
+        </select>
+        <div
+          *ngIf="dateFinCtrl.dirty && dateFinCtrl.invalid"
+          class="alert alert-danger"
+        >
+          <ng-container *ngIf="dateFinCtrl.hasError('required')">
+            date de fin obligatoire
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="row">
+          <div class="col-md-12 pills">
+            <div class="bd-example bd-example-tabs">
+              <div class="d-flex justify-content-center">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      type="button"
+                      class="btn btn-primary my-2 bg-dark"
+                      routerLink="/annonce"
+                      routerLinkActive="active"
+                      >Annuler</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 pills">
+            <div class="bd-example bd-example-tabs">
+              <div class="d-flex justify-content-center">
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                  <li class="nav-item">
+                    <a
+                      type="button"
+                      class="btn btn-primary my-2"
+                      routerLink="/location/confirm"
+                      routerLinkActive="active"
+                      >Valider</a
+                    >
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
