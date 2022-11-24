@@ -24,6 +24,7 @@ import { FooterComponent } from './location/component/footer/footer.component';
 import { AnnonceAdminComponent } from './location/component/annonce/annonce-admin/annonce-admin.component';
 import { ClientListComponent } from './location/component/client/client-list/client-list.component';
 import { LoueurListComponent } from './location/component/loueur/loueur-list/loueur-list.component';
+import { LocationFormComponent } from './location/component/location/location-form/location-form/location-form.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { LoueurListComponent } from './location/component/loueur/loueur-list/lou
     AnnonceAdminComponent,
     ClientListComponent,
     LoueurListComponent,
+    LocationFormComponent,
   ],
   imports: [
     BrowserModule,
