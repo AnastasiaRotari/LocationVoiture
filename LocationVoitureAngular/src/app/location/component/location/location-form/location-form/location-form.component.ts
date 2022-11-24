@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-
+import { Location } from 'src/app/location/model/location';
 @Component({
   selector: 'app-location-form',
   templateUrl: './location-form.component.html',
-  styleUrls: ['./location-form.component.css']
+  styleUrls: ['./location-form.component.css'],
 })
 export class LocationFormComponent implements OnInit {
+  location: Location = new Location();
+  constructor() {}
 
-  constructor() { }
+  ngOnInit(): void {}
 
-  ngOnInit(): void {
-  }
-
+  valider() {}
 }

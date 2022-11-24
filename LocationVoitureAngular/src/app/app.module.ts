@@ -27,6 +27,7 @@ import { LoueurListComponent } from './location/component/loueur/loueur-list/lou
 import { LocationFormComponent } from './location/component/location/location-form/location-form/location-form.component';
 import { ClientEditComponent } from './location/component/client/client-edit/client-edit.component';
 import { LoueurEditComponent } from './location/component/loueur/loueur-edit/loueur-edit.component';
+import { LocationConfirmComponent } from './location/component/location/location-confirm/location-confirm/location-confirm.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { LoueurEditComponent } from './location/component/loueur/loueur-edit/lou
     LoueurEditComponent,
     ClientEditComponent,
     LocationFormComponent,
+    LocationConfirmComponent,
   ],
   imports: [
     BrowserModule,
