@@ -1,0 +1,61 @@
+<div class="row">
+  <div class="col-md-12 pills">
+    <div class="bd-example bd-example-tabs">
+      <div class="d-flex justify-content-center">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a type="button" class="btn btn-primary my-2 bg-dark"
+              >Récapitulatif de votre location</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ftco-car-details">
+  <div class="container">
+    <div class="row justify-content-center">
+      <h2></h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Date de début:</th>
+            <th>Date de fin:</th>
+            <th>Type d'assurance</th>
+            <th>Prix total</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let loc of locations">
+            <td>{{ loc.dateDebut }}</td>
+            <td>{{ loc.dateFin }}</td>
+            <td>{{ loc.assurance }}</td>
+            <td>{{ loc.prixTotal }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+<div class="row">
+  <div class="col-md-12 pills">
+    <div class="bd-example bd-example-tabs">
+      <div class="d-flex justify-content-center">
+        <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+          <li class="nav-item">
+            <a
+              type="button"
+              class="btn btn-primary my-2"
+              routerLink="/location/confirm"
+              routerLinkActive="active"
+              >Finalisez votre locarnaque</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
