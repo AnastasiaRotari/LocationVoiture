@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { Annonce } from 'src/app/location/model/annonce';
 import { Loueur } from 'src/app/location/model/loueur';
 import { Modele } from 'src/app/location/model/modele';

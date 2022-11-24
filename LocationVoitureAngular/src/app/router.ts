@@ -50,6 +50,10 @@ export const routes: Routes = [
     component: AnnonceEditComponent,
   },
   {
+    path: 'annonce/view/:id',
+    component: AnnonceViewComponent,
+  },
+  {
     path: 'annonce',
     component: AnnonceListComponent,
   },
