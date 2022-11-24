@@ -25,6 +25,8 @@ import { AnnonceAdminComponent } from './location/component/annonce/annonce-admi
 import { ClientListComponent } from './location/component/client/client-list/client-list.component';
 import { LoueurListComponent } from './location/component/loueur/loueur-list/loueur-list.component';
 import { LocationFormComponent } from './location/component/location/location-form/location-form/location-form.component';
+import { ClientEditComponent } from './location/component/client/client-edit/client-edit.component';
+import { LoueurEditComponent } from './location/component/loueur/loueur-edit/loueur-edit.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +48,6 @@ import { LocationFormComponent } from './location/component/location/location-fo
     AnnonceAdminComponent,
     ClientListComponent,
     LoueurListComponent,
-    LocationFormComponent,
   ],
   imports: [
     BrowserModule,

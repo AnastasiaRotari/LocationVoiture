@@ -37,7 +37,7 @@ export class ClientService {
   public update(client: Client): Observable<Client> {
     console.debug(client);
     return this.httpClient.put<Client>(
-      `${ClientService.URL}/${client.id}`,
+      `${ClientService.URL}/${client?.id}`,
       this.clientToJson(client)
     );
   }
