@@ -48,6 +48,9 @@ import { LoueurEditComponent } from './location/component/loueur/loueur-edit/lou
     AnnonceAdminComponent,
     ClientListComponent,
     LoueurListComponent,
+    LoueurEditComponent,
+    ClientEditComponent,
+    LocationFormComponent,
   ],
   imports: [
     BrowserModule,
