@@ -1,142 +1,231 @@
-		<section class="ftco-section ftco-car-details">
-      <div class="container">
-      	<div class="row justify-content-center">
-      		<div class="col-md-12">
-      			<div class="car-details">
-      				<div class="img rounded" style="background-image: url(images/bg_1.jpg);"></div>
-      				<div class="text text-center">
-      					<span class="subheading">Citroen</span>
-      					<h2>Berlingo</h2>
-                <img src="assets\images\berlingo.webp" height="300px" width="450px" alt="">
-      				</div>
-      			</div>
-      		</div>
-      	</div>
-      	<div class="row">
-      		<div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services">
-              <div class="media-body py-md-4">
-              	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-dashboard"></span></div>
-	              	<div class="text">
-		                <h3 class="heading mb-0 pl-3">
-		                	Kilometrage :
-		                	<span>300,000</span>
-		                </h3>
-	                </div>
-                </div>
-              </div>
-            </div>
+<section class="ftco-section ftco-car-details">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12">
+        <div class="car-details">
+          <div
+            class="img rounded"
+            style="background-image: url(images/bg_1.jpg)"
+          ></div>
+          <div class="text text-center">
+            <span for="libelle" class="subheading"></span>
+            <h2>{{ annonce.libelle }}</h2>
+            <span for="prixJour" class="subheading"></span>
+            <h2>{{ annonce.prixJour }} € / jour</h2>
+            <img
+              src="assets\images\kart.avif"
+              height="300px"
+              width="450px"
+              alt=""
+            />
           </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services">
-              <div class="media-body py-md-4">
-              	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-pistons"></span></div>
-	              	<div class="text">
-		                <h3 class="heading mb-0 pl-3">
-		                	Transmission :
-		                	<span>Manuelle obviously</span>
-		                </h3>
-	                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services">
-              <div class="media-body py-md-4">
-              	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-car-seat"></span></div>
-	              	<div class="text">
-		                <h3 class="heading mb-0 pl-3">
-		                	Sieges :
-		                	<span>5 (minimum)</span>
-		                </h3>
-	                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services">
-              <div class="media-body py-md-4">
-              	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-backpack"></span></div>
-	              	<div class="text">
-		                <h3 class="heading mb-0 pl-3">
-		                	Taille du coffre :
-		                	<span>assez grand</span>
-		                </h3>
-	                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md d-flex align-self-stretch ftco-animate">
-            <div class="media block-6 services">
-              <div class="media-body py-md-4">
-              	<div class="d-flex mb-3 align-items-center">
-	              	<div class="icon d-flex align-items-center justify-content-center"><span class="flaticon-diesel"></span></div>
-	              	<div class="text">
-		                <h3 class="heading mb-0 pl-3">
-		                	glouglou : <br>
-		                	<span>Diesel</span>
-		                </h3>
-	                </div>
-                </div>
-              </div>
-            </div>
-          </div>
-      	</div>
-      	<div class="row">
-      		<div class="col-md-12 pills">
-						<div class="bd-example bd-example-tabs">
-							<div class="d-flex justify-content-center">
-							  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-							    <li class="nav-item">
-							      <a class="nav-link active" id="pills-description-tab" data-toggle="pill" href="#pills-description" role="tab" aria-controls="pills-description" aria-expanded="true">Caracteristiques</a>
-							    </li>
-							  </ul>
-							</div>
-
-						  <div class="tab-content" id="pills-tabContent">
-						    <div class="tab-pane fade show active" id="pills-description" role="tabpanel" aria-labelledby="pills-description-tab">
-						    	<div class="row">
-						    		<div class="col-md-4">
-						    			<ul class="features">
-						    				<li class="check"><span class="ion-ios-checkmark"></span>5,4L/100 km</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>141g CO2/km</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>70 chevaux</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>145 km/h max</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>meilleur voiture au monde, je veux rien savoir</li>
-						    			</ul>
-						    		</div>
-						    		<div class="col-md-4">
-						    			<ul class="features">
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Longueur : 4402 mm</li>
-						    				<li class="remove"><span class="ion-ios-close"></span>Largeur : 1848 mm</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>hauteur : 1874 mm</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Volume de coffre : 775 litres (de pinard ou de pastis, au choix)</li>
-						    				<li class="remove"><span class="ion-ios-close"></span>Suffisamment d'espace pour caser une équipe de rugby</li>
-						    			</ul>
-						    		</div>
-						    		<div class="col-md-4">
-						    			<ul class="features">
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Radio à Led Zepellin</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Antibrouillard</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>Boîte à gants réfrigérée</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>vitres electriques</li>
-						    				<li class="check"><span class="ion-ios-checkmark"></span>VILLEBREQUIN APROVED</li>
-						    			</ul>
-						    		</div>
-						    	</div>
-						    </div>
-						  </div>
-						</div>
-		      </div>
-				</div>
+        </div>
       </div>
-    </section>
+    </div>
+    <div class="row">
+      <div class="col-md d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="flaticon-dashboard"></span>
+              </div>
+              <div class="text">
+                <h3 for="kilometrage" class="heading mb-0 pl-3">
+                  Kilometrage :
+                  <span>{{ annonce.kilometrage }} km</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="flaticon-pistons"></span>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 pl-3">
+                  Transmission :
+                  <span>Manuelle obviously</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="flaticon-car-seat"></span>
+              </div>
+              <div class="text">
+                <h3 for="agence" class="heading mb-0 pl-3">
+                  Agence :
+                  <br />
+                  <span>{{ annonce.agence }}</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="flaticon-backpack"></span>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 pl-3">
+                  Taille du coffre :
+                  <span>assez grand</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md d-flex align-self-stretch ftco-animate">
+        <div class="media block-6 services">
+          <div class="media-body py-md-4">
+            <div class="d-flex mb-3 align-items-center">
+              <div
+                class="icon d-flex align-items-center justify-content-center"
+              >
+                <span class="flaticon-diesel"></span>
+              </div>
+              <div class="text">
+                <h3 class="heading mb-0 pl-3">
+                  glouglou : <br />
+                  <span>Diesel</span>
+                </h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 pills">
+        <div class="bd-example bd-example-tabs">
+          <div class="d-flex justify-content-center">
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  id="pills-description-tab"
+                  data-toggle="pill"
+                  role="tab"
+                  aria-controls="pills-description"
+                  aria-expanded="true"
+                  >Caracteristiques</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  id="pills-description-tab"
+                  data-toggle="pill"
+                  role="tab"
+                  aria-controls="pills-description"
+                  aria-expanded="true"
+                  >Caracteristiques</a
+                >
+              </li>
+            </ul>
+          </div>
 
-
+          <div class="tab-content" id="pills-tabContent">
+            <div
+              class="tab-pane fade show active"
+              id="pills-description"
+              role="tabpanel"
+              aria-labelledby="pills-description-tab"
+            >
+              <div class="row">
+                <div class="col-md-4">
+                  <ul class="features">
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>5,4L/100 km
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>141g CO2/km
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>70 chevaux
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>145 km/h max
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>meilleur voiture au
+                      monde, je veux rien savoir
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <ul class="features">
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>Longueur : 4402 mm
+                    </li>
+                    <li class="remove">
+                      <span class="ion-ios-close"></span>Largeur : 1848 mm
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>hauteur : 1874 mm
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>Volume de coffre :
+                      775 litres (de pinard ou de pastis, au choix)
+                    </li>
+                    <li class="remove">
+                      <span class="ion-ios-close"></span>Suffisamment d'espace
+                      pour caser une équipe de rugby
+                    </li>
+                  </ul>
+                </div>
+                <div class="col-md-4">
+                  <ul class="features">
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>Radio à Led
+                      Zepellin
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>Antibrouillard
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>Boîte à gants
+                      réfrigérée
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>vitres electriques
+                    </li>
+                    <li class="check">
+                      <span class="ion-ios-checkmark"></span>VILLEBREQUIN
+                      APROVED
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

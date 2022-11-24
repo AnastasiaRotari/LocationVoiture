@@ -20,6 +20,7 @@ public class AnnonceService {
 	private AnnonceRepository annonceRepo;
 
 	public List<Annonce> findAll() {
+		System.out.println(annonceRepo.findAll());
 		return annonceRepo.findAll();
 	}
 	
