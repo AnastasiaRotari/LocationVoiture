@@ -9,6 +9,7 @@ import { InscriptionComponent } from './location/component/client/inscription/in
 import { FormContactComponent } from './location/component/form-contact/form-contact.component';
 import { HomeComponent } from './location/component/home/home.component';
 import { InscriptionLoueurComponent } from './location/component/inscription-loueur/inscription-loueur.component';
+import { LocationConfirmComponent } from './location/component/location/location-confirm/location-confirm/location-confirm.component';
 import { LocationEditComponent } from './location/component/location/location-edit/location-edit.component';
 import { LocationFormComponent } from './location/component/location/location-form/location-form/location-form.component';
 import { LocationListComponent } from './location/component/location/location-list/location-list.component';
@@ -61,6 +62,10 @@ export const routes: Routes = [
   {
     path: 'location/form',
     component: LocationFormComponent,
+  },
+  {
+    path: 'location/confirm',
+    component: LocationConfirmComponent,
   },
   {
     path: 'annonce',
